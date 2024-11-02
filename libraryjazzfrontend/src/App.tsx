@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-      <div className=''>
+      <div className='sticky top-0'>
         <NavBar/>
       </div>
     </>
