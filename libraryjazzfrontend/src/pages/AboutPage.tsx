@@ -1,12 +1,9 @@
-import LBJ from "../assets/LBJ.jpg";
 import LBJWally from "../assets/LBJWally.jpg";
 
 const AboutPage = () => {
   return (
     <div>
-      <div>
         <div>
-          <img src={LBJ} alt="All members of the Library Jazz Band" />
         </div>
         <div className="flex flex-row">
           <div>
@@ -64,7 +61,6 @@ const AboutPage = () => {
             </p>
         </div>
       </div>
-    </div>
   );
 };
 
