@@ -5,7 +5,7 @@ const AboutPage = () => {
     <div>
         <div>
         </div>
-        <div className="flex flex-row">
+        <div className="flex flex-row text-amber-400">
           <div>
             <span>About Library Jazz Band</span>
             <p>
