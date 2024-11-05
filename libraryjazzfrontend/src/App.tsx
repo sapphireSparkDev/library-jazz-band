@@ -1,7 +1,6 @@
 import './App.css'
 import NavBar from './components/NavBar'
 import AboutPage from './pages/AboutPage'
-import Home from './pages/Home'
 
 function App() {
 
@@ -12,7 +11,6 @@ function App() {
         <NavBar/>
       </div>
       <div>
-        <Home/>
         <AboutPage/>
       </div>
     </div>
