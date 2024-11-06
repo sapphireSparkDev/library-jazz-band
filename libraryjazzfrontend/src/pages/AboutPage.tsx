@@ -3,8 +3,9 @@ import LBJWally from "../assets/LBJWally.jpg";
 const AboutPage = () => {
   return (
     <div>
-      <div>
-        <div className="flex flex-row">
+        <div>
+        </div>
+        <div className="flex flex-row text-amber-400">
           <div>
             <span>About Library Jazz Band</span>
             <p>
@@ -60,7 +61,6 @@ const AboutPage = () => {
             </p>
         </div>
       </div>
-    </div>
   );
 };
 

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 const NavBar = () => {
   return (
     <div>
-      <nav className="bg-neutral-700">
+      <nav className="bg-neutral-950 backdrop-filter backdrop-blur-lg bg-opacity-30">
         <div className="flex items-center space-x-16 w-screen mx-auto px-4">
           <div className="flex flex-col items-center justify-between h-12">
             <span className="text-amber-400">Library</span>
