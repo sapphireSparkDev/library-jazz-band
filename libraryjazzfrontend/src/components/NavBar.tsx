@@ -1,19 +1,48 @@
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+
+import LJB_Logo from "../assets/LJB_Logo.png";
+import "../styles/NavBar.css";
 
 const NavBar = () => {
   return (
     <div>
-      <nav className="bg-neutral-950 backdrop-filter backdrop-blur-lg bg-opacity-30">
-        <div className="flex items-center space-x-16 w-screen mx-auto px-4">
-          <div className="flex flex-col items-center justify-between h-12">
-            <span className="text-amber-400">Library</span>
-            <span className="text-amber-400">Jazz Band</span>
+      <nav className="bg-neutral-900 backdrop-filter backdrop-blur-lg bg-opacity-30 ">
+        <div className="flex items-center space-x-16 w-screen px-4 h-1/6 justify-end">
+          <div className="flex flex-col items-center justify-start ">
+            <Link to="/">
+              <img className="size-1/6 mt-4" src={LJB_Logo} alt="Library Jazz Band Logo" />
+            </Link>
           </div>
           <div className="flex space-x-6">
-            <Button variant="outline">About Us</Button>
-            <Button variant="outline">Our Music</Button>
-            <Button variant="outline">Events</Button>
-            <Button variant="outline">Contact</Button>
+            <Link
+              className="btn btn-text-stretch btn-text-stretch--orange"
+              to="/about"
+            >
+              About
+            </Link>
+            <Link
+              className="btn btn-text-stretch btn-text-stretch--orange"
+              to="/music"
+            >
+              Our Music
+            </Link>
+            <Link
+              className="btn btn-text-stretch btn-text-stretch--orange"
+              to="/events"
+            >
+              Events
+            </Link>
+            <Link
+              className="btn btn-text-stretch btn-text-stretch--orange"
+              to="/contact"
+            >
+              Contact Us
+            </Link>
+            <Link
+              className={buttonVariants({ variant: "default" })}
+              to="/donate"
+            >Donate</Link>
           </div>
         </div>
       </nav>
