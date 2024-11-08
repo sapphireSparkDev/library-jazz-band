@@ -1,4 +1,4 @@
-import LBJWally from "../lib/assets/LBJWally.jpg";
+
 
 const AboutPage = () => {
   return (
@@ -26,7 +26,7 @@ const AboutPage = () => {
           </div>
           <img
             className="w-3/6"
-            src={LBJWally}
+            src=""
             alt="Two library jazz band trombone players"
           />
         </div>
