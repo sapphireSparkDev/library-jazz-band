@@ -1,4 +1,4 @@
-import LBJWally from "../assets/LBJWally.jpg";
+import LBJWally from "../lib/assets/LBJWally.jpg";
 
 const AboutPage = () => {
   return (

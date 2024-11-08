@@ -1,15 +1,20 @@
 import { buttonVariants } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import "../styles/NavBar.css";
 
 const NavBar = () => {
+  const location = useLocation();
+
+  if(location.pathname === "/") {
+    return null
+  } 
+
   return (
     <div>
-      <nav className="bg-neutral-900 backdrop-filter backdrop-blur-lg bg-opacity-30 ">
+      <nav className="">
         <div className="flex items-center space-x-16 w-screen px-4 h-1/6 justify-end">
-          <div className="flex flex-col items-center justify-start ">
-          </div>
+          <div className="flex flex-col items-center justify-start "></div>
           <div className="flex space-x-6">
             <Link
               className="btn btn-text-stretch btn-text-stretch--orange"
@@ -38,7 +43,9 @@ const NavBar = () => {
             <Link
               className={buttonVariants({ variant: "default" })}
               to="/donate"
-            >Donate</Link>
+            >
+              Donate
+            </Link>
           </div>
         </div>
       </nav>
