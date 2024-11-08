@@ -6,24 +6,21 @@ import "../styles/NavBar.css";
 const NavBar = () => {
   const location = useLocation();
 
-  if(location.pathname === "/") {
-    return null
-  } 
+  if (location.pathname === "/") {
+    return null;
+  }
 
   return (
     <div>
       <nav className="bg-neutral-900">
-        <div className="flex items-center space-x-16 w-screen px-4 h-1/6 justify-end">
-          <div className="flex flex-col items-center justify-start "></div>
-          <div className="flex flex-row space-x-6 mt-4">
-              {/**
+          <div className="flex flex-row items-center justify-end space-x-10 p-10 text-2xl" style={{ fontFamily: "Diplomatica SC" }}>
             <Link
-              className="btn btn-text-stretch btn-text-stretch--orange"
-              to="/about"
+              className={buttonVariants({ variant: "link" })}
+              to="/"
             >
-              About
+              Home
             </Link>
-          
+            {/**
              * <Link
               className="btn btn-text-stretch btn-text-stretch--orange"
               to="/music"
@@ -42,8 +39,7 @@ const NavBar = () => {
             >
               Contact Us
             </Link>
-             */
-}
+             */}
             <Link
               className={buttonVariants({ variant: "default" })}
               to="/donate"
@@ -51,7 +47,6 @@ const NavBar = () => {
               Donate
             </Link>
           </div>
-        </div>
       </nav>
     </div>
   );
