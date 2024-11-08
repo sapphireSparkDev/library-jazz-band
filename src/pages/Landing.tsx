@@ -12,10 +12,10 @@ const Landing = () => {
         <h1 className="mb-80"> The Library Jazz Band</h1>
         <Link
           to="/about"
-          className="text-amber-400 hover:text-yellow-500 shadow-sm mt-10 font-serif flex flex-col items-center"
+          className="text-amber-400 hover:text-yellow-500 shadow-sm mt-10 font-serif flex flex-col items-center hover:animate-bounce"
         >
           <span>Learn More</span>
-          <img src={arrow} alt="arrow down" className="size-10 animate-bounce" />
+          <img src={arrow} alt="arrow down" className="size-10" />
         </Link>
       </div>
     </div>

@@ -1,5 +1,5 @@
 .btn {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Diplomatica SC", Helvetica, sans-serif;
   text-transform: uppercase;
 }
 .btn:hover .btn-slide-show-text1 {
@@ -15,14 +15,14 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 45px;
-  margin: 0px 0px 2em;
+  margin: 10px 0px 2em;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
   text-align: center;
   padding-left: 10px;
   padding-right: 10px;
-  font-family: lato, serif;
+  font-family:  "Diplomatica SC", lato, serif;
 }
 .btn-text-stretch:hover {
   color:#DBB199;

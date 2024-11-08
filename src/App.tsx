@@ -9,16 +9,13 @@ function App() {
   return (
     <>
       <div className="App">
-        <BrowserRouter>    
-          <NavBar />
+        <BrowserRouter>
+            <NavBar />
           <Routes>
-            <Route path="/" element={<Landing />}>
-              <Route path="/about" element={<AboutPage />} />
-            </Route>
+            <Route path="/" element={<Landing />} />
+            <Route path="/about" element={<AboutPage />} />
           </Routes>
         </BrowserRouter>
-        <div className="sticky top-0">
-        </div>
       </div>
     </>
   );

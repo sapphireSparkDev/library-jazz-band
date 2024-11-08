@@ -12,17 +12,19 @@ const NavBar = () => {
 
   return (
     <div>
-      <nav className="">
+      <nav className="bg-neutral-900">
         <div className="flex items-center space-x-16 w-screen px-4 h-1/6 justify-end">
           <div className="flex flex-col items-center justify-start "></div>
-          <div className="flex space-x-6">
+          <div className="flex flex-row space-x-6 mt-4">
+              {/**
             <Link
               className="btn btn-text-stretch btn-text-stretch--orange"
               to="/about"
             >
               About
             </Link>
-            <Link
+          
+             * <Link
               className="btn btn-text-stretch btn-text-stretch--orange"
               to="/music"
             >
@@ -40,6 +42,8 @@ const NavBar = () => {
             >
               Contact Us
             </Link>
+             */
+}
             <Link
               className={buttonVariants({ variant: "default" })}
               to="/donate"
