@@ -1,4 +1,4 @@
-import bigBand from "../lib/assets/LBJ.jpg";
+import bigBand from "../lib/assets/bigBand.jpg";
 import "../styles/About.css";
 
 const AboutPage = () => {
