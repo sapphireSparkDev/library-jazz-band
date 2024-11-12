@@ -48,7 +48,7 @@
   width: 70%;
 }
 .btn-text-stretch--orange {
-  color: rgb(254, 174, 0);
+  color: #fbbf24;
 }
 .btn-text-stretch--orange:hover::before {
   border-color: #dbb199;
