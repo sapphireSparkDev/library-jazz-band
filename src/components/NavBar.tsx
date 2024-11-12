@@ -8,7 +8,7 @@ const NavBar = () => {
   return (
     <div>
       <nav className="bg-neutral-900 backdrop-filter backdrop-blur-lg bg-opacity-30">
-          <div className="flex flex-row items-center justify-end space-x-10 p-6 text-2xl" style={{ fontFamily: "Diplomatica SC" }}>
+          <div className="flex flex-row items-center justify-end space-x-10 p-6 text-2xl font-sree">
             <Link
               className={buttonVariants({ variant: "link" })}
               to="/"

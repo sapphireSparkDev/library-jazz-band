@@ -6,6 +6,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+	fontFamily: {
+		roboto: ["Roboto", "sans-serif"],
+		bebasNeue: ["Bebas_Neue", "sans-serif"],
+		aboreto: ["Aboreto", "sans-serif"],
+		sree: ["Sree_Krushnadevaraya", "sans-serif"]
+	},
   	extend: {
 		animation: {
 			
