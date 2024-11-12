@@ -21,7 +21,7 @@ const Events = () => {
             <h2 className="text-md text-indigo-900 font-bold">
               Sunday, November 17 at 2pm
             </h2>
-            <span className="text-sm">
+            <span className="text-sm font-robotoThin">
               Greenburgh Public Library/ 300 Tarrytown Rd, Elmsford, NY 10523
             </span>
           </CardContent>
@@ -29,7 +29,7 @@ const Events = () => {
             <h2 className="text-md text-indigo-900 font-bold">
               Sunday, November 24 at 2pm
             </h2>
-            <span className="text-sm">
+            <span className="text-sm font-robotoThin">
               Grinton I. Will Branch/1500 Central Park Avenue, Yonkers, NY 10710
             </span>
           </CardContent>
@@ -48,7 +48,7 @@ const Events = () => {
               April 2025 [Date TBD]
             </h2>
 
-            <p className="line-clamp-7">
+            <p className="line-clamp-7 font-robotoThin">
               This concert will feature instruments many audience members may
               not have seen in this setting before: the tuba and the baritone
               and bass saxophones. Joining us for this show will be tuba and

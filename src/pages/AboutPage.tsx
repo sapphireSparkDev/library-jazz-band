@@ -43,17 +43,17 @@ const AboutPage = () => {
         <span className="inline-block self-center  font-bold">
           Honoring the richness of jazz music and its history
         </span>
-        <p className="inline-block w-3/5 self-start">
+        <p className="inline-block w-3/5 self-start font-robotoThin ">
           Our members don’t just play, they contribute their own arrangements
           and compositions and we help local composers rehearse new works.{" "}
         </p>
-        <p className="inline-block  w-3/5">
+        <p className="inline-block  w-3/5 font-robotoThin">
           In addition to classic big band arrangements by the greats, we also
           program some unexpected “jazz” adaptations such as tunes by Rolling
           Stones and Stevie Wonder. Our summer 2024 show, BIG BAND: Small Screen
           featured jazz renditions of music from cartoons and television.{" "}
         </p>
-        <p className="inline-block  w-3/5">
+        <p className="inline-block  w-3/5 font-robotoThin">
           Jazz is America’s very own music. Participating in keeping it alive
           and growing is a wonderful way to remind all of us just how important
           it is to keep instrumental music in our schools. Learning music is not
