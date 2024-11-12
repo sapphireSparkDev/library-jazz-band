@@ -1,60 +1,49 @@
-import bigBand from "../lib/assets/bigBand.jpg";
+import rob from "../lib/assets/LJB_saxSection .png";
+import karl from "../lib/assets/LJBKarl.jpg";
+import kim from "../lib/assets/LJBKim.jpg";
 import "../styles/About.css";
 
 const AboutPage = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="w-screen h-1/5 flex flex-col justify-center items-center">
-        <h1
-          className="text-amber-500 mb-10"
-          style={{ fontFamily: "Diplomatica SC" }}
-        >
+        <h1 className="text-amber-500 mb-10 font-bebasNeue text-3xl">
           About Library Jazz Band
         </h1>
-        <img
-          src={bigBand}
-          alt="Library Jazz Band"
-          className="w-3/5 h-1/2 rounded-md shadow-lg"
-        />
+        <div className="flex flex-row space-x-10 mb-10">
+          <img src={rob} className=" w-50 h-64 rounded-lg shadow-lg"></img>
+          <img src={kim} className=" w-50 h-64 rounded-lg shadow-lg"></img>
+          <img src={karl} className=" w-50 h-64 rounded-lg shadow-lg"></img>
+        </div>
       </div>
-      <div className="w-3/6 mt-6 justify-items-center">
-        <h2 className="font-bold text-xl mb-2 text-center">
+      <div className="w-3/6 justify-items-center">
+        <h2 className="font-bold text-xl mb-6 text-center">
           LJB: A Jazz Orchestra for the Community
         </h2>
-        <p
-          className="text-center text-lg mb-20"
-          style={{ fontFamily: "Diplomatica SC" }}
-        >
-          Founded in 2021 by Nancy Maron and Sarah Cion, LJB was created in
-          response to the decline of local big bands following the COVID-19
-          pandemic. Recognizing a gap in the musical landscape, they set out to
-          revive the big band tradition in their community. LJB is a dynamic
+        <p className="text-center text-lg mb-10 font-roboto">
+          LJB was created in 2021 to address a gap in the musical landscape by
+          reviving the big band tradition in their community. We are a dynamic
           17-piece jazz orchestra, featuring five saxophones, four trombones,
-          four trumpets, piano, bass, drums, and a conductor. Our collective
-          brings together a talented group of musicians from Yonkers, the Bronx,
-          and Westchester, including both seasoned professionals and passionate,
-          experienced amateurs. What unites us is a shared love for the big band
-          format and a commitment to bringing vibrant, live jazz music to the
-          community.
+          four trumpets, piano, bass, drums, plus conductor. Our collective of
+          seasoned professionals and passionate, experienced amateurs is united
+          by a shared love for the big band format and our commitment to
+          bringing vibrant, live jazz music to the community.
         </p>
-      </div>
-      <div
-        className="flex flex-row text-md space-x-16 font-bold"
-        style={{ fontFamily: "Diplomatica SC" }}
-      >
-        <span className="inline-block">
-          Giving musicians a place to keep growing as artists
-        </span>
-        <span className="inline-block">
-          Making America’s own music enjoyable and accessible to a wide audience
-        </span>
-        <span className="inline-block">
-          Honoring the richness of jazz music and its history
-        </span>
+
+        <span className="font-roboto text-xl">What Guides Us:</span>
       </div>
 
-      <div className="flex flex-row text-center space-x-16 text-md p-5"  style={{ fontFamily: "Diplomatica SC" }} >
-      <p className="inline-block w-3/5">
+      <div className="grid grid-rows-2 grid-cols-3 h-20 mt-14 auto-cols-max justify-items-center gap-6 text-center font-roboto">
+        <span className="inline-block self-center font-bold ">
+          Giving musicians a place to keep growing as artists
+        </span>
+        <span className="inline-block self-center font-bold">
+          Making America’s own music enjoyable and accessible to a wide audience
+        </span>
+        <span className="inline-block self-center  font-bold">
+          Honoring the richness of jazz music and its history
+        </span>
+        <p className="inline-block w-3/5 self-start">
           Our members don’t just play, they contribute their own arrangements
           and compositions and we help local composers rehearse new works.{" "}
         </p>
