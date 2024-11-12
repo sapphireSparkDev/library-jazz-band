@@ -1,6 +1,6 @@
-import trumpet from "../lib/assets/trumpet.jpg";
-import LJBSarah from "../lib/assets/LJB_SarahJaneCion.png";
-import trumpetGuys from "../lib/assets/trumpetguys.jpg";
+import trumpet from "../lib/assets/trumpet.webp";
+import LJBSarah from "../lib/assets/LJB_SarahJaneCion.webp";
+import trumpetGuys from "../lib/assets/trumpetguys.webp";
 import form from "../lib/assets/Donar-Form.pdf";
 import { buttonVariants } from "@/components/ui/button";
 

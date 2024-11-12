@@ -15,13 +15,11 @@ const NavBar = () => {
           <Link className={buttonVariants({ variant: "link" })} to="/about">
             About
           </Link>
+
+          <Link className={buttonVariants({ variant: "link" })} to="/events">
+            Events
+          </Link>
           {/* 
-            <Link
-              className={buttonVariants({ variant: "link" })}
-              to="/events"
-            >
-              Events
-            </Link>
             <Link
               className={buttonVariants({ variant: "link" })}
               to="/contact"

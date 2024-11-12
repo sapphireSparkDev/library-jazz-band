@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
 import "../styles/Landing.css";
-import image from "../lib/assets/LBJ.jpg";
-import danAsher from "../lib/assets/LJB_DanAsher.png";
+import image from "../lib/assets/LBJ.webp";
+import danAsher from "../lib/assets/LJB_DanAsher.webp";
 
 const Landing = () => {
   return (

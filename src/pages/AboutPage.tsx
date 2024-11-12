@@ -1,6 +1,6 @@
-import rob from "../lib/assets/LJB_saxSection .png";
-import karl from "../lib/assets/LJBKarl.jpg";
-import kim from "../lib/assets/LJBKim.jpg";
+import rob from "../lib/assets/LJB_saxSection.webp";
+import karl from "../lib/assets/LJBKarl.webp";
+import kim from "../lib/assets/LJBKim.webp";
 import "../styles/About.css";
 
 const AboutPage = () => {
