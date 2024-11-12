@@ -4,7 +4,13 @@ const Events = () => {
   return (
     <div>
       <img src={LJBRob} />
-      <div className="absolute inset-y-0 left-10 top-16 bg-neutral-950/75 p-10 w-2/6 h-screen">
+      <div className="absolute inset-y-0 left-10 top-16 bg-neutral-900/75 p-10 w-2/6 h-full">
+        <h1 className="font-roboto text-4xl tracking-wide text-amber-400 mb-4 place-self-center ">
+          Events
+        </h1>
+        <h2 className="font-roboto text-2xl tracking-wide text-amber-400 mb-4">
+          2024
+        </h2>
         <Card className="mb-6">
           <CardHeader>
             <CardTitle className="font-roboto text-lg">
@@ -28,6 +34,9 @@ const Events = () => {
             </span>
           </CardContent>
         </Card>
+        <h2 className="font-roboto text-2xl tracking-wide text-amber-400 mb-4">
+          2025
+        </h2>
         <Card>
           <CardHeader>
             <CardTitle className="font-roboto  text-lg">

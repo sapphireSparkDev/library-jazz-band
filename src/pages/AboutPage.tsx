@@ -7,7 +7,7 @@ const AboutPage = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="w-screen h-1/5 flex flex-col justify-center items-center">
-        <h1 className="text-amber-500 mb-10 font-bebasNeue text-3xl">
+        <h1 className="text-amber-500 mb-10 font-bebasNeue tracking-wide text-4xl">
           About Library Jazz Band
         </h1>
         <div className="flex flex-row space-x-10 mb-10">

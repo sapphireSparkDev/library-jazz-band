@@ -7,7 +7,7 @@ import { buttonVariants } from "@/components/ui/button";
 const Donate = () => {
   return (
     <div className="flex flex-col justify-center items-center">
-      <h1 className="text-amber-500 mb-10 font-roboto text-3xl">
+      <h1 className="text-amber-500 mb-10 font-bebasNeue tracking-wide text-4xl">
         Support the LJB!
       </h1>
       <div className="flex flex-row justify-center items-center space-x-10 mb-10">
