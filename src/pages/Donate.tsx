@@ -11,11 +11,14 @@ const Donate = () => {
         Support the LJB!
       </h1>
       <div className="flex flex-row justify-center items-center space-x-10 mb-10">
-        <img src={trumpet} className=" w-50 h-64 rounded-lg shadow-lg"></img>
+        <img
+          src={trumpet}
+          className=" w-50 h-64 rounded-lg shadow-lg md:hidden lg:block md:mb-10 lg:mb-0"
+        ></img>
         <img src={LJBSarah} className=" w-50 h-64 rounded-lg shadow-lg"></img>
         <img
           src={trumpetGuys}
-          className=" w-50 h-64 rounded-lg shadow-lg"
+          className=" w-50 h-64 rounded-lg shadow-lg md:hidden lg:block"
         ></img>
       </div>
       <div className="flex flex-col justify-items-center w-3/6 items-center">
@@ -33,15 +36,17 @@ const Donate = () => {
         <div className="flex flex-col items-center text-lg">
           <ol className="list-decimal list-inside font-robotoThin mb-10">
             <h2 className=" font-roboto">To donate:</h2>
-            <li className="indent-10 ">Download & complete this form.</li>
-            <li className="indent-10">
+            <li className="lg:indent-10 md:indent-2">
+              Download & complete this form.
+            </li>
+            <li className="lg:indent-10 md:indent-2">
               {" "}
               Email to maronnancy@gmail.com; or Mail to Nancy Maron 69 Oakland
               Avenue/Yonkers, NY 10710
             </li>
-            <li className="indent-10">
+            <li className="lg:indent-10 md:indent-2">
               <strong>Donations can be made via</strong>
-              <ol className="list-disc list-inside indent-20">
+              <ol className="list-disc list-inside lg:indent-20 md:indent-14">
                 <li>
                   Check (payable to Nancy Maron; send with form to 69 Oakland
                   Avenue)
