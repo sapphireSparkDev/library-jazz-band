@@ -1,5 +1,5 @@
 .btn {
-  font-family: "Diplomatica SC", Helvetica, sans-serif;
+  font-family: "Roboto", Helvetica, sans-serif;
   text-transform: uppercase;
 }
 .btn:hover .btn-slide-show-text1 {
@@ -22,10 +22,10 @@
   text-align: center;
   padding-left: 10px;
   padding-right: 10px;
-  font-family:  "Diplomatica SC", lato, serif;
+  font-family: "Roboto", lato, serif;
 }
 .btn-text-stretch:hover {
-  color:#DBB199;
+  color: #dbb199;
   letter-spacing: 5px;
 }
 .btn-text-stretch::before {
@@ -51,5 +51,5 @@
   color: rgb(254, 174, 0);
 }
 .btn-text-stretch--orange:hover::before {
-  border-color: #DBB199;
+  border-color: #dbb199;
 }

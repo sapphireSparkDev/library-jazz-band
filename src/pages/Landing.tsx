@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import "../styles/Landing.css";
+import "../styles/stretchButton.css";
 import image from "../lib/assets/LBJ.webp";
 import danAsher from "../lib/assets/LJB_DanAsher.webp";
 
