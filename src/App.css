@@ -3,21 +3,24 @@
 @tailwind utilities;
 
 @layer base {
-    @font-face {
-        font-family: 'Roboto';
-        src: url("/fonts/Roboto/Roboto-Medium.ttf");
-    }
-    @font-face {
-        font-family: 'Bebas_Neue';
-        src: url("/fonts/Bebas_Neue/BebasNeue-Regular.ttf")
-    }
-    @font-face {
-        font-family: 'Aboreto';
-        src: url("/fonts/Aboreto/Aboreto-Regular.ttf")
-    }
-    @font-face {
-        font-family: 'Sree_Krushnadevaraya';
-        src: url("/fonts/Sree_Krushnadevaraya/Sree_Krushnadevaraya-Regular.ttf")
-    }
-
+  @font-face {
+    font-family: "Roboto";
+    src: url("/fonts/Roboto/Roboto-Medium.ttf");
+  }
+  @font-face {
+    font-family: "Roboto-Thin";
+    src: url("/fonts/Roboto/Roboto-Regular.ttf");
+  }
+  @font-face {
+    font-family: "Bebas_Neue";
+    src: url("/fonts/Bebas_Neue/BebasNeue-Regular.ttf");
+  }
+  @font-face {
+    font-family: "Aboreto";
+    src: url("/fonts/Aboreto/Aboreto-Regular.ttf");
+  }
+  @font-face {
+    font-family: "Sree_Krushnadevaraya";
+    src: url("/fonts/Sree_Krushnadevaraya/Sree_Krushnadevaraya-Regular.ttf");
+  }
 }
