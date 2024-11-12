@@ -4,6 +4,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import Landing from "./pages/Landing";
 import Donate from "./pages/Donate";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
   return (
@@ -11,10 +12,11 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <div className="sticky top-0 z-10">
-            <NavBar/>
-          </div>  
+            <NavBar />
+          </div>
           <Routes>
             <Route path="/" element={<Landing />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/donate" element={<Donate />} />
           </Routes>
         </BrowserRouter>
