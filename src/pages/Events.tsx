@@ -12,7 +12,7 @@ const Events = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <h2 className="text-md text-cyan-600 font-bold">
+            <h2 className="text-md text-indigo-900 font-bold">
               Sunday, November 17 at 2pm
             </h2>
             <span className="text-sm">
@@ -20,7 +20,7 @@ const Events = () => {
             </span>
           </CardContent>
           <CardContent>
-            <h2 className="text-md text-cyan-600 font-bold">
+            <h2 className="text-md text-indigo-900 font-bold">
               Sunday, November 24 at 2pm
             </h2>
             <span className="text-sm">
@@ -35,7 +35,7 @@ const Events = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <h2 className="text-md text-cyan-600 font-bold">
+            <h2 className="text-md text-indigo-900 font-bold">
               April 2025 [Date TBD]
             </h2>
 
