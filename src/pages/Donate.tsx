@@ -13,12 +13,12 @@ const Donate = () => {
       <div className="flex flex-row justify-center items-center space-x-10 mb-10">
         <img
           src={trumpet}
-          className=" w-50 h-64 rounded-lg shadow-lg md:hidden lg:block md:mb-10 lg:mb-0"
+          className=" w-50 h-64 rounded-lg shadow-lg hidden lg:block md:mb-10 lg:mb-0"
         ></img>
-        <img src={LJBSarah} className=" w-50 h-64 rounded-lg shadow-lg"></img>
+        <img src={LJBSarah} className=" w-25 h-32 rounded-lg shadow-lg lg:w-50 lg:h-64"></img>
         <img
           src={trumpetGuys}
-          className=" w-50 h-64 rounded-lg shadow-lg md:hidden lg:block"
+          className=" w-50 h-64 hidden rounded-lg shadow-lg lg:block"
         ></img>
       </div>
       <div className="flex flex-col justify-items-center w-3/6 items-center">

@@ -13,12 +13,12 @@ const AboutPage = () => {
         <div className="flex flex-row space-x-10 mb-10">
           <img
             src={rob}
-            className=" w-50 h-64 rounded-lg shadow-lg md:hidden lg:block"
+            className=" w-50 h-64 rounded-lg shadow-lg hidden lg:block"
           ></img>
-          <img src={kim} className=" w-50 h-64 rounded-lg shadow-lg "></img>
+          <img src={kim} className=" w-25 h-32 rounded-lg shadow-lg lg:w-50 lg:h-64"></img>
           <img
             src={karl}
-            className=" w-50 h-64 rounded-lg shadow-lg md:hidden lg:block"
+            className=" w-50 h-64 rounded-lg shadow-lg hidden lg:block"
           ></img>
         </div>
       </div>
