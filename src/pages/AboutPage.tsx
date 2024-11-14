@@ -13,7 +13,7 @@ const AboutPage = () => {
         <div className="flex flex-row xl:space-x-10 md:space-x-0  mb-10">
           <img
             src={rob}
-            className=" w-50 h-64 rounded-lg shadow-lg hidden lg:block"
+            className=" w-50 h-64 rounded-lg shadow-lg hidden xl:block"
           ></img>
           <img
             src={kim}
@@ -21,7 +21,7 @@ const AboutPage = () => {
           ></img>
           <img
             src={karl}
-            className=" w-50 h-64 rounded-lg shadow-lg hidden lg:block"
+            className=" w-50 h-64 rounded-lg shadow-lg hidden xl:block"
           ></img>
         </div>
       </div>
@@ -39,12 +39,12 @@ const AboutPage = () => {
           bringing vibrant, live jazz music to the community.
         </p>
       </div>
-      <div className="grid grid-cols-3 auto-rows-auto gap-x-6 justify-items-center text-center pl-5 pr-5">
+      <div className="grid lg:grid-cols-3 sm:grid-cols-1 auto-rows-auto gap-x-6 justify-items-center text-center pl-5 pr-5">
         <div className="flex flex-col">
           <span className="font-roboto mb-10">
             Giving musicians a place to keep growing as artists
           </span>
-          <p className="font-robotoThin">
+          <p className="font-robotoThi mb-10">
             Our members don’t just play, they contribute their own arrangements
             and compositions and we help local composers rehearse new works.{" "}
           </p>
@@ -54,7 +54,7 @@ const AboutPage = () => {
             Making America’s own music enjoyable and accessible to a wide
             audience
           </span>
-          <p className="font-robotoThin">
+          <p className="font-robotoThin mb-10 ">
             In addition to classic big band arrangements by the greats, we also
             program some unexpected “jazz” adaptations such as tunes by Rolling
             Stones and Stevie Wonder. Our summer 2024 show, BIG BAND: Small
@@ -67,7 +67,7 @@ const AboutPage = () => {
             Honoring the richness of jazz music and its history
           </span>
 
-          <p className="font-robotoThin">
+          <p className="font-robotoThin mb-10 ">
             Jazz is America’s very own music. Participating in keeping it alive
             and growing is a wonderful way to remind all of us just how
             important it is to keep instrumental music in our schools. Learning
