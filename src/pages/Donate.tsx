@@ -1,28 +1,29 @@
+
 import trumpet from "../lib/assets/trumpet.webp";
 import LJBSarah from "../lib/assets/LJB_SarahJaneCion.webp";
 import trumpetGuys from "../lib/assets/trumpetguys.webp";
-import form from "../lib/assets/Donar-Form.pdf";
+import form from "../lib/assets/Donor-Form.pdf";
 import { buttonVariants } from "@/components/ui/button";
 
 const Donate = () => {
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col items-center w-screen">
       <h1 className="text-amber-500 mb-10 font-bebasNeue tracking-wide text-4xl">
         Support the LJB!
       </h1>
-      <div className="flex flex-row justify-center items-center space-x-10 mb-10">
+      <div className="flex flex-row xl:space-x-10 md:space-x-0 mb-10">
         <img
           src={trumpet}
-          className=" w-50 h-64 rounded-lg shadow-lg hidden lg:block md:mb-10 lg:mb-0"
+          className=" w-50 h-64 rounded-lg shadow-lg hidden xl:block md:mb-10 lg:mb-0"
         ></img>
         <img src={LJBSarah} className=" w-25 h-32 rounded-lg shadow-lg lg:w-50 lg:h-64"></img>
         <img
           src={trumpetGuys}
-          className=" w-50 h-64 hidden rounded-lg shadow-lg lg:block"
+          className=" w-50 h-64 hidden rounded-lg shadow-lg xl:block"
         ></img>
       </div>
       <div className="flex flex-col justify-items-center w-3/6 items-center">
-        <p className="text-center text-lg mb-16 font-roboto">
+        <p className="text-center text-lg mb-16 font-roboto lg:w-fit w-screen">
           Our library shows are free, thanks to the generous support of
           ArtsWestchester and the Yonkers Public Library, but running the band
           is not! And we want to keep growing – adding more performances, more
@@ -55,7 +56,7 @@ const Donate = () => {
               </ol>
             </li>
           </ol>
-          <span>
+          <span className="mb-10">
             [Note: The Library Jazz Band is in the process of incorporating as a
             not-for-profit organization but does not yet have nfp status.]
           </span>

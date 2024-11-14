@@ -10,7 +10,7 @@ import Events from "./pages/Events";
 function App() {
   return (
     <>
-      <div className="App">
+      <div className="w-screen">
         <BrowserRouter>
           <div className="sticky top-0 z-10">
             <NavBar />

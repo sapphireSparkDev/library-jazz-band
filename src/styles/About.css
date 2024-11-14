@@ -2,7 +2,41 @@ body {
   background: rgb(255, 255, 255);
   background: linear-gradient(
     0deg,
-    rgba(255, 255, 255, 1) 70%,
-    rgba(23, 23, 23, 1) 64%
+    rgba(255, 255, 255, 1) 84%,
+    rgba(23, 23, 23, 1) 20%
   );
+}
+
+@media screen and (min-width: 750px) {
+  body {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 1) 76%,
+      rgba(23, 23, 23, 1) 20%
+    );
+  }
+}
+
+
+@media screen and (min-width: 1020) {
+  body {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(23, 23, 23, 1) 50%
+    );
+  }
+}
+
+@media screen and (min-width: 1440) {
+  body {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 1) 60%,
+      rgba(23, 23, 23, 1) 40%
+    );
+  }
 }

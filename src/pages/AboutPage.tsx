@@ -5,12 +5,12 @@ import "../styles/About.css";
 
 const AboutPage = () => {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center w-screen" >
       <div className="w-screen h-1/5 flex flex-col justify-center items-center">
         <h1 className="text-amber-500 mb-10 font-bebasNeue tracking-wide text-4xl">
           About Library Jazz Band
         </h1>
-        <div className="flex flex-row space-x-10 mb-10">
+        <div className="flex flex-row xl:space-x-10 md:space-x-0  mb-10">
           <img
             src={rob}
             className=" w-50 h-64 rounded-lg shadow-lg hidden lg:block"
@@ -26,7 +26,7 @@ const AboutPage = () => {
         <h2 className="font-bold text-xl mb-6 text-center">
           LJB: A Jazz Orchestra for the Community
         </h2>
-        <p className="text-center text-lg mb-10 font-roboto">
+        <p className="text-center text-lg mb-10 font-roboto lg:w-fit w-screen">
           LJB was created in 2021 to address a gap in the musical landscape by
           reviving the big band tradition in their community. We are a dynamic
           17-piece jazz orchestra, featuring five saxophones, four trombones,
@@ -35,8 +35,6 @@ const AboutPage = () => {
           by a shared love for the big band format and our commitment to
           bringing vibrant, live jazz music to the community.
         </p>
-
-        <span className="font-roboto text-xl">What Guides Us:</span>
       </div>
 
       <div className="grid lg:grid-rows-2 lg:grid-cols-3 md:auto-rows-auto md:grid-cols-1 h-20 mt-14 auto-cols-max justify-items-center gap-6 text-center font-roboto">
