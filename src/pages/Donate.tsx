@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Donate = () => {
   return (
-    <div className="flex flex-col items-center w-screen">
+    <div className="flex flex-col items-center w-screen background">
       <div className="w-screen h-1/5 flex flex-col justify-center items-center">
         <h1 className="text-amber-500 mb-10 font-bebasNeue tracking-wide text-4xl">
           Support the LJB!

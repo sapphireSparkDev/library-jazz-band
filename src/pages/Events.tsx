@@ -1,26 +1,30 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import LJBRobAlt from "../lib/assets/LJB_RobSusman.webp";
 import LJBRob from "../lib/assets/LJBRob.webp";
 import AWLogo from "../lib/assets/artsWestchesterLogo.png";
 
 const Events = () => {
   return (
     <div>
-      <img src={LJBRob} />
-      <div className="absolute inset-y-0 left-10 top-16 bg-neutral-900/75 p-10 w-2/6 h-full">
-        <h1 className="font-roboto text-4xl tracking-wide text-amber-400 mb-4 place-self-center ">
+      <picture>
+        <source srcSet={LJBRob} media="(min-width: 1400px)" />
+        <img src={LJBRobAlt} className="hidden lg:block"/>
+      </picture>
+      <div className="absolute inset-y-12 lg:inset-y-0 lg:left-10 lg:top-16 bg-neutral-900/75 p-10 w-screen lg:w-2/6 h-fit">
+        <h1 className="font-roboto text-2xl lg:text-4xl tracking-wide text-amber-400 mb-4 place-self-center ">
           Events
         </h1>
-        <h2 className="font-roboto text-2xl tracking-wide text-amber-400 mb-4">
+        <h2 className="font-roboto text-lg lg:text-2xl tracking-wide text-amber-400 mb-4">
           2024
         </h2>
         <Card className="mb-6">
           <CardHeader>
-            <CardTitle className="font-roboto text-lg">
+            <CardTitle className="font-roboto text-md lg:text-lg">
               <span>It's Showtime: LJB Takes on Broadway</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <h2 className="text-md text-indigo-900 font-bold">
+            <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
               Sunday, November 17 at 2pm
             </h2>
             <span className="text-sm font-robotoThin">
@@ -28,7 +32,7 @@ const Events = () => {
             </span>
           </CardContent>
           <CardContent>
-            <h2 className="text-md text-indigo-900 font-bold">
+            <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
               Sunday, November 24 at 2pm
             </h2>
             <span className="text-sm font-robotoThin">
@@ -45,17 +49,17 @@ const Events = () => {
             </p>
           </CardContent>
         </Card>
-        <h2 className="font-roboto text-2xl tracking-wide text-amber-400 mb-4">
+        <h2 className="font-roboto text-lg lg:text-2xl  tracking-wide text-amber-400 mb-4">
           2025
         </h2>
         <Card>
           <CardHeader>
-            <CardTitle className="font-roboto  text-lg">
+            <CardTitle className="font-roboto text-md lg:text-lg">
               <span>Hitting the Low Notes</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <h2 className="text-md text-indigo-900 font-bold">
+            <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
               April 2025 [Date TBD]
             </h2>
 
@@ -67,22 +71,39 @@ const Events = () => {
             </p>
           </CardContent>
         </Card>
+        <div className="relative lg:hidden">
+          <div className="flex absolute -inset-x-10 inset-y-40 bg-neutral-900/75 p-10 w-screen h-2/4 rounded-xl items-center font-robotoThin  text-sm text-center">
+            <Card className="mt-20 md:mt-32">
+              <CardHeader>
+                <img src={AWLogo}></img>
+              </CardHeader>
+              <CardContent>
+                <p>
+                  Library Jazz Band’s 2024 - 2025 Season is made possible with
+                  funds from Arts Alive, a regrant program of ArtsWestchester
+                  with support from the Office of the Governor, the New York
+                  State Legislature, and the New York State Council on the Arts.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       </div>
-      <div className="flex absolute inset-y-0 right-10 top-36 bg-neutral-900/75 p-10 w-2/6 h-2/4 rounded-xl items-center font-robotoThin  text-sm text-center">
-        <Card>
-          <CardHeader>
-            <img src={AWLogo}></img>
-          </CardHeader>
-          <CardContent>
-            <p>
-              Library Jazz Band’s 2024 - 2025 Season is made possible with funds
-              from Arts Alive, a regrant program of ArtsWestchester with support
-              from the Office of the Governor, the New York State Legislature,
-              and the New York State Council on the Arts.
-            </p>
-          </CardContent>
-        </Card>
-      </div>
+      <div className="hidden lg:block absolute inset-y-0 right-10 top-36 bg-neutral-900/75 p-10 w-2/6 h-fit rounded-xl items-center font-robotoThin  text-sm text-center">
+            <Card>
+              <CardHeader>
+                <img src={AWLogo}></img>
+              </CardHeader>
+              <CardContent>
+                <p>
+                  Library Jazz Band’s 2024 - 2025 Season is made possible with
+                  funds from Arts Alive, a regrant program of ArtsWestchester
+                  with support from the Office of the Governor, the New York
+                  State Legislature, and the New York State Council on the Arts.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
     </div>
   );
 };

@@ -16,9 +16,9 @@ function App() {
             <NavBar />
           </div>
           <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/about" element={<AboutPage />} />
+            <Route path="/" element={<Landing/>} />
             <Route path="/events" element={<Events />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/donate" element={<Donate />} />
           </Routes>
         </BrowserRouter>

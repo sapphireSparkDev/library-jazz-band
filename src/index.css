@@ -28,6 +28,7 @@ body {
   display: flex;
   min-width: 100vw;
   min-height: 100vh;
+  background-color: #171717;
 }
 
 h1 {
