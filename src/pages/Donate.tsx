@@ -1,9 +1,9 @@
-
 import trumpet from "../lib/assets/trumpet.webp";
 import LJBSarah from "../lib/assets/LJB_SarahJaneCion.webp";
 import trumpetGuys from "../lib/assets/trumpetguys.webp";
 import form from "../lib/assets/Donor-Form.pdf";
 import { buttonVariants } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Donate = () => {
   return (
@@ -16,7 +16,10 @@ const Donate = () => {
           src={trumpet}
           className=" w-50 h-64 rounded-lg shadow-lg hidden xl:block md:mb-10 lg:mb-0"
         ></img>
-        <img src={LJBSarah} className=" w-25 h-32 rounded-lg shadow-lg lg:w-50 lg:h-64"></img>
+        <img
+          src={LJBSarah}
+          className=" w-25 h-32 rounded-lg shadow-lg lg:w-50 lg:h-64"
+        ></img>
         <img
           src={trumpetGuys}
           className=" w-50 h-64 hidden rounded-lg shadow-lg xl:block"
@@ -26,15 +29,21 @@ const Donate = () => {
         <p className="text-center text-lg mb-16 font-roboto lg:w-fit w-screen">
           Our library shows are free, thanks to the generous support of
           ArtsWestchester and the Yonkers Public Library, but running the band
-          is not! And we want to keep growing – adding more performances, more
-          guest artists, making a recording.
+          is not! Your support will help us add more shows, invite guest
+          artists, and record our music.
         </p>
-        <span className="underline font-roboto text-md mb-10">
-          <strong>
-            Until December 10, ArtsWestchester will MATCH any donation you make.
-          </strong>
-        </span>
-        <div className="flex flex-col items-center text-lg">
+        <Link
+          to="https://artswestchester.org/grants/artswchallenge/"
+          className=" mb-10"
+        >
+          <span className="underline font-roboto text-lg">
+            <strong>
+              Until December 10, ArtsWestchester will MATCH any donation you
+              make.
+            </strong>
+          </span>
+        </Link>
+        <div className="flex flex-col items-center text-lg ">
           <ol className="list-decimal list-inside font-robotoThin mb-10">
             <h2 className=" font-roboto">To donate:</h2>
             <li className="lg:indent-10 md:indent-2">
@@ -57,8 +66,9 @@ const Donate = () => {
             </li>
           </ol>
           <span className="mb-10">
-            [Note: The Library Jazz Band is in the process of incorporating as a
-            not-for-profit organization but does not yet have nfp status.]
+            [Note: LJB is in the process of becoming a not-for-profit, but does
+            not have that status yet. Your donation this year is deeply
+            appreciated, but not tax deductible. ]
           </span>
         </div>
       </div>
