@@ -26,7 +26,7 @@ body {
   }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1024px) {
   body {
     background: linear-gradient(
       0deg,
@@ -36,11 +36,22 @@ body {
   }
 }
 
+@media screen and (min-width: 1440px) {
+  body {
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 1) 78%,
+      rgba(23, 23, 23, 1) 14%
+    );
+  }
+}
+
+
 @media screen and (min-width: 2000px) {
   body {
     background: linear-gradient(
       0deg,
-      rgba(255, 255, 255, 1) 90%,
+      rgba(255, 255, 255, 1) 89%,
       rgba(23, 23, 23, 1) 10%
     );
   }

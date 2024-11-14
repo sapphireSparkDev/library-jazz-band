@@ -1,7 +1,7 @@
 import rob from "../lib/assets/LJB_saxSection.webp";
 import karl from "../lib/assets/LJBKarl.webp";
 import kim from "../lib/assets/LJBKim.webp";
-import "../styles/About.css";
+import "../styles/background.css";
 
 const AboutPage = () => {
   return (

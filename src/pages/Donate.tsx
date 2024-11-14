@@ -1,3 +1,4 @@
+import "../styles/background.css";
 import trumpet from "../lib/assets/trumpet.webp";
 import LJBSarah from "../lib/assets/LJB_SarahJaneCion.webp";
 import trumpetGuys from "../lib/assets/trumpetguys.webp";
@@ -8,23 +9,26 @@ import { Link } from "react-router-dom";
 const Donate = () => {
   return (
     <div className="flex flex-col items-center w-screen">
-      <h1 className="text-amber-500 mb-10 font-bebasNeue tracking-wide text-4xl">
-        Support the LJB!
-      </h1>
-      <div className="flex flex-row xl:space-x-10 md:space-x-0 mb-10">
-        <img
-          src={trumpet}
-          className=" w-50 h-64 rounded-lg shadow-lg hidden xl:block md:mb-10 lg:mb-0"
-        ></img>
-        <img
-          src={LJBSarah}
-          className=" w-25 h-32 rounded-lg shadow-lg lg:w-50 lg:h-64"
-        ></img>
-        <img
-          src={trumpetGuys}
-          className=" w-50 h-64 hidden rounded-lg shadow-lg xl:block"
-        ></img>
+      <div className="w-screen h-1/5 flex flex-col justify-center items-center">
+        <h1 className="text-amber-500 mb-10 font-bebasNeue tracking-wide text-4xl">
+          Support the LJB!
+        </h1>
+        <div className="flex flex-row xl:space-x-10 md:space-x-0 mb-10">
+          <img
+            src={trumpet}
+            className=" w-50 h-64 rounded-lg shadow-lg hidden xl:block md:mb-10 lg:mb-0"
+          ></img>
+          <img
+            src={LJBSarah}
+            className=" w-25 h-32 rounded-lg shadow-lg lg:w-50 lg:h-64"
+          ></img>
+          <img
+            src={trumpetGuys}
+            className=" w-50 h-64 hidden rounded-lg shadow-lg xl:block"
+          ></img>
+        </div>
       </div>
+
       <div className="flex flex-col justify-items-center w-3/6 items-center">
         <p className="text-center text-lg mb-16 font-roboto lg:w-fit w-screen">
           Our library shows are free, thanks to the generous support of
