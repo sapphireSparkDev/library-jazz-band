@@ -2,9 +2,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import LJBRob from "../lib/assets/LJBRob.webp";
 const Events = () => {
   return (
-    <div>
+    <div className="h-screen">
       <img src={LJBRob} />
-      <div className="absolute inset-y-0 left-10 top-16 bg-neutral-900/75 p-10 w-2/6 h-full">
+      <div className="absolute inset-y-0 left-10 top-16 bg-neutral-900/75 p-10 w-2/6">
         <h1 className="font-roboto text-4xl tracking-wide text-amber-400 mb-4 place-self-center ">
           Events
         </h1>
@@ -33,6 +33,15 @@ const Events = () => {
               Grinton I. Will Branch/1500 Central Park Avenue, Yonkers, NY 10710
             </span>
           </CardContent>
+          <CardContent>
+            <p className="text-sm font-robotoThin text-center">
+              A salute to music from the Broadway stage including tunes from
+              West Side Story, Chicago, Pippin, Gypsy, Porgy & Bess, from the
+              best bands and arrangers including Count Basie, Duke Ellington,
+              Buddy Rich, Chico O’Farrill. For this show, we are delighted to be
+              joined by vocalist Amy London.
+            </p>
+          </CardContent>
         </Card>
         <h2 className="font-roboto text-2xl tracking-wide text-amber-400 mb-4">
           2025
@@ -48,7 +57,7 @@ const Events = () => {
               April 2025 [Date TBD]
             </h2>
 
-            <p className="line-clamp-7 font-robotoThin">
+            <p className="font-robotoThin text-center">
               This concert will feature instruments many audience members may
               not have seen in this setting before: the tuba and the baritone
               and bass saxophones. Joining us for this show will be tuba and
@@ -60,7 +69,7 @@ const Events = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
+      </div>
   );
 };
 export default Events;
