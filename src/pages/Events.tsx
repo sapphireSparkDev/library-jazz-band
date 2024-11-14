@@ -35,6 +35,15 @@ const Events = () => {
               Grinton I. Will Branch/1500 Central Park Avenue, Yonkers, NY 10710
             </span>
           </CardContent>
+          <CardContent>
+            <p className="font-robotoThin text-sm text-center">
+              A salute to music from the Broadway stage including tunes from
+              West Side Story, Chicago, Pippin, Gypsy, Porgy & Bess, from the
+              best bands and arrangers including Count Basie, Duke Ellington,
+              Buddy Rich, Chico O’Farrill. For this show, we are delighted to be
+              joined by vocalist Amy London.
+            </p>
+          </CardContent>
         </Card>
         <h2 className="font-roboto text-2xl tracking-wide text-amber-400 mb-4">
           2025
@@ -50,28 +59,26 @@ const Events = () => {
               April 2025 [Date TBD]
             </h2>
 
-            <p className="line-clamp-7 font-robotoThin">
-              This concert will feature instruments many audience members may
-              not have seen in this setting before: the tuba and the baritone
-              and bass saxophones. Joining us for this show will be tuba and
-              baritone horn virtuoso Joseph Daley, veteran of Liberation Music
-              Orchestra and band member of so many adventurous greats including
-              Sam Rivers, Carla Bley, Gil Evans, Charlie Haden, Muhal Richard
-              Abrams, Taj Mahal and many more.
+            <p className="line-clamp-7 font-robotoThin  text-sm text-center">
+              This concert will feature the tuba and the baritone and bass
+              saxophones. Joining us will be tuba virtuoso Joseph Daley, veteran
+              of Liberation Music Orchestra, Taj Mahal and many more, performing
+              his works and others.
             </p>
           </CardContent>
         </Card>
       </div>
-      <div className="flex absolute inset-y-0 right-10 top-36 bg-neutral-900/75 p-10 w-2/6 h-3/5 rounded-xl items-center">
+      <div className="flex absolute inset-y-0 right-10 top-36 bg-neutral-900/75 p-10 w-2/6 h-2/4 rounded-xl items-center font-robotoThin  text-sm text-center">
         <Card>
           <CardHeader>
             <img src={AWLogo}></img>
           </CardHeader>
           <CardContent>
             <p>
-              Library Jazz Band’s  2024 - 2025 Season is made possible with funds from Arts Alive, 
-              a regrant program of ArtsWestchester with support from the Office of the Governor, 
-              the New York State Legislature, and the New York State Council on the Arts.
+              Library Jazz Band’s 2024 - 2025 Season is made possible with funds
+              from Arts Alive, a regrant program of ArtsWestchester with support
+              from the Office of the Governor, the New York State Legislature,
+              and the New York State Council on the Arts.
             </p>
           </CardContent>
         </Card>
