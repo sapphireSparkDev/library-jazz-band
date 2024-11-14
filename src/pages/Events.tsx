@@ -1,10 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import LJBRob from "../lib/assets/LJBRob.webp";
+import AWLogo from "../lib/assets/artsWestchesterLogo.png";
+
 const Events = () => {
   return (
-    <div className="h-screen">
+    <div>
       <img src={LJBRob} />
-      <div className="absolute inset-y-0 left-10 top-16 bg-neutral-900/75 p-10 w-2/6">
+      <div className="absolute inset-y-0 left-10 top-16 bg-neutral-900/75 p-10 w-2/6 h-full">
         <h1 className="font-roboto text-4xl tracking-wide text-amber-400 mb-4 place-self-center ">
           Events
         </h1>
@@ -33,15 +35,6 @@ const Events = () => {
               Grinton I. Will Branch/1500 Central Park Avenue, Yonkers, NY 10710
             </span>
           </CardContent>
-          <CardContent>
-            <p className="text-sm font-robotoThin text-center">
-              A salute to music from the Broadway stage including tunes from
-              West Side Story, Chicago, Pippin, Gypsy, Porgy & Bess, from the
-              best bands and arrangers including Count Basie, Duke Ellington,
-              Buddy Rich, Chico O’Farrill. For this show, we are delighted to be
-              joined by vocalist Amy London.
-            </p>
-          </CardContent>
         </Card>
         <h2 className="font-roboto text-2xl tracking-wide text-amber-400 mb-4">
           2025
@@ -57,7 +50,7 @@ const Events = () => {
               April 2025 [Date TBD]
             </h2>
 
-            <p className="font-robotoThin text-center">
+            <p className="line-clamp-7 font-robotoThin">
               This concert will feature instruments many audience members may
               not have seen in this setting before: the tuba and the baritone
               and bass saxophones. Joining us for this show will be tuba and
@@ -69,7 +62,21 @@ const Events = () => {
           </CardContent>
         </Card>
       </div>
+      <div className="flex absolute inset-y-0 right-10 top-36 bg-neutral-900/75 p-10 w-2/6 h-3/5 rounded-xl items-center">
+        <Card>
+          <CardHeader>
+            <img src={AWLogo}></img>
+          </CardHeader>
+          <CardContent>
+            <p>
+              Library Jazz Band’s  2024 - 2025 Season is made possible with funds from Arts Alive, 
+              a regrant program of ArtsWestchester with support from the Office of the Governor, 
+              the New York State Legislature, and the New York State Council on the Arts.
+            </p>
+          </CardContent>
+        </Card>
       </div>
+    </div>
   );
 };
 export default Events;
