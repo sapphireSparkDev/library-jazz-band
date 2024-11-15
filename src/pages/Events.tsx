@@ -89,7 +89,7 @@ const Events = () => {
           </div>
         </div>
       </div>
-      <div className="hidden lg:block absolute inset-y-0 right-10 top-96 bg-neutral-900/75 p-10 w-1/6 h-fit rounded-xl items-center font-robotoThin mt-2 text-sm text-center">
+      <div className="hidden lg:block absolute inset-y-0 right-10 top-96 bg-neutral-900/75 p-10 w-1/6 lg:w-2/6 xl:w-1/6 h-fit rounded-xl items-center font-robotoThin mt-6 text-sm text-center">
         <Card className="">
           <CardHeader>
             <img src={AWLogo}></img>
