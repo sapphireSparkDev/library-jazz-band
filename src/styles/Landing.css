@@ -35,6 +35,45 @@
   text-align: center;
 }
 
+@media screen and (min-width: 320px) {
+  .text {
+    inset: 32% 0 0 50%;
+    margin-bottom: 20%;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .text {
+    inset: 30% 0 0 50%;
+    margin-bottom: 24%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .text {
+    inset: 26% 0 0 50%;
+    margin-bottom: 24%;
+  }
+}
+
+
+@media screen and (min-width: 1024px) {
+  .text {
+    inset: 33% 0 0 50%;
+    margin-bottom: 10%;
+  }
+}
+
+
+@media screen and (min-width: 1440px) {
+  .text {
+    inset: 30% 0 0 50%;
+    margin-bottom: 16%;
+  }
+}
+
+
+
 .link{
   color: #FBBF24;
   z-index: 2;
