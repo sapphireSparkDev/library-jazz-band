@@ -22,7 +22,9 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/donate" element={<Donate />} />
           </Routes>
+          <div className="sticky bottom-0">
           <Footer />
+          </div>
         </BrowserRouter>
       </div>
     </>

@@ -5,7 +5,7 @@ import "../styles/background.css";
 
 const AboutPage = () => {
   return (
-    <div className="flex flex-col items-center w-screen background">
+    <div className="background flex flex-col items-center w-screen ">
       <div className="w-screen h-1/5 flex flex-col justify-center items-center">
         <h1 className="text-amber-500 mb-10 font-bebasNeue tracking-wide text-4xl">
           About Library Jazz Band
@@ -29,7 +29,7 @@ const AboutPage = () => {
         <h2 className="font-bold text-xl mb-6 text-center">
           LJB: A Jazz Orchestra for the Community
         </h2>
-        <p className="text-center text-lg mb-14 font-roboto lg:w-fit w-screen">
+        <p className="text-center text-lg mb-14 font-roboto lg:w-fit w-fit">
           LJB was created in 2021 to address a gap in the musical landscape by
           reviving the big band tradition in their community. We are a dynamic
           17-piece jazz orchestra, featuring five saxophones, four trombones,
