@@ -68,6 +68,13 @@
   }
 }
 
+@media screen and (min-width: 1440px) {
+  .text {
+    inset: 28% 0 0 50%;
+    margin-bottom: 16%;
+  }
+}
+
 .link {
   color: #fbbf24;
   z-index: 2;
