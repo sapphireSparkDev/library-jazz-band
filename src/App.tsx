@@ -6,6 +6,7 @@ import Landing from "./pages/Landing";
 import Donate from "./pages/Donate";
 import AboutPage from "./pages/AboutPage";
 import Events from "./pages/Events";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/donate" element={<Donate />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </div>
     </>
