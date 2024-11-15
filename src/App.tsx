@@ -17,15 +17,16 @@ function App() {
             <NavBar />
           </div>
           <Routes>
-            <Route path="/" element={<Landing/>} />
+            <Route path="/" element={<Landing/> } />
             <Route path="/events" element={<Events />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/donate" element={<Donate />} />
           </Routes>
-          <div className="fixed bottom-0">
+          <div className="static">
           <Footer />
           </div>
         </BrowserRouter>
+       
       </div>
     </>
   );

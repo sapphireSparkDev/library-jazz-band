@@ -10,7 +10,7 @@ const Events = () => {
         <source srcSet={LJBRob} media="(min-width: 1400px)" />
         <img src={LJBRobAlt} className="hidden lg:block"/>
       </picture>
-      <div className="absolute inset-y-12 lg:inset-y-0 lg:left-10 lg:top-16 bg-neutral-900/75 p-10 w-screen lg:w-2/6 h-max">
+      <div className="absolute inset-y-12 lg:inset-y-0 lg:left-10 lg:top-16 bg-neutral-900 lg:bg-neutral-900/75 p-10 w-screen lg:w-2/6 h-max">
         <h1 className="font-roboto text-2xl lg:text-4xl tracking-wide text-amber-400 mb-4 place-self-center ">
           Events
         </h1>
