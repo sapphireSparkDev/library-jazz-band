@@ -11,10 +11,10 @@ const Events = () => {
         <img src={LJBRobAlt} className="hidden lg:block" />
       </picture>
       <div className="absolute inset-y-12 lg:inset-y-0 lg:left-10 lg:top-16 bg-neutral-900 lg:bg-neutral-900/75 p-10 w-screen lg:w-2/6 h-max">
-        <h1 className="font-roboto text-2xl lg:text-4xl tracking-wide text-amber-400 mb-4 place-self-center ">
+        <h1 className="text-amber-500 font-bebasNeue text-2xl lg:text-4xl tracking-wide mb-4 place-self-center ">
           Events
         </h1>
-        <h2 className="font-roboto text-lg lg:text-2xl tracking-wide text-amber-400 mb-4">
+        <h2 className="bebasNeue text-lg lg:text-2xl tracking-wide text-amber-500 mb-4">
           2024
         </h2>
         <Card className="mb-6">
@@ -49,7 +49,7 @@ const Events = () => {
             </p>
           </CardContent>
         </Card>
-        <h2 className="font-roboto text-lg lg:text-2xl  tracking-wide text-amber-400 mb-4">
+        <h2 className="bebasNeue text-lg lg:text-2xl  tracking-wide text-amber-500 mb-4">
           2025
         </h2>
         <Card>
