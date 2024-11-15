@@ -1,13 +1,12 @@
-
-.image-container{
+.image-container {
   display: inline-block;
   background-color: #171717;
   height: 100vh;
   position: relative;
-}  
+}
 
-.image{
-  width: 100vw; 
+.image {
+  width: 100vw;
   height: 75vh;
   display: block;
   border-radius: 10px;
@@ -15,18 +14,17 @@
 }
 
 .image-container::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1; 
+  z-index: 1;
 }
 
-
-.text{
-  color: #FBBF24;
+.text {
+  color: #fbbf24;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -56,14 +54,12 @@
   }
 }
 
-
 @media screen and (min-width: 1024px) {
   .text {
     inset: 33% 0 0 50%;
     margin-bottom: 10%;
   }
 }
-
 
 @media screen and (min-width: 1440px) {
   .text {
@@ -72,10 +68,8 @@
   }
 }
 
-
-
-.link{
-  color: #FBBF24;
+.link {
+  color: #fbbf24;
   z-index: 2;
   text-align: center;
   font-family: "Diplomata SC", serif;

@@ -8,7 +8,7 @@ const Events = () => {
     <div>
       <picture>
         <source srcSet={LJBRob} media="(min-width: 1400px)" />
-        <img src={LJBRobAlt} className="hidden lg:block"/>
+        <img src={LJBRobAlt} className="hidden lg:block" />
       </picture>
       <div className="absolute inset-y-12 lg:inset-y-0 lg:left-10 lg:top-16 bg-neutral-900 lg:bg-neutral-900/75 p-10 w-screen lg:w-2/6 h-max">
         <h1 className="font-roboto text-2xl lg:text-4xl tracking-wide text-amber-400 mb-4 place-self-center ">
@@ -89,21 +89,21 @@ const Events = () => {
           </div>
         </div>
       </div>
-      <div className="hidden lg:block absolute inset-y-0 right-10 top-36 bg-neutral-900/75 p-10 w-2/6 h-fit rounded-xl items-center font-robotoThin  text-sm text-center">
-            <Card>
-              <CardHeader>
-                <img src={AWLogo}></img>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  Library Jazz Band’s 2024 - 2025 Season is made possible with
-                  funds from Arts Alive, a regrant program of ArtsWestchester
-                  with support from the Office of the Governor, the New York
-                  State Legislature, and the New York State Council on the Arts.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+      <div className="hidden lg:block absolute inset-y-0 right-10 top-96 bg-neutral-900/75 p-10 w-1/6 h-fit rounded-xl items-center font-robotoThin mt-2 text-sm text-center">
+        <Card className="">
+          <CardHeader>
+            <img src={AWLogo}></img>
+          </CardHeader>
+          <CardContent>
+            <p>
+              Library Jazz Band’s 2024 - 2025 Season is made possible with funds
+              from Arts Alive, a regrant program of ArtsWestchester with support
+              from the Office of the Governor, the New York State Legislature,
+              and the New York State Council on the Arts.
+            </p>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 };
