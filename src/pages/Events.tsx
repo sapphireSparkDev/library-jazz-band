@@ -14,7 +14,37 @@ const Events = () => {
         <h1 className="text-amber-500 font-bebasNeue text-2xl lg:text-4xl tracking-wide mb-4 place-self-center ">
           Events
         </h1>
-        <h2 className="bebasNeue text-lg lg:text-2xl tracking-wide text-amber-500 mb-4">
+        <h2 className="font-roboto text-lg lg:text-2xl  tracking-wide text-amber-400 mb-4">
+          2025
+        </h2>
+        <Card>
+          <CardHeader>
+            <CardTitle className="font-roboto text-md lg:text-lg text-center">
+              <span>Hitting the Low Notes, featuring composer Joseph Daley’s 7 Deadly Sins</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
+            April 30, 2025 at 6pm
+            </h2>
+            <span className="text-sm font-robotoThin">Riverfront Library Auditorium, Yonkers, NY 10701</span>
+          </CardContent>
+          <CardContent className="font-robotoThin text-sm text-center">
+          Hitting The Low Notes, celebrates instruments from the lower end of the sonic spectrum, some not often seen in a jazz band. 
+          For this performance, the 17-member Library Jazz Band will be joined by two French horns, tuba, bass saxophone, 
+          and expanded trumpet and percussion sections.
+          </CardContent>
+          <CardContent className="font-robotoThin text-sm text-center">
+          For the first time, the ensemble welcomes a guest conductor. The 75-year-old jazz 
+          elder Joseph Daley will lead the ensemble as they perform his seminal composition, The Seven Deadly Sins, 
+          a seven-movement piece based on the paintings of contemporary painter/musician Wade Schuman.
+          </CardContent>
+          <CardContent className="font-robotoThin text-sm text-center">
+          Rounding out the program will be classics old and new by Jaco Pastorius, Charles Mingus, Thad Jones, 
+          and Frank Foster/the Count Basie Orchestra. 
+          </CardContent>
+        </Card>
+        <h2 className="font-roboto text-lg lg:text-2xl  tracking-wide text-amber-400 mb-4 mt-4">
           2024
         </h2>
         <Card className="mb-6">
@@ -49,28 +79,7 @@ const Events = () => {
             </p>
           </CardContent>
         </Card>
-        <h2 className="bebasNeue text-lg lg:text-2xl  tracking-wide text-amber-500 mb-4">
-          2025
-        </h2>
-        <Card>
-          <CardHeader>
-            <CardTitle className="font-roboto text-md lg:text-lg">
-              <span>Hitting the Low Notes</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
-              April 2025 [Date TBD]
-            </h2>
-
-            <p className="line-clamp-7 font-robotoThin  text-sm text-center">
-              This concert will feature the tuba and the baritone and bass
-              saxophones. Joining us will be tuba virtuoso Joseph Daley, veteran
-              of Liberation Music Orchestra, Taj Mahal and many more, performing
-              his works and others.
-            </p>
-          </CardContent>
-        </Card>
+      
         <div className="relative lg:hidden">
           <div className="flex absolute -inset-x-10 inset-y-40 bg-neutral-900/75 p-10 w-screen h-2/4 rounded-xl items-center font-robotoThin  text-sm text-center">
             <Card className="mt-20 md:mt-32">
