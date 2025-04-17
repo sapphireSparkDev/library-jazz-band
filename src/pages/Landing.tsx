@@ -19,13 +19,13 @@ const Landing = () => {
         </picture>
 
         <div className="text">
-          <h1 className="font-aboreto text-5xl  2xl:text-8xl mb-32 md:mb-40 lg:mb-40 xl:mb-12">
+          <h1 className="font-aboreto text-5xl 2xl:text-6xl mb-32 md:mb-40 lg:mb-40 xl:mb-12 2xl:mb-24">
             {" "}
             The Library Jazz Band
           </h1>
           <Link
             to="/about"
-            className="text-amber-400 hover:text-yellow-500 shadow-sm mb-14 font-serif flex flex-col items-center 2xl:hidden"
+            className="text-amber-400 hover:text-yellow-500 shadow-sm mb-14 2xl:hidden font-serif flex flex-col items-center"
           >
             <div className="md:mt-56 lg:mt-96">
               <span className="btn btn-text-stretch btn-text-stretch--orange">
