@@ -44,7 +44,12 @@ const Events = () => {
           and Frank Foster/the Count Basie Orchestra. 
           </CardContent>
         </Card>
-        <h2 className="font-roboto text-lg lg:text-2xl  tracking-wide text-amber-400 mb-4 mt-4">
+
+        <details>
+          <summary className="text-sm lg:text-md text-amber-400 font-bold mt-4 mb-4">
+            <span>See Past Events</span>
+          </summary>
+          <h2 className="font-roboto text-lg lg:text-2xl  tracking-wide text-amber-400 mb-4">
           2024
         </h2>
         <Card className="mb-6">
@@ -79,6 +84,8 @@ const Events = () => {
             </p>
           </CardContent>
         </Card>
+        </details>
+        
       
         <div className="relative lg:hidden">
           <div className="flex absolute -inset-x-10 inset-y-40 bg-neutral-900/75 p-10 w-screen h-2/4 rounded-xl items-center font-robotoThin  text-sm text-center">
