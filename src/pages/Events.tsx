@@ -28,8 +28,7 @@ const Events = () => {
             April 30, 2025 at 6pm
             </h2>
             <span className="text-sm font-robotoThin">Riverfront Library Auditorium, Yonkers, NY 10701</span>
-            <span className="text-sm font-robotoThin">6pm</span>
-            <span className="text-sm font-robotoThin">Free admission</span>
+            <span className="text-sm font-robotoThin block text-indigo-900">Free admission</span>
           </CardContent>
           <CardContent className="font-robotoThin text-sm text-center">
           Hitting The Low Notes, celebrates instruments from the lower end of the sonic spectrum, some not often seen in a jazz band. 
@@ -89,7 +88,7 @@ and Frank Foster/the Count Basie Orchestra.
     </ul>
 
     <h2  className="text-sm lg:text-md text-indigo-900 font-bold">PIANO</h2>
-    <ul >
+    <ul className="mb-4">
         <li>Sarah Jane Cion</li>
     </ul>
 
@@ -98,8 +97,8 @@ and Frank Foster/the Count Basie Orchestra.
         <li>Dan Asher</li>
     </ul>
 
-    <h2>DRUMS</h2>
-    <ul>
+    <h2 className="text-sm lg:text-md text-indigo-900 font-bold">DRUMS</h2>
+    <ul className="mb-4">
         <li>Bill Reeve</li>
     </ul>
 

@@ -2,8 +2,6 @@ import "../styles/background.css";
 import trumpet from "../lib/assets/trumpet.webp";
 import LJBSarah from "../lib/assets/LJB_SarahJaneCion.webp";
 import trumpetGuys from "../lib/assets/trumpetguys.webp";
-import form from "../lib/assets/Donor-Form.pdf";
-import { buttonVariants } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const Donate = () => {
@@ -30,7 +28,7 @@ const Donate = () => {
       </div>
 
       <div className="flex flex-col justify-items-center w-3/6 items-center">
-        <p className="text-center text-lg mb-16 font-roboto lg:w-fit w-screen">
+        <p className="text-center text-lg mb-4 font-roboto lg:w-fit w-screen">
           Our library shows are free, thanks to the generous support of
           ArtsWestchester and the Yonkers Public Library, but running the band
           is not! Your support will help us add more shows, invite guest
@@ -40,51 +38,22 @@ const Donate = () => {
           to="https://artswestchester.org/grants/artswchallenge/"
           className=" mb-10"
         >
-          <span className="underline font-roboto text-lg">
-            <strong>
-              Until December 10, ArtsWestchester will MATCH any donation you
-              make.
-            </strong>
-          </span>
         </Link>
         <div className="flex flex-col items-center text-lg ">
-          <ol className="list-decimal list-inside font-robotoThin mb-10">
             <h2 className=" font-roboto">To donate:</h2>
-            <li className="lg:indent-10 md:indent-2">
-              Download & complete this form.
-            </li>
-            <li className="lg:indent-10 md:indent-2">
-              {" "}
-              Email to maronnancy@gmail.com; or Mail to Nancy Maron 69 Oakland
-              Avenue/Yonkers, NY 10710
-            </li>
-            <li className="lg:indent-10 md:indent-2">
-              <strong>Donations can be made via</strong>
               <ol className="list-disc list-inside lg:indent-20 md:indent-14">
                 <li>
                   Check (payable to Nancy Maron; send with form to 69 Oakland
-                  Avenue)
+                  Avenue Yonkers, NY 10710)
                 </li>
                 <li>Zelle (maronnancy@gmail.com)</li>
               </ol>
-            </li>
-          </ol>
-          <span className="mb-10">
+          <span className="mt-6 mb-6">
             [Note: LJB is in the process of becoming a not-for-profit, but does
             not have that status yet. Your donation this year is deeply
             appreciated, but not tax deductible. ]
           </span>
         </div>
-      </div>
-
-      <div className="mb-10">
-        <a
-          href={form}
-          className={buttonVariants({ variant: "default" })}
-          download
-        >
-          <i className="fa fa-download"></i>Download Form
-        </a>
       </div>
     </div>
   );
