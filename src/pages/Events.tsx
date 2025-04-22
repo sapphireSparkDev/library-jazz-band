@@ -28,20 +28,25 @@ const Events = () => {
             April 30, 2025 at 6pm
             </h2>
             <span className="text-sm font-robotoThin">Riverfront Library Auditorium, Yonkers, NY 10701</span>
+            <span className="text-sm font-robotoThin">6pm</span>
+            <span className="text-sm font-robotoThin">Free admission</span>
           </CardContent>
           <CardContent className="font-robotoThin text-sm text-center">
           Hitting The Low Notes, celebrates instruments from the lower end of the sonic spectrum, some not often seen in a jazz band. 
-          For this performance, the 17-member Library Jazz Band will be joined by two French horns, tuba, bass saxophone, 
-          and expanded trumpet and percussion sections.
+          For this performance, the 17-member Library Jazz Band will be joined by two French horns, tuba, bass saxophone, and expanded 
+          trumpet and percussion sections.
           </CardContent>
           <CardContent className="font-robotoThin text-sm text-center">
-          For the first time, the ensemble welcomes a guest conductor. The 75-year-old jazz 
-          elder Joseph Daley will lead the ensemble as they perform his seminal composition, The Seven Deadly Sins, 
-          a seven-movement piece based on the paintings of contemporary painter/musician Wade Schuman.
+          For the first time, the ensemble welcomes a guest conductor. The 75-year-old jazz elder Joseph Daley will lead the ensemble as 
+          they perform his seminal composition, The Seven Deadly Sins, a seven-movement piece based on the paintings of 
+          contemporary painter/musician Wade Schuman.
           </CardContent>
           <CardContent className="font-robotoThin text-sm text-center">
-          Rounding out the program will be classics old and new by Jaco Pastorius, Charles Mingus, Thad Jones, 
-          and Frank Foster/the Count Basie Orchestra. 
+         
+Rounding out the program will be classics old and new by Jaco Pastorius, Charles Mingus, Thad Jones, 
+and Frank Foster/the Count Basie Orchestra. 
+ 
+
           </CardContent>
           <CardContent className="font-robotoThin text-sm text-center">
           <h2  className="text-sm lg:text-md text-indigo-900 font-bold">SAXOPHONES</h2>
