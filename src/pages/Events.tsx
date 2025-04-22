@@ -43,6 +43,69 @@ const Events = () => {
           Rounding out the program will be classics old and new by Jaco Pastorius, Charles Mingus, Thad Jones, 
           and Frank Foster/the Count Basie Orchestra. 
           </CardContent>
+          <CardContent className="font-robotoThin text-sm text-center">
+          <h2  className="text-sm lg:text-md text-indigo-900 font-bold">SAXOPHONES</h2>
+    <ul className="mb-4">
+        <li>Nancy Maron, soprano</li>
+        <li>Travis Sullivan, alto</li>
+        <li>Matt Garrison, tenor</li>
+        <li>Chris Ferdinand, tenor</li>
+        <li>Karl Watson, bari</li>
+        <li>Andrew Hadro, bass</li>
+    </ul>
+
+    <h2  className="text-sm lg:text-md text-indigo-900 font-bold">TRUMPETS</h2>
+    <ul className="mb-4">
+        <li>Jordan Hirsch</li>
+        <li>Ron Horton</li>
+        <li>Kim Burgie</li>
+        <li>William Schaeffer</li>
+        <li>Rebecca Steinberg</li>
+    </ul>
+
+    <h2  className="text-sm lg:text-md text-indigo-900 font-bold">TROMBONES</h2>
+    <ul className="mb-4">
+        <li>Rob Susman</li>
+        <li>Dave Levitt</li>
+        <li>John Roth</li>
+        <li>Djorkaeff Zentla, bass trombone</li>
+    </ul>
+
+    <h2  className="text-sm lg:text-md text-indigo-900 font-bold">TUBA</h2>
+    <ul className="mb-4">
+        <li>Walter Barrett</li>
+    </ul>
+
+
+    <h2  className="text-sm lg:text-md text-indigo-900 font-bold">FRENCH HORNS</h2>
+    <ul className="mb-4">
+        <li>Aliyah Danielle</li>
+        <li>Hanan Rahman</li>
+    </ul>
+
+    <h2  className="text-sm lg:text-md text-indigo-900 font-bold">PIANO</h2>
+    <ul >
+        <li>Sarah Jane Cion</li>
+    </ul>
+
+    <h2  className="text-sm lg:text-md text-indigo-900 font-bold">BASS</h2>
+    <ul className="mb-4">
+        <li>Dan Asher</li>
+    </ul>
+
+    <h2>DRUMS</h2>
+    <ul>
+        <li>Bill Reeve</li>
+    </ul>
+
+    <h2 className="text-sm lg:text-md text-indigo-900 font-bold">PERCUSSION</h2>
+    <ul className="mb-4">
+        <li>Arnaldo Buzack</li>
+        <li>Graham Nalle</li>
+        <li>Daniel Silva</li>
+    </ul>
+
+          </CardContent>
         </Card>
 
         <details>
