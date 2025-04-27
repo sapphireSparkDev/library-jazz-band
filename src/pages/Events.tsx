@@ -47,6 +47,9 @@ and Frank Foster/the Count Basie Orchestra.
  
 
           </CardContent>
+          <details>
+            <summary className="">View Muscsions</summary>
+          </details>
           <CardContent className="font-robotoThin text-sm text-center">
           <h2  className="text-sm lg:text-md text-indigo-900 font-bold">SAXOPHONES</h2>
     <ul className="mb-4">
