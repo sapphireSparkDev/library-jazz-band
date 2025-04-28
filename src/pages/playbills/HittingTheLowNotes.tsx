@@ -1,10 +1,10 @@
 import anger from "../../lib/assets/Anger.png";
-import avaric from "../../lib/assets/avaric.png";
-import envy from "../../lib/assets/envy.png";
-import gluttony from "../../lib/assets/gluttony.png";
-import lust from "../../lib/assets/lust.png";
-import pride from "../../lib/assets/pride.png";
-import sloth from "../../lib/assets/sloth.png";
+import avaric from "../../lib/assets/Avaric.png";
+import envy from "../../lib/assets/Envy.png";
+import gluttony from "../../lib/assets/Gluttony.png";
+import lust from "../../lib/assets/Lust.png";
+import pride from "../../lib/assets/Pride.png";
+import sloth from "../../lib/assets/Sloth.png";
 import JoDa from "../../lib/assets/JoDa.png";
 
 const HittingTheLowNotes = () => {
@@ -22,7 +22,7 @@ const HittingTheLowNotes = () => {
           <img src={sloth} className="size-20 lg:size-32" />
         </div>
         <div className="flex flex-col md:flex-row">
-            {/** Description Container */}
+          {/** Description Container */}
           <div className="bg-neutral-700 h-auto m-4 md:w-2/3 ">
             <h1 className="text-amber-500 font-bebasNeue text-2xl ml-4 mt-6 lg:text-4xl self-center">
               Hitting the Low Notes,{" "}
@@ -86,12 +86,12 @@ const HittingTheLowNotes = () => {
       {/** Program Container */}
       <div className="flex flex-col md:flex-row font-robotoThin">
         <div className="bg-neutral-700 m-4 h-auto justify-items-center md:w-2/3 ">
-        <h1 className="text-amber-500 font-bebasNeue text-2xl ml-4 mt-6 lg:text-4xl ">
-              Hitting the Low Notes,{" "}
-            </h1>
-            <h2 className="text-md lg:text-lg text-amber-500 ml-4 font-bold">
+          <h1 className="text-amber-500 font-bebasNeue text-2xl ml-4 mt-6 lg:text-4xl ">
+            Hitting the Low Notes,{" "}
+          </h1>
+          <h2 className="text-md lg:text-lg text-amber-500 ml-4 font-bold">
             April 30, 2025 at 6pm
-            </h2>
+          </h2>
           <h1 className="text-amber-500 font-bebasNeue text-2xl ml-4 mt-6 lg:text-4xl">
             Program
           </h1>
