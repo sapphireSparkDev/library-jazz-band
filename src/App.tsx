@@ -7,6 +7,7 @@ import Donate from "./pages/Donate";
 import AboutPage from "./pages/AboutPage";
 import Events from "./pages/Events";
 import Footer from "./components/Footer";
+import HittingTheLowNotes from "./pages/playbills/HittingTheLowNotes";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
             <Route path="/events" element={<Events />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/donate" element={<Donate />} />
+            <Route path="/events/lowNotes" element={<HittingTheLowNotes />} />
+            <Route path="*" element={<Landing />} />
           </Routes>
           <div className="static">
           <Footer />

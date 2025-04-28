@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import LJBRobAlt from "../lib/assets/LJB_RobSusman.webp";
 import LJBRob from "../lib/assets/LJBRob.webp";
 import AWLogo from "../lib/assets/artsWestchesterLogo.png";
+import { Link } from "react-router-dom";
 
 const Events = () => {
   return (
@@ -47,70 +48,8 @@ and Frank Foster/the Count Basie Orchestra.
  
 
           </CardContent>
-          <details>
-            <summary className="">View Muscsions</summary>
-          </details>
           <CardContent className="font-robotoThin text-sm text-center">
-          <h2  className="text-sm lg:text-md text-indigo-900 font-bold">SAXOPHONES</h2>
-    <ul className="mb-4">
-        <li>Nancy Maron, soprano</li>
-        <li>Travis Sullivan, alto</li>
-        <li>Matt Garrison, tenor</li>
-        <li>Chris Ferdinand, tenor</li>
-        <li>Karl Watson, bari</li>
-        <li>Andrew Hadro, bass</li>
-    </ul>
-
-    <h2  className="text-sm lg:text-md text-indigo-900 font-bold">TRUMPETS</h2>
-    <ul className="mb-4">
-        <li>Jordan Hirsch</li>
-        <li>Ron Horton</li>
-        <li>Kim Burgie</li>
-        <li>William Schaeffer</li>
-        <li>Rebecca Steinberg</li>
-    </ul>
-
-    <h2  className="text-sm lg:text-md text-indigo-900 font-bold">TROMBONES</h2>
-    <ul className="mb-4">
-        <li>Rob Susman</li>
-        <li>Dave Levitt</li>
-        <li>John Roth</li>
-        <li>Djorkaeff Zentla, bass trombone</li>
-    </ul>
-
-    <h2  className="text-sm lg:text-md text-indigo-900 font-bold">TUBA</h2>
-    <ul className="mb-4">
-        <li>Walter Barrett</li>
-    </ul>
-
-
-    <h2  className="text-sm lg:text-md text-indigo-900 font-bold">FRENCH HORNS</h2>
-    <ul className="mb-4">
-        <li>Aliyah Danielle</li>
-        <li>Hanan Rahman</li>
-    </ul>
-
-    <h2  className="text-sm lg:text-md text-indigo-900 font-bold">PIANO</h2>
-    <ul className="mb-4">
-        <li>Sarah Jane Cion</li>
-    </ul>
-
-    <h2  className="text-sm lg:text-md text-indigo-900 font-bold">BASS</h2>
-    <ul className="mb-4">
-        <li>Dan Asher</li>
-    </ul>
-
-    <h2 className="text-sm lg:text-md text-indigo-900 font-bold">DRUMS</h2>
-    <ul className="mb-4">
-        <li>Bill Reeve</li>
-    </ul>
-
-    <h2 className="text-sm lg:text-md text-indigo-900 font-bold">PERCUSSION</h2>
-    <ul className="mb-4">
-        <li>Arnaldo Buzack</li>
-        <li>Graham Nalle</li>
-        <li>Daniel Silva</li>
-    </ul>
+            <Link className="bold text-indigo-900 text-md" to="lowNotes">More Information</Link>
 
           </CardContent>
         </Card>
