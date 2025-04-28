@@ -2,7 +2,7 @@ import anger from "../../lib/assets/Anger.png";
 import avaric from "../../lib/assets/Avaric.png";
 import envy from "../../lib/assets/Envy.png";
 import gluttony from "../../lib/assets/Gluttony.png";
-import lust from "../../lib/assets/Lust.png";
+import lust from "../../lib/assets/lust.png";
 import pride from "../../lib/assets/Pride.png";
 import sloth from "../../lib/assets/Sloth.png";
 import JoDa from "../../lib/assets/JoDa.png";
