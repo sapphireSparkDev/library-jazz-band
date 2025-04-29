@@ -14,7 +14,7 @@ import susman from "../../lib/assets/Susman_trombone.jpeg";
 import levy from "../../lib/assets/LEvy_trombone.jpg";
 import aliyah from "../../lib/assets/Alliyah_horn.png";
 import cion from "../../lib/assets/CION_piano.jpeg";
-import reeve from "../../lib/assets/Reeve_drums.jpg";
+import reeve from "../../lib/assets/Reeve_drums.webp";
 import BioCard from "@/components/BioCard";
 const HittingTheLowNotes = () => {
   const blankImg = "";
