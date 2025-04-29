@@ -53,14 +53,12 @@ const HittingTheLowNotes = () => {
               Basie Orchestra.
             </p>
           </div>
-          <div className="bg-white m-4 md:w-1/3 justify-items-center">
-            <div className="bg-amber-500 m-6">
+          <div className="bg-white m-4 md:w-1/3 justify-items-center">   
               <img
                 src={JoDa}
-                className="size-20 lg:size-56 inline"
+                className="size-20 lg:size-60 inline mt-4"
                 alt="Picture of Joseph Daley"
               />
-            </div>
 
             <h1 className="text-amber-500 font-bebasNeue text-lg lg:text-2xl">
               Joseph Daley - Composer
@@ -85,7 +83,7 @@ const HittingTheLowNotes = () => {
       </div>
       {/** Program Container */}
       <div className="flex flex-col md:flex-row font-robotoThin">
-        <div className="bg-neutral-700 m-4 h-auto justify-items-center md:w-2/3 ">
+        <div className="bg-neutral-700 m-4 h-auto justify center justify-items-center md:w-2/3 ">
           <h1 className="text-amber-500 font-bebasNeue text-2xl ml-4 mt-6 lg:text-4xl ">
             Hitting the Low Notes,{" "}
           </h1>
