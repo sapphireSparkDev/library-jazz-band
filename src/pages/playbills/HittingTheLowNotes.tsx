@@ -12,14 +12,14 @@ const HittingTheLowNotes = () => {
     <div>
       <div className="flex flex-col">
         {/** Image Container */}
-        <div className="hidden md:flex flex-row grow justify-around gap-6 ">
-          <img src={anger} className="size-20 lg:size-32" />
-          <img src={avaric} className="size-20 lg:size-32" />
-          <img src={envy} className="size-20 lg:size-32" />
-          <img src={gluttony} className="size-20 lg:size-32" />
-          <img src={lust} className="size-20 lg:size-32" />
-          <img src={pride} className="size-20 lg:size-32" />
-          <img src={sloth} className="size-20 lg:size-32" />
+        <div className="flex flex-row grow justify-around gap-6 ">
+          <img src={anger} className="size-6 md:size-16 lg:size-32" />
+          <img src={avaric} className="size-6 md:size-16 lg:size-32" />
+          <img src={envy} className="size-6 md:size-16 lg:size-32" />
+          <img src={gluttony} className="size-6 md:size-16 lg:size-32" />
+          <img src={lust} className="size-6 md:size-16 lg:size-32" />
+          <img src={pride} className="size-6 md:size-16 lg:size-32" />
+          <img src={sloth} className="size-6 md:size-16 lg:size-32" />
         </div>
         <div className="flex flex-col md:flex-row">
           {/** Description Container */}
@@ -54,37 +54,40 @@ const HittingTheLowNotes = () => {
             </p>
           </div>
           {/** Biography Container */}
-          <div className="bg-white m-4 justify-items-center md:w-1/3 ">
-            <img
-              src={JoDa}
-              className="size-20 justify-self-center lg:size-60 inline mt-4"
-              alt="Picture of Joseph Daley"
-            />
+          <div className=" bg-white m-4 md:w-1/3 ">
+            <div className="flex flex-col items-center">
+              <img
+                src={JoDa}
+                className="size-20 lg:size-60 inline mt-4"
+                alt="Picture of Joseph Daley"
+              />
 
-            <h1 className="text-amber-500 font-bebasNeue justify-self-center text-lg lg:text-2xl">
-              Joseph Daley - Composer
-            </h1>
-            <p className="text-md indent-2 ml-4 mr-4 font-robotoThin mb-6 text-justify">
-              After over 50 years of recognition as one of the consummate
-              sidemen on the adventurous music scene – with remarkable artists
-              like Sam Rivers, Carla Bley, Gil Evans, Charlie Haden, Muhal
-              Richard Abrams, Taj Mahal and so many more – Joseph Daley has
-              emerged as one of Jazz and contemporary music’s most extraordinary
-              composers and leaders. Stunning musicians, fans and critics alike
-              with his brilliant 2011 CD, The Seven Deadly Sins, featuring his
-              Earth Tones Ensemble (a full Jazz orchestra augmented by six
-              additional low-tone horns, and including a seven-member rhythm
-              section and four special guests), this powerfully innovative music
-              mines the same rich vein of musical expression as that of
-              immortals like Charles Mingus, Duke Ellington and George Russell,
-              receiving rave reviews and making several Best of Year lists.
-            </p>
+              <h1 className="text-amber-500 font-bebasNeue text-lg lg:text-2xl">
+                Joseph Daley - Composer
+              </h1>
+              <p className="text-md indent-2 ml-4 mr-4 font-robotoThin mb-6 text-justify">
+                After over 50 years of recognition as one of the consummate
+                sidemen on the adventurous music scene – with remarkable artists
+                like Sam Rivers, Carla Bley, Gil Evans, Charlie Haden, Muhal
+                Richard Abrams, Taj Mahal and so many more – Joseph Daley has
+                emerged as one of Jazz and contemporary music’s most
+                extraordinary composers and leaders. Stunning musicians, fans
+                and critics alike with his brilliant 2011 CD, The Seven Deadly
+                Sins, featuring his Earth Tones Ensemble (a full Jazz orchestra
+                augmented by six additional low-tone horns, and including a
+                seven-member rhythm section and four special guests), this
+                powerfully innovative music mines the same rich vein of musical
+                expression as that of immortals like Charles Mingus, Duke
+                Ellington and George Russell, receiving rave reviews and making
+                several Best of Year lists.
+              </p>
+            </div>
           </div>
         </div>
       </div>
       {/** Program Container */}
-      <div className="flex flex-col font-robotoThin justify-items-center md:flex-row ">
-        <div className="bg-neutral-700 m-4 h-auto justify-self-center md:w-2/3 ">
+      <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col items-center bg-neutral-700 m-4 h-auto md:w-2/3 ">
           <h1 className="text-amber-500 font-bebasNeue text-2xl ml-4 mt-6 lg:text-4xl ">
             Hitting the Low Notes,{" "}
           </h1>
@@ -94,7 +97,7 @@ const HittingTheLowNotes = () => {
           <h1 className="text-amber-500 font-bebasNeue text-2xl ml-4 mt-6 lg:text-4xl">
             Program
           </h1>
-          <div className="grid grid-cols-2 text-white gap-6 m-4 w-1/2 justify-items-center text-center">
+          <div className="grid grid-cols-2 text-white gap-6 m-4 w-1/2 justify-self-center text-center">
             <span>Hip Shakin’</span>
             <span>Frank Foster</span>
             <span>Sir Teen Town</span>
@@ -108,10 +111,10 @@ const HittingTheLowNotes = () => {
               Charles Mingus, arranged by Sy Johnson for the Mingus Dynasty Band
             </span>
           </div>
-          <h2 className="text-md lg:text-lg text-amber-500 ml-4 font-bold">
+          <h2 className="text-md lg:text-lg text-amber-500 ml-4 text-center font-bold">
             The Seven Deadly Sins (2011) Joseph Daley
           </h2>
-          <ol type="I" className="list-decimal text-white">
+          <ol type="I" className="list-decimal text-white mb-4">
             <li className="text-white"> Invidia (Envy)</li>
             <li>Avarita (Avarice)</li>
             <li>Gula (Gluttony)</li>
@@ -121,6 +124,7 @@ const HittingTheLowNotes = () => {
             <li>Ira (Anger)</li>
           </ol>
         </div>
+
         <div className="h-auto md:w-1/3 m-4 bg-white justify-items-center text-center">
           <h1 className="text-amber-500 font-bebasNeue text-2xl ml-4 mt-6 lg:text-4xl">
             Musicians
