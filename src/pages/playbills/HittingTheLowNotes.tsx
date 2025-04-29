@@ -125,7 +125,7 @@ const HittingTheLowNotes = () => {
           </ol>
         </div>
 
-        <div className="h-auto md:w-1/3 m-4 bg-white justify-items-center text-center">
+        <div className="h-1/3 m-4 bg-white justify-items-center text-center overflow-scroll md:w-1/3">
           <h1 className="text-amber-500 font-bebasNeue text-2xl ml-4 mt-6 lg:text-4xl">
             Musicians
           </h1>
