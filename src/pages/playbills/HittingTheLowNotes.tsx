@@ -16,9 +16,8 @@ import aliyah from "../../lib/assets/Alliyah_horn.png";
 import cion from "../../lib/assets/CION_piano.jpeg";
 import reeve from "../../lib/assets/Reeve_drums.jpg";
 import BioCard from "@/components/BioCard";
-
 const HittingTheLowNotes = () => {
-  let blankImg = "";
+  const blankImg = "";
   return (
     <div>
       <div className="flex flex-col">
