@@ -54,12 +54,12 @@ const HittingTheLowNotes = () => {
             </p>
           </div>
           {/** Biography Container */}
-          <div className="bg-white m-4 md:w-1/3 justify-items-center">   
-              <img
-                src={JoDa}
-                className="size-20 lg:size-60 inline mt-4"
-                alt="Picture of Joseph Daley"
-              />
+          <div className="bg-white m-4 md:w-1/3 justify-center">
+            <img
+              src={JoDa}
+              className="size-20 lg:size-60 inline mt-4"
+              alt="Picture of Joseph Daley"
+            />
 
             <h1 className="text-amber-500 font-bebasNeue text-lg lg:text-2xl">
               Joseph Daley - Composer
