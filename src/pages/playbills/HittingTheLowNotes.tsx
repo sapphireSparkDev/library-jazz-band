@@ -54,7 +54,7 @@ const HittingTheLowNotes = () => {
             </p>
           </div>
           {/** Biography Container */}
-          <div className="bg-white m-4 justify-center md:w-1/3 ">
+          <div className="bg-white m-4 justify-items-center md:w-1/3 ">
             <img
               src={JoDa}
               className="size-20 lg:size-60 inline mt-4"
@@ -83,8 +83,8 @@ const HittingTheLowNotes = () => {
         </div>
       </div>
       {/** Program Container */}
-      <div className="flex flex-col font-robotoThin justify-center md:flex-row ">
-        <div className="bg-neutral-700 m-4 h-auto justify center justify-items-center md:w-2/3 ">
+      <div className="flex flex-col font-robotoThin justify-items-center md:flex-row ">
+        <div className="bg-neutral-700 m-4 h-auto justify-items-center md:w-2/3 ">
           <h1 className="text-amber-500 font-bebasNeue text-2xl ml-4 mt-6 lg:text-4xl ">
             Hitting the Low Notes,{" "}
           </h1>
