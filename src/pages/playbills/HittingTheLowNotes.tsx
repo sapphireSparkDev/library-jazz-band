@@ -28,6 +28,8 @@ import maron from "../../lib/assets/NMaron_sax.png";
 import schaefer from "../../lib/assets/Schaeffer_trumpet.png";
 import steinberg from "../../lib/assets/Steinberg_trumpet.png";
 import barrett from "../../lib/assets/walter barrett_tuba_tbone.png";
+import danAsher from "../../lib/assets/LJB_DanAsher.webp";
+import travis from "../../lib/assets/travis.webp";
 
 import BioCard from "@/components/BioCard";
 const HittingTheLowNotes = () => {
@@ -75,7 +77,7 @@ const HittingTheLowNotes = () => {
                 Charles Mingus, arranged by Sy Johnson for the Mingus Dynasty
                 Band
               </span>
-              <span className="col-span-2 font-bold text-md">Intermission</span>
+              <span className="col-span-2 font-bold text-md mt-4 mb-4">~ Intermission ~</span>
               <span className=" ml-4 text-center font-bold">
                 The Seven Deadly Sins (2011)
               </span>
@@ -220,13 +222,13 @@ const HittingTheLowNotes = () => {
               BASS
             </h2>
             <BioCard
-              imagePath={blankImg}
+              imagePath={danAsher}
               name={"Dan Asher"}
               role={"Bass"}
               bio={
                 "Dan Asher has been busy performing and teaching in the New York area since 2001 at legendary venues including Birdland, the Blue Note, Smalls and the 55 Bar, covering a wide range of music, mainly Rock, R&B, Jazz and everything in between.  As an in-demand sideman, he performs regularly with artists such as Gabe Dixon, Southside Johnny and the Asbury Jukes and the Broadway Boys (including its new offshoot, Cruising Steady). A regular performer at the world-famous Baz Bar in St. Barth, he has performed most recently with Jimmy Buffett as well as legendary keyboardists David Bryan and Jay Oliver."
               }
-              hasPhoto={false}
+              hasPhoto={true}
             />
             <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
               DRUMS
@@ -246,20 +248,20 @@ const HittingTheLowNotes = () => {
             <BioCard
               imagePath={maron}
               name={"Nancy Maron"}
-              role={"co-Founder/Artistic Director, Soprano saxophone"}
+              role={"co-Founder/Artistic Director, Alto and Soprano saxophones"}
               bio={
                 "Nancy plays alto, soprano, and tenor saxophones with Lehman College and Community Band, Yonkers Philharmonic, The Westchester Band, and rock cover band the Patroons."
               }
               hasPhoto={true}
             />
             <BioCard
-              imagePath={blankImg}
+              imagePath={travis}
               name={"Travis Sullivan"}
               role={"Alto saxophone"}
               bio={
                 "Zoho Music and Posi-Tone recording artist Travis Sullivan is an alto saxophonist, pianist, composer and arranger. Hailed by Jazz Times as “a gifted alto saxophonist and improviser who has also developed a strong and commanding voice as a composer,”  his 18-piece Bjorkestra performs his arrangements of the renowned music of Icelandic pop goddess Bjork."
               }
-              hasPhoto={false}
+              hasPhoto={true}
             />
             <BioCard
               imagePath={garrison}
@@ -274,7 +276,7 @@ const HittingTheLowNotes = () => {
               imagePath={ferdi}
               name={"Chris Ferdinand"}
               role={"Tenor saxophone"}
-              bio={"Coming soon"}
+              bio={"Chris Ferdinand, the newest member of the ensemble, joins us all the way from Brooklyn: Aspiring pilot, playing saxophone for fifteen-ish years and subsisting on caffeine."}
               hasPhoto={true}
             />
             <BioCard
@@ -367,7 +369,7 @@ const HittingTheLowNotes = () => {
             <BioCard
               imagePath={levitt}
               name={"Dave Levitt"}
-              role={"co-Founder, Conductor"}
+              role={"co-Founder, Conductor, Trombone"}
               bio={
                 "Dave Levitt is a fourth generation Klezmer musician. He started learning music at age 5 from his father Marty who was a well-known clarinetist and bandleader. Dave’s mother was also a performer who went by the name Harriet Kane. After graduating from LaGuardia H.S. of the Arts in New York City, Dave earned a scholarship to study at the Manhattan School of Music, where he received a Master’s Degree in Music. Besides working as a musician, Dave owned a rehearsal and recording studio in New York from 1995-2008."
               }
@@ -386,7 +388,7 @@ const HittingTheLowNotes = () => {
               imagePath={roth}
               name={"Jon Roth"}
               role={"Trombone"}
-              bio={"Coming soon"}
+              bio={"Coming Jon Roth has had a varied career as a trombonist, arranger and composer. A native of Rockland County, NY, he initially studied trombone with local teacher Henry Heyzer and NY studio legend Fred “Moe” Snyder. He went on to receive his Bachelors of Music from Montclair State University, where he studied trombone and arranging with Alan Ferber. After graduation, he began a stint as a trombonist and arranger for Royal Caribbean Cruise Lines. Since returning to NY in 2012, he has collaborated and performed with various artists such as Larry Coryell, Wycliffe Gordon, Ingrid Jenson, Lew Tabackin and Mike Abene. He has also performed with such ensembles as the One More Once Big Band, The Analog Jazz Orchestra, Dancin’ Machine, The Imperial Brass Quintet and The Michael Cochrane Sextet. He currently works as a staff arranger for The North Jersey Concert Band. As an educator he is currently the Band Coordinator and Brass teacher for The Elisabeth Morrow School in Englewood, NJ and formerly as a Jazz instructor at the Thurnauer School of Music in Teaneck, NJ. He also currently leads his own quartet with Michael Cochrane, Bill Moring and Steve Johns."}
               hasPhoto={true}
             />
             <BioCard
@@ -402,7 +404,7 @@ const HittingTheLowNotes = () => {
             <BioCard
               imagePath={barrett}
               name={"Walter Barrett"}
-              role={"TUBA"}
+              role={"Bass, Trombone, Tuba"}
               bio={
                 "Walter Barrett performs as a free-lance musician throughout the New York area on Alto, Tenor & Bass Trombones, Bass Trumpet, Euphonium, and Tuba. He has performed with the Westchester Symphony, Yonkers Philharmonic, Philharmonic Symphony of Westchester, and the Hudson Valley Philharmonic. Walter has been featured as soloist with many local groups, including the Lehman College Community Band, White Plains Pops Band, Manhattan School of Music Trombone Ensemble, Yonkers Philharmonic, and the Westchester Band."
               }
