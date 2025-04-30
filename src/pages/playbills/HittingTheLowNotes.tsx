@@ -23,46 +23,61 @@ const HittingTheLowNotes = () => {
       <div className="flex flex-col">
         {/** Image Container */}
         <div className="flex flex-row grow justify-around gap-6 ">
-          <img src={anger} className="size-6 md:size-16 lg:size-32" />
-          <img src={avaric} className="size-6 md:size-16 lg:size-32" />
           <img src={envy} className="size-6 md:size-16 lg:size-32" />
+          <img src={avaric} className="size-6 md:size-16 lg:size-32" />
           <img src={gluttony} className="size-6 md:size-16 lg:size-32" />
-          <img src={lust} className="size-6 md:size-16 lg:size-32" />
           <img src={pride} className="size-6 md:size-16 lg:size-32" />
+          <img src={lust} className="size-6 md:size-16 lg:size-32" />
           <img src={sloth} className="size-6 md:size-16 lg:size-32" />
+          <img src={anger} className="size-6 md:size-16 lg:size-32" />
         </div>
+        {/** Program Container */}
         <div className="flex flex-col md:flex-row">
-          {/** Description Container */}
-          <div className="bg-neutral-700 h-auto m-4 md:w-2/3 ">
-            <h1 className="text-amber-500 font-bebasNeue text-2xl ml-4 mt-6 lg:text-4xl self-center">
-              Hitting the Low Notes,{" "}
+          <div className="flex flex-col items-center bg-neutral-700 m-4 h-auto md:w-2/3 ">
+            <h1 className="text-amber-500 font-bebasNeue text-2xl ml-4 mt-6 lg:text-4xl ">
+              Hitting the Low Notes{" "}
             </h1>
-            <h2 className="text-amber-500 font-bebasNeue text-lg  ml-4 lg:text-2xl self-center">
-              featuring composer Joseph Daley’s 7 Deadly Sins
+            <h2 className="text-md lg:text-lg text-amber-500 ml-4 font-bold">
+              April 30, 2025 at 6pm
             </h2>
-            <p className="font-robotoThin text-lg text-white m-6  text-justify">
-              <strong className="text-amber-500 font-bebasNeue text-xl">
-                Hitting The Low Notes,
-              </strong>{" "}
-              celebrates instruments from the lower end of the sonic spectrum,
-              some not often seen in a jazz band.
-            </p>
-            <p className="font-robotoThin text-lg text-white m-6  text-justify">
-              {" "}
-              For this performance, the 17-member Library Jazz Band will be
-              joined by two French horns, tuba, bass saxophone, and expanded
-              trumpet and percussion sections. For the first time, the ensemble
-              welcomes a guest conductor. The 75-year-old jazz elder Joseph
-              Daley will lead the ensemble as they perform his seminal
-              composition, The Seven Deadly Sins, a seven-movement piece based
-              on the paintings of contemporary painter/musician Wade Schuman.{" "}
-            </p>
-            <p className="font-robotoThin text-lg text-white m-6  text-justify">
-              Rounding out the program will be classics old and new by Jaco
-              Pastorius, Charles Mingus, Thad Jones, and Frank Foster/the Count
-              Basie Orchestra.
-            </p>
+            <h1 className="text-amber-500 font-bebasNeue text-2xl ml-4 mt-6 lg:text-4xl">
+              Program
+            </h1>
+            <div className="grid grid-cols-2  text-amber-500 gap-6 m-4 w-1/2 justify-self-center text-center">
+              <span>Hip Shakin’</span>
+              <span className="text-white">Frank Foster</span>
+              <span>Sir Teen Town</span>
+              <span className="text-white">
+                Bill Reeve. Based on Sir Duke/Teen Town
+              </span>
+              <span>Liberty City (1981)</span>
+              <span className="text-white ">
+                Jaco Pastorius, for the Word of Mouth Big Band
+              </span>
+              <span>Tip Toe (1970)</span>
+              <span className="text-white">Thad Jones</span>
+              <span>Moanin’ (1959)</span>
+              <span className="text-white">
+                Charles Mingus, arranged by Sy Johnson for the Mingus Dynasty
+                Band
+              </span>
+              <span className="col-span-2 font-bold text-md">Intermission</span>
+              <span className=" ml-4 text-center font-bold">
+                The Seven Deadly Sins (2011)
+              </span>
+              <span className="text-white">Joseph Daley</span>
+              <ol className="list-none text-white text-sm">
+                <li>i. Invidia (Envy)</li>
+                <li>ii. Avarita (Avarice)</li>
+                <li>iii. Gula (Gluttony)</li>
+                <li>iv. Superbia (Pride)</li>
+                <li>v Lechery (Lust)</li>
+                <li>vi. Desida (Sloth)</li>
+                <li>vii. Ira (Anger)</li>
+              </ol>
+            </div>
           </div>
+
           {/** Biography Container */}
           <div className=" bg-white m-4 md:w-1/3 ">
             <div className="flex flex-col items-center">
@@ -95,46 +110,79 @@ const HittingTheLowNotes = () => {
           </div>
         </div>
       </div>
-      {/** Program Container */}
       <div className="flex flex-col md:flex-row">
-        <div className="flex flex-col items-center bg-neutral-700 m-4 h-auto md:w-2/3 ">
-          <h1 className="text-amber-500 font-bebasNeue text-2xl ml-4 mt-6 lg:text-4xl ">
-            Hitting the Low Notes,{" "}
+        {/** Description Container */}
+        <div className="bg-neutral-700 h-auto m-4 md:w-2/3 ">
+          <h1 className="text-amber-500 font-bebasNeue text-2xl ml-4 mt-6 lg:text-4xl self-center">
+            Hitting the Low Notes{" "}
           </h1>
-          <h2 className="text-md lg:text-lg text-amber-500 ml-4 font-bold">
-            April 30, 2025 at 6pm
-          </h2>
-          <h1 className="text-amber-500 font-bebasNeue text-2xl ml-4 mt-6 lg:text-4xl">
-            Program
+          <h1 className="text-amber-500 font-bebasNeue ml-4 text-lg ">
+            A Jazz Concert Honoring Sounds at the Low End of the Sonic Spectrum
           </h1>
-          <div className="grid grid-cols-2 text-white gap-6 m-4 w-1/2 justify-self-center text-center">
-            <span>Hip Shakin’</span>
-            <span>Frank Foster</span>
-            <span>Sir Teen Town</span>
-            <span>Bill Reeve. Based on Sir Duke/Teen Town</span>
-            <span>Liberty City (1981)</span>
-            <span>Jaco Pastorius, for the Word of Mouth Big Band</span>
-            <span>Tip Toe (1970)</span>
-            <span>Thad Jones</span>
-            <span>Moanin’ (1959)</span>
-            <span>
-              Charles Mingus, arranged by Sy Johnson for the Mingus Dynasty Band
-            </span>
-          </div>
-          <h2 className="text-md lg:text-lg text-amber-500 ml-4 text-center font-bold">
-            The Seven Deadly Sins (2011) Joseph Daley
+          <h2 className="text-amber-500 font-bebasNeue text-lg  ml-4 lg:text-2xl self-center">
+            featuring composer Joseph Daley’s 7 Deadly Sins
           </h2>
-          <ol type="I" className="list-decimal text-white mb-4">
-            <li className="text-white"> Invidia (Envy)</li>
-            <li>Avarita (Avarice)</li>
-            <li>Gula (Gluttony)</li>
-            <li>Superbia (Pride)</li>
-            <li>Lechery (Lust)</li>
-            <li>Desida (Sloth)</li>
-            <li>Ira (Anger)</li>
-          </ol>
+          <p className="font-robotoThin text-lg text-white m-6  text-justify">
+            <strong className="text-amber-500 font-bebasNeue text-xl">
+              Hitting The Low Notes,
+            </strong>{" "}
+            celebrates instruments from the lower end of the sonic spectrum,
+            some not often seen in a jazz band.
+          </p>
+          <p className="font-robotoThin text-lg text-white m-6  text-justify">
+            {" "}
+            The first half of the program includes classics old and new by Jaco
+            Pastorius, Charles Mingus, Thad Jones, and Frank Foster/the Count
+            Basie Orchestra. Hip Shakin’ will get the party started and the toes
+            tapping, in prime Basie style. Sir Teen Town, arranged by drummer
+            Bill Reeve for the Library Jazz Band, is an exciting blending of two
+            classics - Stevie Wonder’s Sir Duke and Jaco’s Teen Town. You’ll
+            hear some blazing bass lines in there, as well as bari and bones
+            taking on some iconic melody lines. Jaco Pastorius’ joyful Liberty
+            City starts to open things up, with more playful improvisational
+            sections throughout. Thad Jones’ fun and quirky Tip Toe lets the
+            saxophone section skip lightly through the opening theme, before the
+            mighty trombone section takes center stage with an extended soli
+            section. Finally, Charles Mingus’ Moanin’. The bari and bass sax
+            kick this off, and from low to high the rest of the instruments
+            begin layering in lines and improvisations until the full group is
+            at fever pitch. If the iconic hook that starts this tune is not
+            already lodged in your musical mind, it will be once you hear it.{" "}
+          </p>
+          <p className="font-robotoThin text-lg text-white m-6  text-justify">
+            The second half of the program marks a first for LJB, welcoming
+            guest conductor Joseph Daley who will lead the ensemble as they
+            perform his seminal composition, The Seven Deadly Sins. This
+            seven-movement piece is based on the paintings of contemporary
+            painter/musician Wade Schuman (pictured above).
+          </p>
+          <p className="font-robotoThin text-lg text-white m-6  text-justify mr-20 ml-20">
+            {" "}
+            "Daley was moved to compose this music by Wade Schuman's paintings,
+            also depicting The Seven Deadly Sins. Surely Daley must have been
+            faced with a singular conundrum, one that had to do with the
+            eternally dark nature of sin and the paintings themselves, done in a
+            style somewhat reminiscent of the Northern Renaissance work of the
+            great Albrecht Dürer. Daley has resolved this by scoring the music
+            for a complete range of brass and woodwinds—from the high register
+            of the trumpet to the deep voices of the tuba and bass and baritone
+            saxophones. Such is the gravitas of the voices that Daley has
+            managed to capture, in one fell swoop, the dark nature of his
+            subject, as well as give voice to his individual musicians, who
+            annunciate the varying nature of each of the sins."{" "}
+          </p>
+
+          <p className="font-robotoThin text-lg text-white m-6 ml-20 text-justify">
+            --Raul D' Gamma Rose, AAJ April, 2011
+          </p>
+          <p className="font-robotoThin text-lg text-white m-6  text-justify">
+            For this performance, the 17-member Library Jazz Band will be joined
+            by two French horns, tuba, bass saxophone, and expanded trumpet and
+            percussion sections.
+          </p>
         </div>
 
+        {/** Musicians Container */}
         <div className="h-screen m-4 bg-white justify-items-center text-left md:w-1/3">
           <div className="sticky top-0 bg-white w-full">
             <h1 className="text-amber-500 font-bebasNeue text-2xl ml-4 mt-6 lg:text-4xl">
