@@ -15,6 +15,20 @@ import levy from "../../lib/assets/LEvy_trombone.jpg";
 import aliyah from "../../lib/assets/Alliyah_horn.png";
 import cion from "../../lib/assets/CION_piano.jpeg";
 import reeve from "../../lib/assets/Reeve_drums.webp";
+import buzac from "../../lib/assets/ArnaldoBuzac.png";
+import ferdi from "../../lib/assets/ChrisFerdinand_sax.png";
+import levitt from "../../lib/assets/Dave Levitt_trombone.png";
+import zentla from "../../lib/assets/Dj Zentla_basstrombone.png";
+import hanan from "../../lib/assets/Hanan_horn.png";
+import horton from "../../lib/assets/Horton_trumpet.png";
+import roth from "../../lib/assets/Jon Roth_trombone.png";
+import watson from "../../lib/assets/KarlW_sax.png";
+import fahn from "../../lib/assets/Mike Fahn _trombone.png";
+import maron from "../../lib/assets/NMaron_sax.png";
+import schaefer from "../../lib/assets/Schaeffer_trumpet.png";
+import steinberg from "../../lib/assets/Steinberg_trumpet.png";
+import barrett from "../../lib/assets/walter barrett_tuba_tbone.png";
+
 import BioCard from "@/components/BioCard";
 const HittingTheLowNotes = () => {
   const blankImg = "";
@@ -191,34 +205,52 @@ const HittingTheLowNotes = () => {
           </div>
           <div className="ml-4 mt-4 max-h-screen h-3/4 justify-items-center overflow-scroll">
             <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
+              PIANO
+            </h2>
+            <BioCard
+              imagePath={cion}
+              name={"Sarah Cion"}
+              role={"Co-Founder, Piano"}
+              bio={
+                "Sarah Jane Cion is the winner of the 17th Annual Great American Jazz Piano Competition and has appeared on NPR’s Piano Jazz with Marian McPartland. She has performed internationally, including at Japan’s Blue Note and the Kennedy Center’s Women in Jazz Festival, and her recordings feature jazz greats like Michael Brecker and Billy Hart. Her original music has been featured in films like The Mule and Thor: The Dark World. A Steinway artist and author of Modern Jazz Piano (Hal Leonard), Sarah performs regularly with top NYC big bands and leads her own trio."
+              }
+              hasPhoto={true}
+            />
+            <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
+              BASS
+            </h2>
+            <BioCard
+              imagePath={blankImg}
+              name={"Dan Asher"}
+              role={"Bass"}
+              bio={
+                "Dan Asher has been busy performing and teaching in the New York area since 2001 at legendary venues including Birdland, the Blue Note, Smalls and the 55 Bar, covering a wide range of music, mainly Rock, R&B, Jazz and everything in between.  As an in-demand sideman, he performs regularly with artists such as Gabe Dixon, Southside Johnny and the Asbury Jukes and the Broadway Boys (including its new offshoot, Cruising Steady). A regular performer at the world-famous Baz Bar in St. Barth, he has performed most recently with Jimmy Buffett as well as legendary keyboardists David Bryan and Jay Oliver."
+              }
+              hasPhoto={false}
+            />
+            <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
+              DRUMS
+            </h2>
+            <BioCard
+              imagePath={reeve}
+              name={"Bill Reeve"}
+              role={"Drums/Percussion"}
+              bio={
+                "Bill Reeve has been playing big band music for 50 years. From 1984 to 1989, he directed the 4 o'clock Jazz Ensemble at the University of New Hampshire and in 1988, also conducted the 3 o'clock band. He has performed with many jazz legends including Clark Terry, Toshiko Akiyoshi/Lew Tabakin, Bob Mintzer, Peter Erskine, Alan Dawson, James Moody, Jimmy Heath, Milt Hinton, James Williams, Buddy DeFranco, Lee Konitz, Dick Johnson, Herb Pomeroy, Mike Metheny, and many others.  In addition, Bill is a talented graphic artist, and designer of the Library Jazz Band’s logo and music stands."
+              }
+              hasPhoto={true}
+            />
+            <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
               SAXOPHONES
             </h2>
             <BioCard
-              imagePath={hadro}
-              name={"Andrew Hadro"}
-              role={"Bass Saxophone"}
-              bio={
-                "Andrew’s primary instrument is Baritone Saxophone, though he also performs on Bass Clarinet, Bb Clarinet, Flute, and is one of the only working musicians in New York City to play the Bass Saxophone and Contra-bass Clarinet. He performs baritone saxophone, bass clarinet and bass saxophone on the Bianca Reimagined by Dan Pugach, which recently won the Grammy for Best Large Jazz Ensemble."
-              }
-              hasPhoto={true}
-            />
-            <BioCard
-              imagePath={garrison}
-              name={"Matt Garrison"}
-              role={"Tenor saxophone"}
-              bio={
-                'With confidence, lyricism, and a tonality that is suffused in warmth, saxophonist Matt Garrison fervently pursues the art-form of jazz as reflected in his own words, "I like to think that I am a translator of sorts. A jazz musician, in my opinion, is supposed to interpret the world around them and convert those situations and feelings into music." Matt has gigged or recorded with various players of note--the late Dennis Irwin, Eliot Zigmund, Pete Malinverni, Adam Nussbaum, Gene Jackson, Sam Yahel, Jeff Hirshfield, Jon Cowherd, Andy Laverne--and was once in a band with trumpeter great, Ray Vega. His newest project is entitled “The Hudson Calls,” a tribute to various rivertowns throughout the Hudson Valley.'
-              }
-              hasPhoto={true}
-            />
-            <BioCard
-              imagePath={blankImg}
+              imagePath={maron}
               name={"Nancy Maron"}
-              role={"co-Founder/Artistic Director, Alto and Soprano saxophones"}
+              role={"co-Founder/Artistic Director, Soprano saxophone"}
               bio={
                 "Nancy plays alto, soprano, and tenor saxophones with Lehman College and Community Band, Yonkers Philharmonic, The Westchester Band, and rock cover band the Patroons."
               }
-              hasPhoto={false}
+              hasPhoto={true}
             />
             <BioCard
               imagePath={blankImg}
@@ -230,20 +262,86 @@ const HittingTheLowNotes = () => {
               hasPhoto={false}
             />
             <BioCard
-              imagePath={blankImg}
+              imagePath={garrison}
+              name={"Matt Garrison"}
+              role={"Tenor saxophone"}
+              bio={
+                'With confidence, lyricism, and a tonality that is suffused in warmth, saxophonist Matt Garrison fervently pursues the art-form of jazz as reflected in his own words, "I like to think that I am a translator of sorts. A jazz musician, in my opinion, is supposed to interpret the world around them and convert those situations and feelings into music." Matt has gigged or recorded with various players of note--the late Dennis Irwin, Eliot Zigmund, Pete Malinverni, Adam Nussbaum, Gene Jackson, Sam Yahel, Jeff Hirshfield, Jon Cowherd, Andy Laverne--and was once in a band with trumpeter great, Ray Vega. His newest project is entitled “The Hudson Calls,” a tribute to various rivertowns throughout the Hudson Valley.'
+              }
+              hasPhoto={true}
+            />
+            <BioCard
+              imagePath={ferdi}
+              name={"Chris Ferdinand"}
+              role={"Tenor saxophone"}
+              bio={"Coming soon"}
+              hasPhoto={true}
+            />
+            <BioCard
+              imagePath={watson}
               name={"Karl Watson"}
               role={"Baritone saxophone"}
               bio={
                 "Karl is a very active and versatile musician, performing professionally on a number of instruments in a wide variety of styles. At Lehman, he plays bass clarinet in the Community Band, saxophone in the Latin Jazz Band, clarinet in the Symphony Orchestra, and violin in the Chamber Orchestra and performs throughout the tri-state area.  Karl has been on staff in the Lehman Music Department since 1998."
               }
-              hasPhoto={false}
+              hasPhoto={true}
             />
             <BioCard
-              imagePath={blankImg}
-              name={"Chris Ferdinand"}
-              role={"Tenor saxophone"}
-              bio={"Coming soon"}
-              hasPhoto={false}
+              imagePath={hadro}
+              name={"Andrew Hadro"}
+              role={"Bass Saxophone"}
+              bio={
+                "Andrew’s primary instrument is Baritone Saxophone, though he also performs on Bass Clarinet, Bb Clarinet, Flute, and is one of the only working musicians in New York City to play the Bass Saxophone and Contra-bass Clarinet. He performs baritone saxophone, bass clarinet and bass saxophone on the Bianca Reimagined by Dan Pugach, which recently won the Grammy for Best Large Jazz Ensemble."
+              }
+              hasPhoto={true}
+            />
+            <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
+              TRUMPETS
+            </h2>
+            <BioCard
+              imagePath={hirsch}
+              name={"Jordan Hirsch"}
+              role={"Trumpet"}
+              bio={
+                "Jordan is a NYC based professional trumpet player with experience teaching performance and music appreciation on the middle school and high school level. Experience leading ensembles for private and corporate events, playing a wide variety of styles. Currently performing in the orchestra for the critically acclaimed NY Off-Broadway production of Fiddler on the Roof. "
+              }
+              hasPhoto={true}
+            />
+            <BioCard
+              imagePath={horton}
+              name={"Ron Horton"}
+              role={"Trumpet"}
+              bio={
+                "Ron Horton is a trumpeter and composer with 4 CDs under his own name (Genius Envy-OmniTone, Subtextures-Fresh Sounds, Everything in a Dream-Fresh Sounds, It's a Gadget World-ABEAT), and has performed and/or recorded with Andrew Hill, Lee Konitz, Jane Ira Bloom, Jazz Composers Collective (Ben Allison, Frank Kimbrough, Ted Nash, Michael Blake) and others."
+              }
+              hasPhoto={true}
+            />
+            <BioCard
+              imagePath={burgie}
+              name={"Kim Burgie"}
+              role={"Trumpet/Flugelhorn"}
+              bio={
+                "Kim is a multi-Instrumentalist who plays trumpet/flugelhorn, jazz recorder and drums/percussion and has played at many of the top hotels, catering halls, night clubs and other venues in the tri-state area and around the world. When Kim is not working on original music or writing music for TV and motion pictures, he is a music teacher at a New York City high school in the South Bronx. Kim has 4 CD’s of his original music out there in the world (“In The Zone”, “Blessed Not Stressed”, “Fun” and “Fun 2.0”)."
+              }
+              hasPhoto={true}
+            />
+            <BioCard
+              imagePath={schaefer}
+              name={"William Schaeffer"}
+              role={"Co-Founder, Trumpet"}
+              bio={
+                "William is a lawyer working at the Inspector General’s Office of the New York City School Construction Authority. He performs regularly on trumpet with the Lehman College Community Band, the Westchester Band in Scarsdale, the New Westchester Symphony Orchestra in White Plains, the Manhattanville College Community Orchestra in Purchase, the St. Thomas Orchestra in Mamaroneck, the Cross Cultural Connection Pro-Am Ensemble in Peekskill, and the Patroons in Mount Vernon."
+              }
+              hasPhoto={true}
+            />
+            <BioCard
+              imagePath={steinberg}
+              name={"Rebecca Steinberg"}
+              role={"Trumpet"}
+              bio={
+                "Based in NYC,  trumpet player Rebecca Steinberg has a career marked by her warm, inviting sound and stylistic versatility. You can find Rebecca in the pit of New York City’s many theater productions, performing alongside her brass quintet Calliope Brass, and teaching music both privately and in the classroom. Rebecca has held trumpet chairs Tony winning Broadway musicals SUFFS and New York, New York. Other notable appearances include Ragtime (City Center), SUFFS (The Public Theater), Sound of Music, Sister Act, and Jolly Holiday (Paper Mill Playhouse), City Center Encores! Off-Center production of Stephen Sondheim’s Road Show, Fiddler on the Roof in Yiddish at Stage 42, and two National Yiddish Theatre Folksbiene productions: The Sorceress and The Golden Bride."
+              }
+              hasPhoto={true}
             />
             <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
               TROMBONES
@@ -267,84 +365,48 @@ const HittingTheLowNotes = () => {
               hasPhoto={true}
             />
             <BioCard
-              imagePath={blankImg}
+              imagePath={levitt}
               name={"Dave Levitt"}
               role={"co-Founder, Conductor"}
               bio={
                 "Dave Levitt is a fourth generation Klezmer musician. He started learning music at age 5 from his father Marty who was a well-known clarinetist and bandleader. Dave’s mother was also a performer who went by the name Harriet Kane. After graduating from LaGuardia H.S. of the Arts in New York City, Dave earned a scholarship to study at the Manhattan School of Music, where he received a Master’s Degree in Music. Besides working as a musician, Dave owned a rehearsal and recording studio in New York from 1995-2008."
               }
-              hasPhoto={false}
+              hasPhoto={true}
             />
             <BioCard
-              imagePath={blankImg}
+              imagePath={fahn}
               name={"Mike Fahn"}
               role={"Trombone"}
               bio={
                 "Mike Fahn first started playing drums, (emulating his drummer dad); picked up the trumpet at age 5; and by age 13 switched to the baritone horn. His father loved Bob Brookmeyer and presented Mike with a valve trombone. Benefitting from the outstanding school music programs in Huntington Long Island, Mike learned to improvise on the deep well of jazz standards.He has played with Bob Cooper, Pete Christlieb, Maynard Ferguson, Conte Condoli, Peter Erskine, John Patitucci, Tom Kubis and many others."
               }
-              hasPhoto={false}
+              hasPhoto={true}
             />
             <BioCard
-              imagePath={blankImg}
+              imagePath={roth}
+              name={"Jon Roth"}
+              role={"Trombone"}
+              bio={"Coming soon"}
+              hasPhoto={true}
+            />
+            <BioCard
+              imagePath={zentla}
+              name={"Djorkaeff Zentla"}
+              role={"Bass trombone"}
+              bio={"Coming soon"}
+              hasPhoto={true}
+            />
+            <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
+              TUBA
+            </h2>
+            <BioCard
+              imagePath={barrett}
               name={"Walter Barrett"}
-              role={"Bass Trombone"}
+              role={"TUBA"}
               bio={
                 "Walter Barrett performs as a free-lance musician throughout the New York area on Alto, Tenor & Bass Trombones, Bass Trumpet, Euphonium, and Tuba. He has performed with the Westchester Symphony, Yonkers Philharmonic, Philharmonic Symphony of Westchester, and the Hudson Valley Philharmonic. Walter has been featured as soloist with many local groups, including the Lehman College Community Band, White Plains Pops Band, Manhattan School of Music Trombone Ensemble, Yonkers Philharmonic, and the Westchester Band."
               }
-              hasPhoto={false}
-            />
-            <BioCard
-              imagePath={blankImg}
-              name={"Owen Caprell"}
-              role={"Bass Trombone"}
-              bio={"Coming soon"}
-              hasPhoto={false}
-            />
-            <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
-              TRUMPETS
-            </h2>
-            <BioCard
-              imagePath={hirsch}
-              name={"Jordan Hirsch"}
-              role={"Trumpet"}
-              bio={
-                "Jordan is a NYC based professional trumpet player with experience teaching performance and music appreciation on the middle school and high school level. Experience leading ensembles for private and corporate events, playing a wide variety of styles. Currently performing in the orchestra for the critically acclaimed NY Off-Broadway production of Fiddler on the Roof. "
-              }
               hasPhoto={true}
-            />
-            <BioCard
-              imagePath={burgie}
-              name={"Kim Burgie"}
-              role={"Trumpet/Flugelhorn"}
-              bio={
-                "Kim is a multi-Instrumentalist who plays trumpet/flugelhorn, jazz recorder and drums/percussion and has played at many of the top hotels, catering halls, night clubs and other venues in the tri-state area and around the world. When Kim is not working on original music or writing music for TV and motion pictures, he is a music teacher at a New York City high school in the South Bronx. Kim has 4 CD’s of his original music out there in the world (“In The Zone”, “Blessed Not Stressed”, “Fun” and “Fun 2.0”)."
-              }
-              hasPhoto={true}
-            />
-            <BioCard
-              imagePath={blankImg}
-              name={"Ron Horton"}
-              role={"Trumpet"}
-              bio={
-                "Ron Horton is a trumpeter and composer with 4 CDs under his own name (Genius Envy-OmniTone, Subtextures-Fresh Sounds, Everything in a Dream-Fresh Sounds, It's a Gadget World-ABEAT), and has performed and/or recorded with Andrew Hill, Lee Konitz, Jane Ira Bloom, Jazz Composers Collective (Ben Allison, Frank Kimbrough, Ted Nash, Michael Blake) and others."
-              }
-              hasPhoto={false}
-            />
-            <BioCard
-              imagePath={blankImg}
-              name={"William Schaeffer"}
-              role={"Co-Founder, Trumpet"}
-              bio={
-                "William is a lawyer working at the Inspector General’s Office of the New York City School Construction Authority. He performs regularly on trumpet with the Lehman College Community Band, the Westchester Band in Scarsdale, the New Westchester Symphony Orchestra in White Plains, the Manhattanville College Community Orchestra in Purchase, the St. Thomas Orchestra in Mamaroneck, the Cross Cultural Connection Pro-Am Ensemble in Peekskill, and the Patroons in Mount Vernon."
-              }
-              hasPhoto={false}
-            />
-            <BioCard
-              imagePath={blankImg}
-              name={"Rebecca Steinberg"}
-              role={"Trumpet"}
-              bio={"Coming soon"}
-              hasPhoto={false}
             />
             <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
               FRENCH HORNS
@@ -359,51 +421,25 @@ const HittingTheLowNotes = () => {
               hasPhoto={true}
             />
             <BioCard
-              imagePath={blankImg}
+              imagePath={hanan}
               name={"Hanan Rahman"}
               role={"French Horn"}
-              bio={"Coming soon"}
-              hasPhoto={false}
-            />
-            <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
-              RHYTHM
-            </h2>
-            <BioCard
-              imagePath={cion}
-              name={"Sarah Cion"}
-              role={"Co-Founder, Piano"}
               bio={
-                "Sarah Jane Cion is the winner of the 17th Annual Great American Jazz Piano Competition and has appeared on NPR’s Piano Jazz with Marian McPartland. She has performed internationally, including at Japan’s Blue Note and the Kennedy Center’s Women in Jazz Festival, and her recordings feature jazz greats like Michael Brecker and Billy Hart. Her original music has been featured in films like The Mule and Thor: The Dark World. A Steinway artist and author of Modern Jazz Piano (Hal Leonard), Sarah performs regularly with top NYC big bands and leads her own trio."
+                "Hanan Rahman is a freelance horn player based in New York City. She is a member of the Sinfonietta, the Sugar Hill Salon Artistic Collective, Egalitarian Brass, and the Washington Heights Chamber Orchestra, and has performed with Frisson Ensemble, Blow Globe, the Saint Andrew Music Society,  the New Jersey Festival Orchestra, the Modus Operandi Orchestra, and Sound Off! Music for Bail. She frequently subs with the Hartford, New Haven, Vermont, Allentown, Greenwich, Cape, New Bedford, York, and Ridgefield symphony orchestras, the Northeast Pennsylvania Philharmonic, and Symphony in C."
               }
               hasPhoto={true}
-            />
-            <BioCard
-              imagePath={blankImg}
-              name={"Dan Asher"}
-              role={"Bass"}
-              bio={
-                "Dan Asher has been busy performing and teaching in the New York area since 2001 at legendary venues including Birdland, the Blue Note, Smalls and the 55 Bar, covering a wide range of music, mainly Rock, R&B, Jazz and everything in between.  As an in-demand sideman, he performs regularly with artists such as Gabe Dixon, Southside Johnny and the Asbury Jukes and the Broadway Boys (including its new offshoot, Cruising Steady). A regular performer at the world-famous Baz Bar in St. Barth, he has performed most recently with Jimmy Buffett as well as legendary keyboardists David Bryan and Jay Oliver."
-              }
-              hasPhoto={false}
             />
             <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
               PERCUSSION
             </h2>
             <BioCard
-              imagePath={reeve}
-              name={"Bill Reeve"}
-              role={"Drums/Percussion"}
-              bio={
-                "Bill Reeve has been playing big band music for 50 years. From 1984 to 1989, he directed the 4 o'clock Jazz Ensemble at the University of New Hampshire and in 1988, also conducted the 3 o'clock band. He has performed with many jazz legends including Clark Terry, Toshiko Akiyoshi/Lew Tabakin, Bob Mintzer, Peter Erskine, Alan Dawson, James Moody, Jimmy Heath, Milt Hinton, James Williams, Buddy DeFranco, Lee Konitz, Dick Johnson, Herb Pomeroy, Mike Metheny, and many others.  In addition, Bill is a talented graphic artist, and designer of the Library Jazz Band’s logo and music stands."
-              }
-              hasPhoto={true}
-            />
-            <BioCard
-              imagePath={blankImg}
+              imagePath={buzac}
               name={"Arnaldo Buzak"}
               role={"Percussion"}
-              bio={""}
-              hasPhoto={false}
+              bio={
+                "Arnaldo Buzack is a NY-based drummer/percussionist from Brazil. An alumnus of Escola Villa Lobos and Rio de Janeiro Federal University's Escola Nacional de Música, he backed many acts in two continents before taking a long sabbatical, from which he is back."
+              }
+              hasPhoto={true}
             />
             <BioCard
               imagePath={blankImg}
