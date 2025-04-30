@@ -22,14 +22,14 @@ const HittingTheLowNotes = () => {
     <div>
       <div className="flex flex-col">
         {/** Image Container */}
-        <div className="flex flex-row grow justify-around gap-6 ">
-          <img src={envy} className="size-6 md:size-16 lg:size-32" />
-          <img src={avaric} className="size-6 md:size-16 lg:size-32" />
-          <img src={gluttony} className="size-6 md:size-16 lg:size-32" />
-          <img src={pride} className="size-6 md:size-16 lg:size-32" />
-          <img src={lust} className="size-6 md:size-16 lg:size-32" />
-          <img src={sloth} className="size-6 md:size-16 lg:size-32" />
-          <img src={anger} className="size-6 md:size-16 lg:size-32" />
+        <div className="flex flex-row grow justify-around gap-4 lg:gap-6 ">
+          <img src={envy} className="size-8 md:size-16 lg:size-32" />
+          <img src={avaric} className="size-8 md:size-16 lg:size-32" />
+          <img src={gluttony} className="size-8 md:size-16 lg:size-32" />
+          <img src={pride} className="size-8 md:size-16 lg:size-32" />
+          <img src={lust} className="size-8 md:size-16 lg:size-32" />
+          <img src={sloth} className="size-8 md:size-16 lg:size-32" />
+          <img src={anger} className="size-8 md:size-16 lg:size-32" />
         </div>
         {/** Program Container */}
         <div className="flex flex-col md:flex-row">
@@ -156,7 +156,7 @@ const HittingTheLowNotes = () => {
             seven-movement piece is based on the paintings of contemporary
             painter/musician Wade Schuman (pictured above).
           </p>
-          <p className="font-robotoThin text-lg text-white m-6  text-justify mr-20 ml-20">
+          <p className="font-robotoThin text-lg text-white m-6  text-justify mr-10 ml-10">
             {" "}
             "Daley was moved to compose this music by Wade Schuman's paintings,
             also depicting The Seven Deadly Sins. Surely Daley must have been
