@@ -147,17 +147,17 @@ const HittingTheLowNotes = () => {
             {" "}
             The first half of the program includes classics old and new by Jaco
             Pastorius, Charles Mingus, Thad Jones, and Frank Foster/the Count
-            Basie Orchestra. Hip Shakin’ will get the party started and the toes
-            tapping, in prime Basie style. Sir Teen Town, arranged by drummer
+            Basie Orchestra. <strong className="text-amber-500 font-bebasNeue font-bold ">Hip Shakin’</strong>  will get the party started and the toes
+            tapping, in prime Basie style. <strong className="text-amber-500 font-bebasNeue font-bold ">Sir Teen Town</strong>, arranged by drummer
             Bill Reeve for the Library Jazz Band, is an exciting blending of two
             classics - Stevie Wonder’s Sir Duke and Jaco’s Teen Town. You’ll
             hear some blazing bass lines in there, as well as bari and bones
-            taking on some iconic melody lines. Jaco Pastorius’ joyful Liberty
-            City starts to open things up, with more playful improvisational
-            sections throughout. Thad Jones’ fun and quirky Tip Toe lets the
+            taking on some iconic melody lines. Jaco Pastorius’ joyful <strong className="text-amber-500 font-bebasNeue font-bold ">Liberty
+            City</strong> starts to open things up, with more playful improvisational
+            sections throughout. Thad Jones’ fun and quirky <strong className="text-amber-500 font-bebasNeue font-bold ">Tip Toe</strong> lets the
             saxophone section skip lightly through the opening theme, before the
             mighty trombone section takes center stage with an extended soli
-            section. Finally, Charles Mingus’ Moanin’. The bari and bass sax
+            section. Finally, Charles Mingus’ <strong className="text-amber-500 font-bebasNeue font-bold ">Moanin’</strong>. The bari and bass sax
             kick this off, and from low to high the rest of the instruments
             begin layering in lines and improvisations until the full group is
             at fever pitch. If the iconic hook that starts this tune is not
@@ -165,8 +165,8 @@ const HittingTheLowNotes = () => {
           </p>
           <p className="font-robotoThin text-lg text-white m-6  text-justify">
             The second half of the program marks a first for LJB, welcoming
-            guest conductor Joseph Daley who will lead the ensemble as they
-            perform his seminal composition, The Seven Deadly Sins. This
+            guest conductor <strong className="text-amber-500 font-bebasNeue font-bold ">Joseph Daley</strong> who will lead the ensemble as they
+            perform his seminal composition, <strong className="text-amber-500 font-bebasNeue font-bold ">The Seven Deadly Sins. </strong> This
             seven-movement piece is based on the paintings of contemporary
             painter/musician Wade Schuman (pictured above).
           </p>
@@ -197,7 +197,7 @@ const HittingTheLowNotes = () => {
         </div>
 
         {/** Musicians Container */}
-        <div className="h-screen m-4 bg-white justify-items-center text-left md:w-1/3">
+        <div className="h-auto m-4 bg-white justify-items-center text-left md:w-1/3">
           <div className="sticky top-0 bg-white w-full">
             <h1 className="text-amber-500 font-bebasNeue text-2xl ml-4 mt-6 lg:text-4xl">
               Musicians
