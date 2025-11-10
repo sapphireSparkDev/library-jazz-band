@@ -2,27 +2,92 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Calendar, MapPin } from "lucide-react";
 import { Event } from "@/lib/types/events";
-import eventsData from "@/data/events.json";
-import musiciansData from "@/data/musicians.json";
+import { eventsAPI, musiciansAPI } from "@/lib/api";
 
 const EventDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const [event, setEvent] = useState<Event | null>(null);
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [eventMusicians, setEventMusicians] = useState<any[]>([]);
 
   useEffect(() => {
     // Scroll to top when component mounts or slug changes
     window.scrollTo(0, 0);
 
-    // Find the event by slug
-    const foundEvent = eventsData.find((e) => e.slug === slug) as Event;
-    setEvent(foundEvent || null);
+    // Find the event by slug from API
+    const loadEvent = async () => {
+      setLoading(true);
+      try {
+        console.log("Loading event for slug:", slug);
+        const foundEvent = await eventsAPI.getBySlug(slug!);
+        console.log("Found event:", foundEvent);
+        setEvent(foundEvent);
+      } catch (error) {
+        console.error("Failed to load event:", error);
+        // Fallback to getAll if getBySlug fails
+        try {
+          const events = await eventsAPI.getAll();
+          const fallbackEvent = events.find((e: Event) => e.slug === slug);
+          setEvent(fallbackEvent || null);
+        } catch (fallbackError) {
+          console.error("Fallback also failed:", fallbackError);
+          setEvent(null);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadEvent();
   }, [slug]);
+
+  useEffect(() => {
+    const loadMusicians = async () => {
+      if (!event) {
+        setEventMusicians([]);
+        return;
+      }
+
+      try {
+        const allMusicians = await musiciansAPI.getAll();
+        const musicians = event.musicians
+          .map((musicianId) =>
+            allMusicians.find((m: any) => m.id === musicianId),
+          )
+          .filter(
+            (musician): musician is NonNullable<typeof musician> =>
+              musician !== undefined,
+          );
+        setEventMusicians(musicians);
+      } catch (error) {
+        console.error("Failed to load musicians:", error);
+        setEventMusicians([]);
+      }
+    };
+
+    loadMusicians();
+  }, [event]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-neutral-900 flex items-center justify-center">
+        <div className="text-amber-500 text-xl">Loading event...</div>
+      </div>
+    );
+  }
 
   if (!event) {
     return (
       <div className="min-h-screen bg-neutral-900 flex items-center justify-center">
-        <div className="text-amber-500 text-xl">Event not found</div>
+        <div className="text-amber-500 text-xl bg-white p-8 rounded-lg shadow-lg text-center">
+          <div>Event not found</div>
+          <div className="text-sm text-gray-600 mt-2">
+            Slug: {slug}
+            <br />
+            Make sure the backend server is running on port 3001
+          </div>
+        </div>
       </div>
     );
   }
@@ -50,13 +115,6 @@ const EventDetail = () => {
     });
   };
 
-  const eventMusicians = event.musicians
-    .map((musicianId) => musiciansData.find((m) => m.id === musicianId))
-    .filter(
-      (musician): musician is NonNullable<typeof musician> =>
-        musician !== undefined,
-    );
-
   return (
     <div className="min-h-screen bg-neutral-900">
       <div className="pt-16">
@@ -68,12 +126,16 @@ const EventDetail = () => {
             {/* Media Section */}
             <div className="lg:col-span-2">
               <div className="relative bg-gray-200 rounded-lg overflow-hidden">
-                {currentMedia ? (
+                {currentMedia && currentMedia.url ? (
                   currentMedia.type === "image" ? (
                     <img
-                      src={currentMedia.url || "/placeholder-image.jpg"}
+                      src={currentMedia.url}
                       alt={currentMedia.alt || event.title}
                       className="w-full h-96 object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src =
+                          "/placeholder-image.jpg";
+                      }}
                     />
                   ) : (
                     <div className="relative w-full h-96 bg-black">
@@ -148,7 +210,7 @@ const EventDetail = () => {
                 </div>
 
                 <div className="flex items-start">
-                  <MapPin className="text-amber-500 mr-3 mt-1" size={40} />
+                  <MapPin className="text-amber-500 mr-3 mt-1" size={20} />
                   <div>
                     <p className="text-black font-medium">{event.location}</p>
                   </div>

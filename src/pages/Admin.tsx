@@ -11,8 +11,7 @@ import {
   X,
 } from "lucide-react";
 import { Event, Musician } from "@/lib/types/events";
-import eventsData from "@/data/events.json";
-import musiciansData from "@/data/musicians.json";
+import { eventsAPI, musiciansAPI } from "@/lib/api";
 
 const Admin = () => {
   const [password, setPassword] = useState("");
@@ -47,6 +46,10 @@ const Admin = () => {
     slug: "",
   });
 
+  // Musician search state
+  const [musicianSearch, setMusicianSearch] = useState("");
+  const [searchResults, setSearchResults] = useState<Musician[]>([]);
+
   const [musicianForm, setMusicianForm] = useState<Partial<Musician>>({
     id: "",
     name: "",
@@ -62,9 +65,22 @@ const Admin = () => {
   const LOCK_DURATION = 15 * 60 * 1000; // 15 minutes in milliseconds
 
   useEffect(() => {
-    // Load data
-    setEvents(eventsData as Event[]);
-    setMusicians(musiciansData as Musician[]);
+    // Load data from API
+    const loadData = async () => {
+      try {
+        const [eventsData, musiciansData] = await Promise.all([
+          eventsAPI.getAll(),
+          musiciansAPI.getAll(),
+        ]);
+        setEvents(eventsData);
+        setMusicians(musiciansData);
+      } catch (error) {
+        console.error("Failed to load data:", error);
+        alert("Failed to load data. Please check if the server is running.");
+      }
+    };
+
+    loadData();
 
     // Check if user was previously authenticated
     const savedAuth = localStorage.getItem("admin_authenticated");
@@ -182,11 +198,13 @@ const Admin = () => {
         isHidden: false,
         slug: "",
       });
+      setMusicianSearch("");
+      setSearchResults([]);
     }
     setShowEventModal(true);
   };
 
-  const saveEvent = () => {
+  const saveEvent = async () => {
     if (
       !eventForm.title ||
       !eventForm.date ||
@@ -211,26 +229,53 @@ const Admin = () => {
       slug: eventForm.slug!,
     };
 
-    if (editingEvent) {
-      setEvents(events.map((e) => (e.id === editingEvent.id ? newEvent : e)));
-    } else {
-      setEvents([...events, newEvent]);
-    }
+    try {
+      if (editingEvent) {
+        await eventsAPI.update(editingEvent.id, newEvent);
+      } else {
+        await eventsAPI.create(newEvent);
+      }
 
-    setShowEventModal(false);
-    setEditingEvent(null);
+      // Refresh data from API
+      const updatedEvents = await eventsAPI.getAll();
+      setEvents(updatedEvents);
+      setShowEventModal(false);
+      setEditingEvent(null);
+    } catch (error) {
+      console.error("Failed to save event:", error);
+      alert("Failed to save event. Please try again.");
+    }
   };
 
-  const deleteEvent = (id: string) => {
+  const deleteEvent = async (id: string) => {
     if (confirm("Are you sure you want to delete this event?")) {
-      setEvents(events.filter((e) => e.id !== id));
+      try {
+        await eventsAPI.delete(id);
+        // Refresh data from API
+        const updatedEvents = await eventsAPI.getAll();
+        setEvents(updatedEvents);
+      } catch (error) {
+        console.error("Failed to delete event:", error);
+        alert("Failed to delete event. Please try again.");
+      }
     }
   };
 
-  const toggleEventVisibility = (id: string) => {
-    setEvents(
-      events.map((e) => (e.id === id ? { ...e, isHidden: !e.isHidden } : e)),
-    );
+  const toggleEventVisibility = async (id: string) => {
+    const event = events.find((e) => e.id === id);
+    if (!event) return;
+
+    const updatedEvent = { ...event, isHidden: !event.isHidden };
+
+    try {
+      await eventsAPI.update(id, updatedEvent);
+      // Refresh data from API
+      const updatedEvents = await eventsAPI.getAll();
+      setEvents(updatedEvents);
+    } catch (error) {
+      console.error("Failed to toggle event visibility:", error);
+      alert("Failed to update event. Please try again.");
+    }
   };
 
   // Musician Management Functions
@@ -253,7 +298,7 @@ const Admin = () => {
     setShowMusicianModal(true);
   };
 
-  const saveMusician = () => {
+  const saveMusician = async () => {
     if (!musicianForm.name || !musicianForm.role || !musicianForm.instrument) {
       alert("Please fill in all required fields");
       return;
@@ -269,21 +314,35 @@ const Admin = () => {
       isHidden: musicianForm.isHidden || false,
     };
 
-    if (editingMusician) {
-      setMusicians(
-        musicians.map((m) => (m.id === editingMusician.id ? newMusician : m)),
-      );
-    } else {
-      setMusicians([...musicians, newMusician]);
-    }
+    try {
+      if (editingMusician) {
+        await musiciansAPI.update(editingMusician.id, newMusician);
+      } else {
+        await musiciansAPI.create(newMusician);
+      }
 
-    setShowMusicianModal(false);
-    setEditingMusician(null);
+      // Refresh data from API
+      const updatedMusicians = await musiciansAPI.getAll();
+      setMusicians(updatedMusicians);
+      setShowMusicianModal(false);
+      setEditingMusician(null);
+    } catch (error) {
+      console.error("Failed to save musician:", error);
+      alert("Failed to save musician. Please try again.");
+    }
   };
 
-  const deleteMusician = (id: string) => {
+  const deleteMusician = async (id: string) => {
     if (confirm("Are you sure you want to delete this musician?")) {
-      setMusicians(musicians.filter((m) => m.id !== id));
+      try {
+        await musiciansAPI.delete(id);
+        // Refresh data from API
+        const updatedMusicians = await musiciansAPI.getAll();
+        setMusicians(updatedMusicians);
+      } catch (error) {
+        console.error("Failed to delete musician:", error);
+        alert("Failed to delete musician. Please try again.");
+      }
     }
   };
 
@@ -305,6 +364,38 @@ const Admin = () => {
     const updatedMedia = [...(eventForm.media || [])];
     updatedMedia.splice(index, 1);
     setEventForm({ ...eventForm, media: updatedMedia });
+  };
+
+  // Musician search and management
+  const handleMusicianSearch = (query: string) => {
+    setMusicianSearch(query);
+    if (query.trim() === "") {
+      setSearchResults([]);
+      return;
+    }
+
+    const results = musicians.filter((musician) =>
+      musician.name.toLowerCase().includes(query.toLowerCase()),
+    );
+    setSearchResults(results);
+  };
+
+  const addMusicianToEvent = (musician: Musician) => {
+    if (!eventForm.musicians?.includes(musician.id)) {
+      setEventForm({
+        ...eventForm,
+        musicians: [...(eventForm.musicians || []), musician.id],
+      });
+    }
+    setMusicianSearch("");
+    setSearchResults([]);
+  };
+
+  const removeMusicianFromEvent = (musicianId: string) => {
+    setEventForm({
+      ...eventForm,
+      musicians: eventForm.musicians?.filter((id) => id !== musicianId) || [],
+    });
   };
 
   if (!isAuthenticated) {
@@ -582,28 +673,60 @@ const Admin = () => {
                       </label>
                       <input
                         type="date"
-                        value={eventForm.date || ""}
-                        onChange={(e) =>
-                          setEventForm({ ...eventForm, date: e.target.value })
+                        value={
+                          eventForm.date ? eventForm.date.split("T")[0] : ""
                         }
+                        onChange={(e) => {
+                          const time = eventForm.date
+                            ? eventForm.date.split("T")[1] || "00:00"
+                            : "00:00";
+                          setEventForm({
+                            ...eventForm,
+                            date: `${e.target.value}T${time}`,
+                          });
+                        }}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
                       />
                     </div>
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Slug *
+                        Time *
                       </label>
                       <input
-                        type="text"
-                        value={eventForm.slug || ""}
-                        onChange={(e) =>
-                          setEventForm({ ...eventForm, slug: e.target.value })
+                        type="time"
+                        value={
+                          eventForm.date
+                            ? eventForm.date.split("T")[1] || "00:00"
+                            : "00:00"
                         }
+                        onChange={(e) => {
+                          const date = eventForm.date
+                            ? eventForm.date.split("T")[0]
+                            : "";
+                          setEventForm({
+                            ...eventForm,
+                            date: `${date}T${e.target.value}`,
+                          });
+                        }}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
-                        placeholder="url-friendly-slug"
                       />
                     </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Slug *
+                    </label>
+                    <input
+                      type="text"
+                      value={eventForm.slug || ""}
+                      onChange={(e) =>
+                        setEventForm({ ...eventForm, slug: e.target.value })
+                      }
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
+                      placeholder="url-friendly-slug"
+                    />
                   </div>
 
                   <div>
@@ -619,6 +742,76 @@ const Admin = () => {
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
                       placeholder="Event location"
                     />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Musicians
+                    </label>
+                    <div className="space-y-2">
+                      <input
+                        type="text"
+                        value={musicianSearch}
+                        onChange={(e) => handleMusicianSearch(e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
+                        placeholder="Search for musicians..."
+                      />
+
+                      {searchResults.length > 0 && (
+                        <div className="border border-gray-300 rounded-md bg-white max-h-32 overflow-y-auto">
+                          {searchResults.map((musician) => (
+                            <div
+                              key={musician.id}
+                              className="px-3 py-2 hover:bg-gray-100 cursor-pointer border-b border-gray-200 last:border-b-0"
+                              onClick={() => addMusicianToEvent(musician)}
+                            >
+                              <div className="font-medium">{musician.name}</div>
+                              <div className="text-sm text-gray-600">
+                                {musician.role} • {musician.instrument}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      {eventForm.musicians &&
+                        eventForm.musicians.length > 0 && (
+                          <div className="space-y-2">
+                            <p className="text-sm text-gray-600">
+                              Selected musicians:
+                            </p>
+                            {eventForm.musicians.map((musicianId) => {
+                              const musician = musicians.find(
+                                (m) => m.id === musicianId,
+                              );
+                              return musician ? (
+                                <div
+                                  key={musicianId}
+                                  className="flex items-center justify-between bg-gray-100 px-3 py-2 rounded"
+                                >
+                                  <div>
+                                    <span className="font-medium">
+                                      {musician.name}
+                                    </span>
+                                    <span className="text-sm text-gray-600 ml-2">
+                                      ({musician.role})
+                                    </span>
+                                  </div>
+                                  <button
+                                    type="button"
+                                    onClick={() =>
+                                      removeMusicianFromEvent(musicianId)
+                                    }
+                                    className="text-red-600 hover:text-red-800"
+                                  >
+                                    Remove
+                                  </button>
+                                </div>
+                              ) : null;
+                            })}
+                          </div>
+                        )}
+                    </div>
                   </div>
 
                   <div>
@@ -725,7 +918,11 @@ const Admin = () => {
                     {editingEvent ? "Update Event" : "Create Event"}
                   </button>
                   <button
-                    onClick={() => setShowEventModal(false)}
+                    onClick={() => {
+                      setShowEventModal(false);
+                      setMusicianSearch("");
+                      setSearchResults([]);
+                    }}
                     className="flex-1 bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition-colors"
                   >
                     Cancel

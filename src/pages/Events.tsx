@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { EventCard } from "@/components/EventCard";
 import { Event } from "@/lib/types/events";
-import eventsData from "@/data/events.json";
+import { eventsAPI } from "@/lib/api";
 
 const Events = () => {
   const [events, setEvents] = useState<Event[]>([]);
@@ -14,32 +14,43 @@ const Events = () => {
   const pastRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Load events from JSON and sort them
-    const sortedEvents = [...(eventsData as Event[])]
-      .filter((event) => !event.isHidden)
-      .sort((a, b) => {
-        const now = new Date();
-        const aDate = new Date(a.date);
-        const bDate = new Date(b.date);
+    // Load events from API and sort them
+    const loadEvents = async () => {
+      try {
+        const eventsData = await eventsAPI.getAll();
+        const sortedEvents = eventsData
+          .filter((event: Event) => !event.isHidden)
+          .sort((a: Event, b: Event) => {
+            const now = new Date();
+            const aDate = new Date(a.date);
+            const bDate = new Date(b.date);
 
-        const aIsUpcoming = aDate >= now;
-        const bIsUpcoming = bDate >= now;
+            const aIsUpcoming = aDate >= now;
+            const bIsUpcoming = bDate >= now;
 
-        // First, separate upcoming and past events
-        if (aIsUpcoming && !bIsUpcoming) return -1;
-        if (!aIsUpcoming && bIsUpcoming) return 1;
+            // First, separate upcoming and past events
+            if (aIsUpcoming && !bIsUpcoming) return -1;
+            if (!aIsUpcoming && bIsUpcoming) return 1;
 
-        // Then sort within each group
-        if (aIsUpcoming) {
-          // Upcoming: closest to today first
-          return aDate.getTime() - bDate.getTime();
-        } else {
-          // Past: most recent first
-          return bDate.getTime() - aDate.getTime();
-        }
-      });
+            // Then sort within each group
+            if (aIsUpcoming) {
+              // Upcoming: closest to today first
+              return aDate.getTime() - bDate.getTime();
+            } else {
+              // Past: most recent first
+              return bDate.getTime() - aDate.getTime();
+            }
+          });
 
-    setEvents(sortedEvents);
+        setEvents(sortedEvents);
+      } catch (error) {
+        console.error("Failed to load events:", error);
+        // Fallback to empty array if API fails
+        setEvents([]);
+      }
+    };
+
+    loadEvents();
   }, []);
 
   useEffect(() => {
@@ -161,9 +172,6 @@ const Events = () => {
         {/* Upcoming Events Section */}
         {upcomingEvents.length > 0 && (
           <div ref={upcomingRef} className="mb-12">
-            <h2 className="text-amber-500 font-bebasNeue text-3xl mb-6">
-              Upcoming Events
-            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {upcomingEvents.map((event) => (
                 <EventCard key={event.id} event={event} />
