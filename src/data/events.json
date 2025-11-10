@@ -1,0 +1,59 @@
+[
+  {
+    "id": "hitting-the-low-notes-2025",
+    "title": "Hitting the Low Notes, featuring composer Joseph Daley's 7 Deadly Sins",
+    "description": "Hitting The Low Notes celebrates instruments from the lower end of the sonic spectrum, some not often seen in a jazz band. For this performance, the 17-member Library Jazz Band will be joined by two French horns, tuba, bass saxophone, and expanded trumpet and percussion sections. For the first time, the ensemble welcomes a guest conductor. The 75-year-old jazz elder Joseph Daley will lead the ensemble as they perform his seminal composition, The Seven Deadly Sins, a seven-movement piece based on the paintings of contemporary painter/musician Wade Schuman.",
+    "date": "2025-04-30",
+    "location": "Riverfront Library Auditorium, Yonkers, NY 10701",
+    "media": [
+      {
+        "type": "image",
+        "url": "",
+        "alt": "Hitting the Low Notes event"
+      }
+    ],
+    "programImage": "",
+    "musicians": [],
+    "isUpcoming": true,
+    "isHidden": false,
+    "slug": "hitting-the-low-notes"
+  },
+  {
+    "id": "showtime-broadway-2024-1",
+    "title": "It's Showtime: LJB Takes on Broadway",
+    "description": "A salute to music from the Broadway stage including tunes from West Side Story, Chicago, Pippin, Gypsy, Porgy & Bess, from the best bands and arrangers including Count Basie, Duke Ellington, Buddy Rich, Chico O'Farrill. For this show, we are delighted to be joined by vocalist Amy London.",
+    "date": "2024-11-17",
+    "location": "Greenburgh Public Library, 300 Tarrytown Rd, Elmsford, NY 10523",
+    "media": [
+      {
+        "type": "image",
+        "url": "",
+        "alt": "It's Showtime event"
+      }
+    ],
+    "programImage": "",
+    "musicians": [],
+    "isUpcoming": false,
+    "isHidden": false,
+    "slug": "showtime-broadway-elmsford"
+  },
+  {
+    "id": "showtime-broadway-2024-2",
+    "title": "It's Showtime: LJB Takes on Broadway",
+    "description": "A salute to music from the Broadway stage including tunes from West Side Story, Chicago, Pippin, Gypsy, Porgy & Bess, from the best bands and arrangers including Count Basie, Duke Ellington, Buddy Rich, Chico O'Farrill. For this show, we are delighted to be joined by vocalist Amy London.",
+    "date": "2024-11-24",
+    "location": "Grinton I. Will Branch, 1500 Central Park Avenue, Yonkers, NY 10710",
+    "media": [
+      {
+        "type": "image",
+        "url": "",
+        "alt": "It's Showtime event"
+      }
+    ],
+    "programImage": "",
+    "musicians": [],
+    "isUpcoming": false,
+    "isHidden": false,
+    "slug": "showtime-broadway-yonkers"
+  }
+]

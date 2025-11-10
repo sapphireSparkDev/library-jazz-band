@@ -1,135 +1,197 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import LJBRobAlt from "../lib/assets/LJB_RobSusman.webp";
-import LJBRob from "../lib/assets/LJBRob.webp";
-import AWLogo from "../lib/assets/artsWestchesterLogo.png";
-import { Link } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { EventCard } from "@/components/EventCard";
+import { Event } from "@/lib/types/events";
+import eventsData from "@/data/events.json";
 
 const Events = () => {
+  const [events, setEvents] = useState<Event[]>([]);
+  const [headerOpacity, setHeaderOpacity] = useState(1);
+  const [activeSection, setActiveSection] = useState<"upcoming" | "past">(
+    "upcoming",
+  );
+  const headerRef = useRef<HTMLDivElement>(null);
+  const upcomingRef = useRef<HTMLDivElement>(null);
+  const pastRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Load events from JSON and sort them
+    const sortedEvents = [...(eventsData as Event[])]
+      .filter((event) => !event.isHidden)
+      .sort((a, b) => {
+        const now = new Date();
+        const aDate = new Date(a.date);
+        const bDate = new Date(b.date);
+
+        const aIsUpcoming = aDate >= now;
+        const bIsUpcoming = bDate >= now;
+
+        // First, separate upcoming and past events
+        if (aIsUpcoming && !bIsUpcoming) return -1;
+        if (!aIsUpcoming && bIsUpcoming) return 1;
+
+        // Then sort within each group
+        if (aIsUpcoming) {
+          // Upcoming: closest to today first
+          return aDate.getTime() - bDate.getTime();
+        } else {
+          // Past: most recent first
+          return bDate.getTime() - aDate.getTime();
+        }
+      });
+
+    setEvents(sortedEvents);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (headerRef.current) {
+        const headerHeight = headerRef.current.offsetHeight;
+        const scrollPosition = window.scrollY;
+        const opacity = Math.max(0, 1 - scrollPosition / headerHeight);
+        setHeaderOpacity(opacity);
+      }
+
+      // Determine which section is currently in view
+      if (upcomingRef.current && pastRef.current) {
+        const upcomingTop = upcomingRef.current.getBoundingClientRect().top;
+        const pastTop = pastRef.current.getBoundingClientRect().top;
+        const viewportHeight = window.innerHeight;
+
+        // If upcoming section is in view or past section hasn't reached the top yet
+        if (
+          upcomingTop < viewportHeight * 0.5 ||
+          pastTop > viewportHeight * 0.5
+        ) {
+          setActiveSection("upcoming");
+        } else {
+          setActiveSection("past");
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    // Initial check
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToUpcoming = () => {
+    if (upcomingRef.current) {
+      upcomingRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
+  const scrollToPast = () => {
+    if (pastRef.current) {
+      pastRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  const upcomingEvents = events.filter((event) => {
+    const eventDate = new Date(event.date);
+    const now = new Date();
+    return eventDate >= now;
+  });
+
+  const pastEvents = events.filter((event) => {
+    const eventDate = new Date(event.date);
+    const now = new Date();
+    return eventDate < now;
+  });
+
   return (
-    <div>
-      <picture>
-        <source srcSet={LJBRob} media="(min-width: 1400px)" />
-        <img src={LJBRobAlt} className="hidden lg:block" />
-      </picture>
-      <div className="absolute inset-y-12 lg:inset-y-0 lg:left-10 lg:top-16 bg-neutral-900 lg:bg-neutral-900/75 p-10 w-screen lg:w-2/6 h-max">
-        <h1 className="text-amber-500 font-bebasNeue text-2xl lg:text-4xl tracking-wide mb-4 place-self-center ">
-          Events
-        </h1>
-        <h2 className="font-roboto text-lg lg:text-2xl  tracking-wide text-amber-400 mb-4">
-          2025
-        </h2>
-        <Card>
-          <CardHeader>
-            <CardTitle className="font-roboto text-md lg:text-lg text-center">
-              <span>Hitting the Low Notes, featuring composer Joseph Daley’s 7 Deadly Sins</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
-            April 30, 2025 at 6pm
-            </h2>
-            <span className="text-sm font-robotoThin">Riverfront Library Auditorium, Yonkers, NY 10701</span>
-            <span className="text-sm font-robotoThin block text-indigo-900">Free admission</span>
-          </CardContent>
-          <CardContent className="font-robotoThin text-sm text-center">
-          Hitting The Low Notes, celebrates instruments from the lower end of the sonic spectrum, some not often seen in a jazz band. 
-          For this performance, the 17-member Library Jazz Band will be joined by two French horns, tuba, bass saxophone, and expanded 
-          trumpet and percussion sections.
-          </CardContent>
-          <CardContent className="font-robotoThin text-sm text-center">
-          For the first time, the ensemble welcomes a guest conductor. The 75-year-old jazz elder Joseph Daley will lead the ensemble as 
-          they perform his seminal composition, The Seven Deadly Sins, a seven-movement piece based on the paintings of 
-          contemporary painter/musician Wade Schuman.
-          </CardContent>
-          <CardContent className="font-robotoThin text-sm text-center">
-         
-Rounding out the program will be classics old and new by Jaco Pastorius, Charles Mingus, Thad Jones, 
-and Frank Foster/the Count Basie Orchestra. 
- 
-
-          </CardContent>
-          <CardContent className="font-robotoThin text-sm text-center">
-            <Link className="bold text-indigo-900 text-md" to="lowNotes">More Information</Link>
-
-          </CardContent>
-        </Card>
-
-        <details>
-          <summary className="text-sm lg:text-md text-amber-400 font-bold mt-4 mb-4">
-            <span>See Past Events</span>
-          </summary>
-          <h2 className="font-roboto text-lg lg:text-2xl  tracking-wide text-amber-400 mb-4">
-          2024
-        </h2>
-        <Card className="mb-6">
-          <CardHeader>
-            <CardTitle className="font-roboto text-md lg:text-lg">
-              <span>It's Showtime: LJB Takes on Broadway</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
-              Sunday, November 17 at 2pm
-            </h2>
-            <span className="text-sm font-robotoThin">
-              Greenburgh Public Library/ 300 Tarrytown Rd, Elmsford, NY 10523
-            </span>
-          </CardContent>
-          <CardContent>
-            <h2 className="text-sm lg:text-md text-indigo-900 font-bold">
-              Sunday, November 24 at 2pm
-            </h2>
-            <span className="text-sm font-robotoThin">
-              Grinton I. Will Branch/1500 Central Park Avenue, Yonkers, NY 10710
-            </span>
-          </CardContent>
-          <CardContent>
-            <p className="font-robotoThin text-sm text-center">
-              A salute to music from the Broadway stage including tunes from
-              West Side Story, Chicago, Pippin, Gypsy, Porgy & Bess, from the
-              best bands and arrangers including Count Basie, Duke Ellington,
-              Buddy Rich, Chico O’Farrill. For this show, we are delighted to be
-              joined by vocalist Amy London.
-            </p>
-          </CardContent>
-        </Card>
-        </details>
-        
-      
-        <div className="relative lg:hidden">
-          <div className="flex absolute -inset-x-10 inset-y-40 bg-neutral-900/75 p-10 w-screen h-2/4 rounded-xl items-center font-robotoThin  text-sm text-center">
-            <Card className="mt-20 md:mt-32">
-              <CardHeader>
-                <img src={AWLogo}></img>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  Library Jazz Band’s 2024 - 2025 Season is made possible with
-                  funds from Arts Alive, a regrant program of ArtsWestchester
-                  with support from the Office of the Governor, the New York
-                  State Legislature, and the New York State Council on the Arts.
-                </p>
-              </CardContent>
-            </Card>
+    <div className="min-h-screen bg-neutral-900">
+      {/* Header Section with Photo */}
+      <div
+        ref={headerRef}
+        className="relative"
+        style={{ opacity: headerOpacity }}
+      >
+        <div className="pt-16">
+          {" "}
+          {/* Space for nav bar */}
+          <div className="mx-4 md:mx-8 lg:mx-16">
+            <img
+              src="/src/lib/assets/LJBRob.webp"
+              alt="Library Jazz Band performing"
+              className="w-full h-64 md:h-80 lg:h-96 object-cover rounded-lg shadow-lg"
+            />
+            <div className="absolute inset-0 flex items-center justify-center pt-16">
+              <h1 className="text-amber-500 font-bebasNeue text-4xl md:text-5xl lg:text-6xl font-bold text-center">
+                Live Performances
+              </h1>
+            </div>
           </div>
         </div>
       </div>
-      <div className="hidden lg:block absolute inset-y-0 right-10 top-96 bg-neutral-900/75 p-10 w-1/6 lg:w-2/6 2xl:w-1/6 h-fit rounded-xl items-center font-robotoThin mt-6 text-sm text-center">
-        <Card className="">
-          <CardHeader>
-            <img src={AWLogo}></img>
-          </CardHeader>
-          <CardContent>
-            <p>
-              Library Jazz Band’s 2024 - 2025 Season is made possible with funds
-              from Arts Alive, a regrant program of ArtsWestchester with support
-              from the Office of the Governor, the New York State Legislature,
-              and the New York State Council on the Arts.
-            </p>
-          </CardContent>
-        </Card>
+
+      {/* Navigation Buttons */}
+      <div className="sticky top-16 z-10 bg-neutral-900 pt-4 pb-4">
+        <div className="mx-4 md:mx-8 lg:mx-16">
+          <div className="flex space-x-4">
+            <button
+              onClick={scrollToUpcoming}
+              className={`px-6 py-3 font-medium transition-colors ${
+                activeSection === "upcoming"
+                  ? "bg-amber-500 text-black hover:bg-amber-400"
+                  : "bg-amber-700 text-white hover:bg-amber-600"
+              }`}
+            >
+              Upcoming
+            </button>
+            <button
+              onClick={scrollToPast}
+              className={`px-6 py-3 font-medium transition-colors ${
+                activeSection === "past"
+                  ? "bg-amber-500 text-black hover:bg-amber-400"
+                  : "bg-amber-700 text-white hover:bg-amber-600"
+              }`}
+            >
+              Past
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* All Events Grid */}
+      <div className="mx-4 md:mx-8 lg:mx-16 mt-8 pb-16">
+        {/* Upcoming Events Section */}
+        {upcomingEvents.length > 0 && (
+          <div ref={upcomingRef} className="mb-12">
+            <h2 className="text-amber-500 font-bebasNeue text-3xl mb-6">
+              Upcoming Events
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {upcomingEvents.map((event) => (
+                <EventCard key={event.id} event={event} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Past Events Section */}
+        {pastEvents.length > 0 && (
+          <div ref={pastRef}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {pastEvents.map((event) => (
+                <EventCard key={event.id} event={event} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* No Events Message */}
+        {events.length === 0 && (
+          <div className="text-center text-amber-500 py-16">
+            <p className="text-xl">No events to display.</p>
+          </div>
+        )}
       </div>
     </div>
   );
 };
+
 export default Events;

@@ -32,8 +32,16 @@ import danAsher from "../../lib/assets/LJB_DanAsher.webp";
 import travis from "../../lib/assets/travis.webp";
 
 import BioCard from "@/components/BioCard";
+import { useEffect } from "react";
+
 const HittingTheLowNotes = () => {
   const blankImg = "";
+
+  useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <div className="flex flex-col">
@@ -77,7 +85,9 @@ const HittingTheLowNotes = () => {
                 Charles Mingus, arranged by Sy Johnson for the Mingus Dynasty
                 Band
               </span>
-              <span className="col-span-2 font-bold text-md mt-4 mb-4">~ Intermission ~</span>
+              <span className="col-span-2 font-bold text-md mt-4 mb-4">
+                ~ Intermission ~
+              </span>
               <span className=" ml-4 text-center font-bold">
                 The Seven Deadly Sins (2011)
               </span>
@@ -149,27 +159,51 @@ const HittingTheLowNotes = () => {
             {" "}
             The first half of the program includes classics old and new by Jaco
             Pastorius, Charles Mingus, Thad Jones, and Frank Foster/the Count
-            Basie Orchestra. <strong className="text-amber-500 font-bebasNeue font-bold ">Hip Shakin’</strong>  will get the party started and the toes
-            tapping, in prime Basie style. <strong className="text-amber-500 font-bebasNeue font-bold ">Sir Teen Town</strong>, arranged by drummer
-            Bill Reeve for the Library Jazz Band, is an exciting blending of two
-            classics - Stevie Wonder’s Sir Duke and Jaco’s Teen Town. You’ll
-            hear some blazing bass lines in there, as well as bari and bones
-            taking on some iconic melody lines. Jaco Pastorius’ joyful <strong className="text-amber-500 font-bebasNeue font-bold ">Liberty
-            City</strong> starts to open things up, with more playful improvisational
-            sections throughout. Thad Jones’ fun and quirky <strong className="text-amber-500 font-bebasNeue font-bold ">Tip Toe</strong> lets the
-            saxophone section skip lightly through the opening theme, before the
-            mighty trombone section takes center stage with an extended soli
-            section. Finally, Charles Mingus’ <strong className="text-amber-500 font-bebasNeue font-bold ">Moanin’</strong>. The bari and bass sax
-            kick this off, and from low to high the rest of the instruments
-            begin layering in lines and improvisations until the full group is
-            at fever pitch. If the iconic hook that starts this tune is not
-            already lodged in your musical mind, it will be once you hear it.{" "}
+            Basie Orchestra.{" "}
+            <strong className="text-amber-500 font-bebasNeue font-bold ">
+              Hip Shakin’
+            </strong>{" "}
+            will get the party started and the toes tapping, in prime Basie
+            style.{" "}
+            <strong className="text-amber-500 font-bebasNeue font-bold ">
+              Sir Teen Town
+            </strong>
+            , arranged by drummer Bill Reeve for the Library Jazz Band, is an
+            exciting blending of two classics - Stevie Wonder’s Sir Duke and
+            Jaco’s Teen Town. You’ll hear some blazing bass lines in there, as
+            well as bari and bones taking on some iconic melody lines. Jaco
+            Pastorius’ joyful{" "}
+            <strong className="text-amber-500 font-bebasNeue font-bold ">
+              Liberty City
+            </strong>{" "}
+            starts to open things up, with more playful improvisational sections
+            throughout. Thad Jones’ fun and quirky{" "}
+            <strong className="text-amber-500 font-bebasNeue font-bold ">
+              Tip Toe
+            </strong>{" "}
+            lets the saxophone section skip lightly through the opening theme,
+            before the mighty trombone section takes center stage with an
+            extended soli section. Finally, Charles Mingus’{" "}
+            <strong className="text-amber-500 font-bebasNeue font-bold ">
+              Moanin’
+            </strong>
+            . The bari and bass sax kick this off, and from low to high the rest
+            of the instruments begin layering in lines and improvisations until
+            the full group is at fever pitch. If the iconic hook that starts
+            this tune is not already lodged in your musical mind, it will be
+            once you hear it.{" "}
           </p>
           <p className="font-robotoThin text-lg text-white m-6  text-justify">
             The second half of the program marks a first for LJB, welcoming
-            guest conductor <strong className="text-amber-500 font-bebasNeue font-bold ">Joseph Daley</strong> who will lead the ensemble as they
-            perform his seminal composition, <strong className="text-amber-500 font-bebasNeue font-bold ">The Seven Deadly Sins. </strong> This
-            seven-movement piece is based on the paintings of contemporary
+            guest conductor{" "}
+            <strong className="text-amber-500 font-bebasNeue font-bold ">
+              Joseph Daley
+            </strong>{" "}
+            who will lead the ensemble as they perform his seminal composition,{" "}
+            <strong className="text-amber-500 font-bebasNeue font-bold ">
+              The Seven Deadly Sins.{" "}
+            </strong>{" "}
+            This seven-movement piece is based on the paintings of contemporary
             painter/musician Wade Schuman (pictured above).
           </p>
           <p className="font-robotoThin text-lg text-white m-6  text-justify mr-10 ml-10">
@@ -276,7 +310,9 @@ const HittingTheLowNotes = () => {
               imagePath={ferdi}
               name={"Chris Ferdinand"}
               role={"Tenor saxophone"}
-              bio={"Chris Ferdinand, the newest member of the ensemble, joins us all the way from Brooklyn: Aspiring pilot, playing saxophone for fifteen-ish years and subsisting on caffeine."}
+              bio={
+                "Chris Ferdinand, the newest member of the ensemble, joins us all the way from Brooklyn: Aspiring pilot, playing saxophone for fifteen-ish years and subsisting on caffeine."
+              }
               hasPhoto={true}
             />
             <BioCard
@@ -388,7 +424,9 @@ const HittingTheLowNotes = () => {
               imagePath={roth}
               name={"Jon Roth"}
               role={"Trombone"}
-              bio={"Coming Jon Roth has had a varied career as a trombonist, arranger and composer. A native of Rockland County, NY, he initially studied trombone with local teacher Henry Heyzer and NY studio legend Fred “Moe” Snyder. He went on to receive his Bachelors of Music from Montclair State University, where he studied trombone and arranging with Alan Ferber. After graduation, he began a stint as a trombonist and arranger for Royal Caribbean Cruise Lines. Since returning to NY in 2012, he has collaborated and performed with various artists such as Larry Coryell, Wycliffe Gordon, Ingrid Jenson, Lew Tabackin and Mike Abene. He has also performed with such ensembles as the One More Once Big Band, The Analog Jazz Orchestra, Dancin’ Machine, The Imperial Brass Quintet and The Michael Cochrane Sextet. He currently works as a staff arranger for The North Jersey Concert Band. As an educator he is currently the Band Coordinator and Brass teacher for The Elisabeth Morrow School in Englewood, NJ and formerly as a Jazz instructor at the Thurnauer School of Music in Teaneck, NJ. He also currently leads his own quartet with Michael Cochrane, Bill Moring and Steve Johns."}
+              bio={
+                "Coming Jon Roth has had a varied career as a trombonist, arranger and composer. A native of Rockland County, NY, he initially studied trombone with local teacher Henry Heyzer and NY studio legend Fred “Moe” Snyder. He went on to receive his Bachelors of Music from Montclair State University, where he studied trombone and arranging with Alan Ferber. After graduation, he began a stint as a trombonist and arranger for Royal Caribbean Cruise Lines. Since returning to NY in 2012, he has collaborated and performed with various artists such as Larry Coryell, Wycliffe Gordon, Ingrid Jenson, Lew Tabackin and Mike Abene. He has also performed with such ensembles as the One More Once Big Band, The Analog Jazz Orchestra, Dancin’ Machine, The Imperial Brass Quintet and The Michael Cochrane Sextet. He currently works as a staff arranger for The North Jersey Concert Band. As an educator he is currently the Band Coordinator and Brass teacher for The Elisabeth Morrow School in Englewood, NJ and formerly as a Jazz instructor at the Thurnauer School of Music in Teaneck, NJ. He also currently leads his own quartet with Michael Cochrane, Bill Moring and Steve Johns."
+              }
               hasPhoto={true}
             />
             <BioCard

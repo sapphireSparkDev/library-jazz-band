@@ -1,0 +1,47 @@
+[
+  {
+    "id": "sarah-cion",
+    "name": "Sarah Cion",
+    "role": "Co-Founder, Piano",
+    "instrument": "Piano",
+    "photo": "/src/lib/assets/CION_piano.jpeg",
+    "bio": "Sarah Jane Cion is the winner of the 17th Annual Great American Jazz Piano Competition and has appeared on NPR's Piano Jazz with Marian McPartland. She has performed internationally, including at Japan's Blue Note and the Kennedy Center's Women in Jazz Festival, and her recordings feature jazz greats like Michael Brecker and Billy Hart. Her original music has been featured in films like The Mule and Thor: The Dark World. A Steinway artist and author of Modern Jazz Piano (Hal Leonard), Sarah performs regularly with top NYC big bands and leads her own trio.",
+    "isHidden": false
+  },
+  {
+    "id": "dan-asher",
+    "name": "Dan Asher",
+    "role": "Bass",
+    "instrument": "Bass",
+    "photo": "/src/lib/assets/LJB_DanAsher.webp",
+    "bio": "Dan Asher has been busy performing and teaching in the New York area since 2001 at legendary venues including Birdland, the Blue Note, Smalls and the 55 Bar, covering a wide range of music, mainly Rock, R&B, Jazz and everything in between. As an in-demand sideman, he performs regularly with artists such as Gabe Dixon, Southside Johnny and the Asbury Jukes and the Broadway Boys (including its new offshoot, Cruising Steady). A regular performer at the world-famous Baz Bar in St. Barth, he has performed most recently with Jimmy Buffett as well as legendary keyboardists David Bryan and Jay Oliver.",
+    "isHidden": false
+  },
+  {
+    "id": "bill-reeve",
+    "name": "Bill Reeve",
+    "role": "Drums/Percussion",
+    "instrument": "Drums",
+    "photo": "/src/lib/assets/Reeve_drums.webp",
+    "bio": "Bill Reeve has been playing big band music for 50 years. From 1984 to 1989, he directed the 4 o'clock Jazz Ensemble at the University of New Hampshire and in 1988, also conducted the 3 o'clock band. He has performed with many jazz legends including Clark Terry, Toshiko Akiyoshi/Lew Tabakin, Bob Mintzer, Peter Erskine, Alan Dawson, James Moody, Jimmy Heath, Milt Hinton, James Williams, Buddy DeFranco, Lee Konitz, Dick Johnson, Herb Pomeroy, Mike Metheny, and many others. In addition, Bill is a talented graphic artist, and designer of the Library Jazz Band's logo and music stands.",
+    "isHidden": false
+  },
+  {
+    "id": "nancy-maron",
+    "name": "Nancy Maron",
+    "role": "Co-Founder/Artistic Director, Alto and Soprano saxophones",
+    "instrument": "Saxophone",
+    "photo": "/src/lib/assets/NMaron_sax.png",
+    "bio": "Nancy plays alto, soprano, and tenor saxophones with Lehman College and Community Band, Yonkers Philharmonic, The Westchester Band, and rock cover band the Patroons.",
+    "isHidden": false
+  },
+  {
+    "id": "travis-sullivan",
+    "name": "Travis Sullivan",
+    "role": "Alto saxophone",
+    "instrument": "Saxophone",
+    "photo": "/src/lib/assets/travis.webp",
+    "bio": "Zoho Music and Posi-Tone recording artist Travis Sullivan is an alto saxophonist, pianist, composer and arranger. Hailed by Jazz Times as 'a gifted alto saxophonist and improviser who has also developed a strong and commanding voice as a composer,' his 18-piece Bjorkestra performs his arrangements of the renowned music of Icelandic pop goddess Bjork.",
+    "isHidden": false
+  }
+]
