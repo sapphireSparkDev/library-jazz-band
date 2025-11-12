@@ -47,3 +47,27 @@ export const musiciansAPI = {
     }),
   delete: (id: string) => apiRequest(`/musicians/${id}`, { method: "DELETE" }),
 };
+
+// File upload API
+export const uploadAPI = {
+  uploadFile: async (file: File) => {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/upload`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`Upload failed: ${response.status}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error("File upload failed:", error);
+      throw error;
+    }
+  },
+};

@@ -14,24 +14,32 @@ const NavBar = ({
   hasPhoto: boolean;
 }) => {
   return (
-    <div className="w-3/4 mb-4 mt-4">
-      <Card>
+    <div className="w-full mb-4 mt-4">
+      <Card className="bg-white">
         <CardHeader>
           <CardTitle>
             {hasPhoto ? (
-              <img src={imagePath} width={300} height={300} alt="hello" />
+              <img
+                src={imagePath}
+                width={350}
+                height={350}
+                className="w-full h-auto max-w-full object-cover rounded-lg"
+                alt={`Photo of ${name}`}
+              />
             ) : null}
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div>
-            <p className="text-2xl text-amber-500 font-bold">{name}</p>
-            <p className="text-indigo-900 font-bold mb-4">{role}</p>
+            <p className="text-2xl lg:text-3xl text-amber-500 font-bold mb-2">
+              {name}
+            </p>
+            <p className="text-indigo-900 font-bold text-lg mb-4">{role}</p>
             <details>
-              <summary>
-                <span className="text-sm">Read more</span>
+              <summary className="cursor-pointer text-amber-500 font-bold hover:text-amber-400">
+                <span className="text-base">Read more</span>
               </summary>
-              <p>{bio}</p>
+              <p className="mt-2 text-gray-700">{bio}</p>
             </details>
           </div>
         </CardContent>

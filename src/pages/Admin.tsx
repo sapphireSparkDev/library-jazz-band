@@ -11,7 +11,7 @@ import {
   X,
 } from "lucide-react";
 import { Event, Musician } from "@/lib/types/events";
-import { eventsAPI, musiciansAPI } from "@/lib/api";
+import { eventsAPI, musiciansAPI, uploadAPI } from "@/lib/api";
 
 const Admin = () => {
   const [password, setPassword] = useState("");
@@ -58,11 +58,58 @@ const Admin = () => {
     photo: "",
     bio: "",
     isHidden: false,
+    section: "",
   });
 
   const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
   const MAX_ATTEMPTS = 5;
   const LOCK_DURATION = 15 * 60 * 1000; // 15 minutes in milliseconds
+
+  const sections = [
+    "Piano",
+    "Bass",
+    "Drums",
+    "Saxophones",
+    "Trumpets",
+    "Trombones",
+    "Tuba",
+    "French Horns",
+    "Percussion",
+  ];
+
+  // File upload state
+  const [uploading, setUploading] = useState(false);
+
+  // File upload function
+  const handleFileUpload = async (
+    file: File,
+    setUrlField: (url: string) => void,
+  ) => {
+    if (!file) return;
+
+    // Check file size (10MB limit)
+    if (file.size > 10 * 1024 * 1024) {
+      alert("File too large. Maximum size is 10MB.");
+      return;
+    }
+
+    // Check file type
+    if (!file.type.startsWith("image/") && !file.type.startsWith("video/")) {
+      alert("Only image and video files are allowed.");
+      return;
+    }
+
+    setUploading(true);
+    try {
+      const result = await uploadAPI.uploadFile(file);
+      setUrlField(result.filePath);
+    } catch (error) {
+      console.error("File upload failed:", error);
+      alert("Failed to upload file. Please try again.");
+    } finally {
+      setUploading(false);
+    }
+  };
 
   useEffect(() => {
     // Load data from API
@@ -293,14 +340,19 @@ const Admin = () => {
         photo: "",
         bio: "",
         isHidden: false,
+        section: "",
       });
     }
     setShowMusicianModal(true);
   };
 
   const saveMusician = async () => {
-    if (!musicianForm.name || !musicianForm.instrument) {
-      alert("Please fill in name and instrument fields");
+    if (
+      !musicianForm.name ||
+      !musicianForm.instrument ||
+      !musicianForm.section
+    ) {
+      alert("Please fill in name, instrument, and section fields");
       return;
     }
 
@@ -312,6 +364,7 @@ const Admin = () => {
       photo: musicianForm.photo || "",
       bio: musicianForm.bio || "",
       isHidden: musicianForm.isHidden || false,
+      section: musicianForm.section!,
     };
 
     try {
@@ -577,42 +630,116 @@ const Admin = () => {
             </button>
           </div>
 
-          <div className="space-y-4">
-            {musicians.map((musician) => (
-              <div
-                key={musician.id}
-                className="border border-gray-200 rounded-lg p-4"
-              >
-                <div className="flex justify-between items-start">
-                  <div className="flex-1">
-                    <h3 className="font-bold text-lg text-gray-800">
-                      {musician.name}
-                    </h3>
-                    <p className="text-sm text-gray-600">
-                      {musician.role ? `${musician.role} • ` : ""}
-                      {musician.instrument}
-                    </p>
-                    <p className="text-sm text-gray-500 mt-1 line-clamp-2">
-                      {musician.bio}
-                    </p>
-                  </div>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => openMusicianModal(musician)}
-                      className="bg-amber-500 text-black p-2 rounded-md hover:bg-amber-400 transition-colors"
-                    >
-                      <Edit size={16} />
-                    </button>
-                    <button
-                      onClick={() => deleteMusician(musician.id)}
-                      className="bg-red-600 text-white p-2 rounded-md hover:bg-red-700 transition-colors"
-                    >
-                      <Trash2 size={16} />
-                    </button>
+          <div className="space-y-6">
+            {/* Musicians with assigned sections */}
+            {sections.map((section) => {
+              const sectionMusicians = musicians
+                .filter((musician) => musician.section === section)
+                .sort((a, b) => a.name.localeCompare(b.name));
+
+              if (sectionMusicians.length === 0) return null;
+
+              return (
+                <div key={section}>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3 border-b pb-2">
+                    {section}
+                  </h3>
+                  <div className="space-y-4">
+                    {sectionMusicians.map((musician) => (
+                      <div
+                        key={musician.id}
+                        className="border border-gray-200 rounded-lg p-4"
+                      >
+                        <div className="flex justify-between items-start">
+                          <div className="flex-1">
+                            <h3 className="font-bold text-lg text-gray-800">
+                              {musician.name}
+                            </h3>
+                            <p className="text-sm text-gray-600">
+                              {musician.role ? `${musician.role} • ` : ""}
+                              {musician.instrument}
+                            </p>
+                            <p className="text-sm text-gray-500 mt-1 line-clamp-2">
+                              {musician.bio}
+                            </p>
+                          </div>
+                          <div className="flex gap-2">
+                            <button
+                              onClick={() => openMusicianModal(musician)}
+                              className="bg-amber-500 text-black p-2 rounded-md hover:bg-amber-400 transition-colors"
+                            >
+                              <Edit size={16} />
+                            </button>
+                            <button
+                              onClick={() => deleteMusician(musician.id)}
+                              className="bg-red-600 text-white p-2 rounded-md hover:bg-red-700 transition-colors"
+                            >
+                              <Trash2 size={16} />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
+
+            {/* Uncategorized musicians (no section assigned) */}
+            {(() => {
+              const uncategorizedMusicians = musicians
+                .filter(
+                  (musician) => !musician.section || musician.section === "",
+                )
+                .sort((a, b) => a.name.localeCompare(b.name));
+
+              if (uncategorizedMusicians.length === 0) return null;
+
+              return (
+                <div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3 border-b pb-2">
+                    Uncategorized
+                  </h3>
+                  <div className="space-y-4">
+                    {uncategorizedMusicians.map((musician) => (
+                      <div
+                        key={musician.id}
+                        className="border border-gray-200 rounded-lg p-4"
+                      >
+                        <div className="flex justify-between items-start">
+                          <div className="flex-1">
+                            <h3 className="font-bold text-lg text-gray-800">
+                              {musician.name}
+                            </h3>
+                            <p className="text-sm text-gray-600">
+                              {musician.role ? `${musician.role} • ` : ""}
+                              {musician.instrument}
+                            </p>
+                            <p className="text-sm text-gray-500 mt-1 line-clamp-2">
+                              {musician.bio}
+                            </p>
+                          </div>
+                          <div className="flex gap-2">
+                            <button
+                              onClick={() => openMusicianModal(musician)}
+                              className="bg-amber-500 text-black p-2 rounded-md hover:bg-amber-400 transition-colors"
+                            >
+                              <Edit size={16} />
+                            </button>
+                            <button
+                              onClick={() => deleteMusician(musician.id)}
+                              className="bg-red-600 text-white p-2 rounded-md hover:bg-red-700 transition-colors"
+                            >
+                              <Trash2 size={16} />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         </div>
 
@@ -818,20 +945,53 @@ const Admin = () => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Program Image URL
+                      Program Image
                     </label>
-                    <input
-                      type="text"
-                      value={eventForm.programImage || ""}
-                      onChange={(e) =>
-                        setEventForm({
-                          ...eventForm,
-                          programImage: e.target.value,
-                        })
-                      }
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
-                      placeholder="https://example.com/program.jpg"
-                    />
+                    <div className="space-y-2">
+                      {/* File upload option */}
+                      <div className="flex gap-2">
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                              handleFileUpload(file, (url) => {
+                                setEventForm({
+                                  ...eventForm,
+                                  programImage: url,
+                                });
+                              });
+                            }
+                          }}
+                          className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
+                          disabled={uploading}
+                        />
+                        {uploading && (
+                          <div className="flex items-center text-sm text-gray-500">
+                            Uploading...
+                          </div>
+                        )}
+                      </div>
+
+                      {/* URL input option */}
+                      <div className="text-xs text-gray-500 text-center">
+                        OR
+                      </div>
+
+                      <input
+                        type="text"
+                        value={eventForm.programImage || ""}
+                        onChange={(e) =>
+                          setEventForm({
+                            ...eventForm,
+                            programImage: e.target.value,
+                          })
+                        }
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
+                        placeholder="Enter program image URL or upload file above"
+                      />
+                    </div>
                   </div>
 
                   <div>
@@ -871,15 +1031,36 @@ const Admin = () => {
                             Remove
                           </button>
                         </div>
-                        <input
-                          type="text"
-                          value={media.url}
-                          onChange={(e) =>
-                            updateMediaItem(index, "url", e.target.value)
-                          }
-                          className="w-full px-2 py-1 border border-gray-300 rounded text-sm mb-1 bg-white"
-                          placeholder="Media URL"
-                        />
+                        <div className="space-y-1">
+                          {/* File upload option */}
+                          <div className="flex gap-1">
+                            <input
+                              type="file"
+                              accept="image/*,video/*"
+                              onChange={(e) => {
+                                const file = e.target.files?.[0];
+                                if (file) {
+                                  handleFileUpload(file, (url) => {
+                                    updateMediaItem(index, "url", url);
+                                  });
+                                }
+                              }}
+                              className="flex-1 px-2 py-1 border border-gray-300 rounded text-sm bg-white"
+                              disabled={uploading}
+                            />
+                          </div>
+
+                          {/* URL input option */}
+                          <input
+                            type="text"
+                            value={media.url}
+                            onChange={(e) =>
+                              updateMediaItem(index, "url", e.target.value)
+                            }
+                            className="w-full px-2 py-1 border border-gray-300 rounded text-sm bg-white"
+                            placeholder="Enter media URL or upload file above"
+                          />
+                        </div>
                         <input
                           type="text"
                           value={media.alt || ""}
@@ -1011,20 +1192,76 @@ const Admin = () => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Photo URL
+                      Section *
                     </label>
-                    <input
-                      type="text"
-                      value={musicianForm.photo || ""}
+                    <select
+                      value={musicianForm.section || ""}
                       onChange={(e) =>
                         setMusicianForm({
                           ...musicianForm,
-                          photo: e.target.value,
+                          section: e.target.value,
                         })
                       }
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
-                      placeholder="https://example.com/photo.jpg"
-                    />
+                    >
+                      <option value="">Select a section</option>
+                      {sections.map((section) => (
+                        <option key={section} value={section}>
+                          {section}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Photo
+                    </label>
+                    <div className="space-y-2">
+                      {/* File upload option */}
+                      <div className="flex gap-2">
+                        <input
+                          type="file"
+                          accept="image/*,video/*"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                              handleFileUpload(file, (url) => {
+                                setMusicianForm({
+                                  ...musicianForm,
+                                  photo: url,
+                                });
+                              });
+                            }
+                          }}
+                          className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
+                          disabled={uploading}
+                        />
+                        {uploading && (
+                          <div className="flex items-center text-sm text-gray-500">
+                            Uploading...
+                          </div>
+                        )}
+                      </div>
+
+                      {/* URL input option */}
+                      <div className="text-xs text-gray-500 text-center">
+                        OR
+                      </div>
+
+                      <input
+                        type="text"
+                        value={musicianForm.photo || ""}
+                        onChange={(e) =>
+                          setMusicianForm({
+                            ...musicianForm,
+                            photo: e.target.value,
+                          })
+                        }
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
+                        placeholder="Enter photo URL or upload file above"
+                      />
+                    </div>
                   </div>
 
                   <div>

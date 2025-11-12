@@ -26,4 +26,5 @@ export interface Musician {
   photo: string;
   bio: string;
   isHidden: boolean;
+  section: string;
 }
