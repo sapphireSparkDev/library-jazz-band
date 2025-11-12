@@ -84,7 +84,7 @@
     "name": "Andrew Hadro",
     "role": "",
     "instrument": "Bass Saxophone",
-    "photo": "/src/lib/assets/Hardo_bass sax.jpg",
+    "photo": "src/lib/assets/Hadro_bass sax.jpg",
     "bio": "Andrew’s primary instrument is Baritone Saxophone, though he also performs on Bass Clarinet, Bb Clarinet, Flute, and is one of the only working musicians in New York City to play the Bass Saxophone and Contra-bass Clarinet. He performs baritone saxophone, bass clarinet and bass saxophone on the Bianca Reimagined by Dan Pugach, which recently won the Grammy for Best Large Jazz Ensemble.",
     "isHidden": false,
     "section": "Saxophones"
@@ -134,7 +134,7 @@
     "name": "Rebecca Steinberg",
     "role": "",
     "instrument": "Trumpet",
-    "photo": "/src/lib/assets/Steingberg_trumpet.png",
+    "photo": "src/lib/assets/Steinberg_trumpet.png",
     "bio": "Based in NYC, trumpet player Rebecca Steinberg has a career marked by her warm, inviting sound and stylistic versatility. You can find Rebecca in the pit of New York City’s many theater productions, performing alongside her brass quintet Calliope Brass, and teaching music both privately and in the classroom. Rebecca has held trumpet chairs Tony winning Broadway musicals SUFFS and New York, New York. Other notable appearances include Ragtime (City Center), SUFFS (The Public Theater), Sound of Music, Sister Act, and Jolly Holiday (Paper Mill Playhouse), City Center Encores! Off-Center production of Stephen Sondheim’s Road Show, Fiddler on the Roof in Yiddish at Stage 42, and two National Yiddish Theatre Folksbiene productions: The Sorceress and The Golden Bride.",
     "isHidden": false,
     "section": "Trumpets"

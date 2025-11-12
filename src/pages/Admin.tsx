@@ -46,9 +46,13 @@ const Admin = () => {
     slug: "",
   });
 
-  // Musician search state
+  // Musician search state (for event modal)
   const [musicianSearch, setMusicianSearch] = useState("");
   const [searchResults, setSearchResults] = useState<Musician[]>([]);
+
+  // Search states for main sections
+  const [eventSearch, setEventSearch] = useState("");
+  const [musicianSectionSearch, setMusicianSectionSearch] = useState("");
 
   const [musicianForm, setMusicianForm] = useState<Partial<Musician>>({
     id: "",
@@ -546,72 +550,87 @@ const Admin = () => {
             </button>
           </div>
 
+          {/* Events Search */}
+          <div className="mb-4">
+            <input
+              type="text"
+              value={eventSearch}
+              onChange={(e) => setEventSearch(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
+              placeholder="Search events by title..."
+            />
+          </div>
+
           <div className="space-y-4">
-            {events.map((event) => (
-              <div
-                key={event.id}
-                className="border border-gray-200 rounded-lg p-4"
-              >
-                <div className="flex justify-between items-start">
-                  <div className="flex-1">
-                    <h3 className="font-bold text-lg text-gray-800">
-                      {event.title}
-                    </h3>
-                    <p className="text-sm text-gray-600">
-                      {event.date} • {event.location}
-                    </p>
-                    <div className="flex items-center gap-2 mt-2">
-                      <span
-                        className={`px-2 py-1 text-xs rounded-full ${
-                          event.isUpcoming
-                            ? "bg-green-100 text-green-800"
-                            : "bg-gray-100 text-gray-800"
-                        }`}
+            {events
+              .filter((event) =>
+                event.title.toLowerCase().includes(eventSearch.toLowerCase()),
+              )
+              .map((event) => (
+                <div
+                  key={event.id}
+                  className="border border-gray-200 rounded-lg p-4"
+                >
+                  <div className="flex justify-between items-start">
+                    <div className="flex-1">
+                      <h3 className="font-bold text-lg text-gray-800">
+                        {event.title}
+                      </h3>
+                      <p className="text-sm text-gray-600">
+                        {event.date} • {event.location}
+                      </p>
+                      <div className="flex items-center gap-2 mt-2">
+                        <span
+                          className={`px-2 py-1 text-xs rounded-full ${
+                            event.isUpcoming
+                              ? "bg-green-100 text-green-800"
+                              : "bg-gray-100 text-gray-800"
+                          }`}
+                        >
+                          {event.isUpcoming ? "Upcoming" : "Past"}
+                        </span>
+                        <span
+                          className={`px-2 py-1 text-xs rounded-full ${
+                            event.isHidden
+                              ? "bg-red-100 text-red-800"
+                              : "bg-blue-100 text-blue-800"
+                          }`}
+                        >
+                          {event.isHidden ? "Hidden" : "Visible"}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => openEventModal(event)}
+                        className="bg-amber-500 text-black p-2 rounded-md hover:bg-amber-400 transition-colors"
                       >
-                        {event.isUpcoming ? "Upcoming" : "Past"}
-                      </span>
-                      <span
-                        className={`px-2 py-1 text-xs rounded-full ${
+                        <Edit size={16} />
+                      </button>
+                      <button
+                        onClick={() => toggleEventVisibility(event.id)}
+                        className={`p-2 rounded-md transition-colors ${
                           event.isHidden
-                            ? "bg-red-100 text-red-800"
-                            : "bg-blue-100 text-blue-800"
+                            ? "bg-green-600 text-white hover:bg-green-700"
+                            : "bg-blue-600 text-white hover:bg-blue-700"
                         }`}
                       >
-                        {event.isHidden ? "Hidden" : "Visible"}
-                      </span>
+                        {event.isHidden ? (
+                          <ShowIcon size={16} />
+                        ) : (
+                          <HideIcon size={16} />
+                        )}
+                      </button>
+                      <button
+                        onClick={() => deleteEvent(event.id)}
+                        className="bg-red-600 text-white p-2 rounded-md hover:bg-red-700 transition-colors"
+                      >
+                        <Trash2 size={16} />
+                      </button>
                     </div>
                   </div>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => openEventModal(event)}
-                      className="bg-amber-500 text-black p-2 rounded-md hover:bg-amber-400 transition-colors"
-                    >
-                      <Edit size={16} />
-                    </button>
-                    <button
-                      onClick={() => toggleEventVisibility(event.id)}
-                      className={`p-2 rounded-md transition-colors ${
-                        event.isHidden
-                          ? "bg-green-600 text-white hover:bg-green-700"
-                          : "bg-blue-600 text-white hover:bg-blue-700"
-                      }`}
-                    >
-                      {event.isHidden ? (
-                        <ShowIcon size={16} />
-                      ) : (
-                        <HideIcon size={16} />
-                      )}
-                    </button>
-                    <button
-                      onClick={() => deleteEvent(event.id)}
-                      className="bg-red-600 text-white p-2 rounded-md hover:bg-red-700 transition-colors"
-                    >
-                      <Trash2 size={16} />
-                    </button>
-                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
 
@@ -630,11 +649,27 @@ const Admin = () => {
             </button>
           </div>
 
+          {/* Musicians Search */}
+          <div className="mb-4">
+            <input
+              type="text"
+              value={musicianSectionSearch}
+              onChange={(e) => setMusicianSectionSearch(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
+              placeholder="Search musicians by name..."
+            />
+          </div>
+
           <div className="space-y-6">
             {/* Musicians with assigned sections */}
             {sections.map((section) => {
               const sectionMusicians = musicians
                 .filter((musician) => musician.section === section)
+                .filter((musician) =>
+                  musician.name
+                    .toLowerCase()
+                    .includes(musicianSectionSearch.toLowerCase()),
+                )
                 .sort((a, b) => a.name.localeCompare(b.name));
 
               if (sectionMusicians.length === 0) return null;
@@ -690,6 +725,11 @@ const Admin = () => {
               const uncategorizedMusicians = musicians
                 .filter(
                   (musician) => !musician.section || musician.section === "",
+                )
+                .filter((musician) =>
+                  musician.name
+                    .toLowerCase()
+                    .includes(musicianSectionSearch.toLowerCase()),
                 )
                 .sort((a, b) => a.name.localeCompare(b.name));
 

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Calendar, MapPin } from "lucide-react";
 import { Event } from "@/lib/types/events";
 import { eventsAPI, musiciansAPI } from "@/lib/api";
+import MusiciansList from "@/components/MusiciansList";
 
 const EventDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -106,7 +107,11 @@ const EventDetail = () => {
   };
 
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
+    // Parse the date string and ensure it's treated as local time
+    const [datePart, timePart] = dateString.split("T");
+    const [year, month, day] = datePart.split("-").map(Number);
+    const date = new Date(year, month - 1, day);
+
     return date.toLocaleDateString("en-US", {
       weekday: "long",
       year: "numeric",
@@ -121,10 +126,11 @@ const EventDetail = () => {
         {" "}
         {/* Space for nav bar */}
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 py-8">
-          {/* Media and Details Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-            {/* Media Section */}
-            <div className="lg:col-span-2">
+          {/* Main Grid Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Left Column - Top: Media, Bottom: Program */}
+            <div className="lg:col-span-2 space-y-8">
+              {/* Media Section */}
               <div className="relative bg-gray-200 rounded-lg overflow-hidden">
                 {currentMedia && currentMedia.url ? (
                   currentMedia.type === "image" ? (
@@ -188,90 +194,67 @@ const EventDetail = () => {
                   </div>
                 )}
               </div>
-            </div>
 
-            {/* Details Section */}
-            <div className="bg-white p-6 rounded-lg h-fit">
-              <h1 className="text-2xl font-bold text-black mb-4">
-                {event.title}
-              </h1>
-              <p className="text-gray-700 mb-6">{event.description}</p>
-
-              <div className="border-t border-gray-200 pt-4"></div>
-
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <Calendar className="text-amber-500 mr-3" size={20} />
-                  <div>
-                    <p className="text-black font-medium">
-                      {formatDate(event.date)}
-                    </p>
+              {/* Event Program Section */}
+              {event.programImage && (
+                <div>
+                  <h2 className="text-amber-500 font-bebasNeue text-3xl mb-6">
+                    Event Program
+                  </h2>
+                  <div className="bg-white p-6 rounded-lg">
+                    <img
+                      src={event.programImage}
+                      alt={`${event.title} Program`}
+                      className="max-w-full h-auto mx-auto"
+                    />
                   </div>
                 </div>
-
-                <div className="flex items-start">
-                  <MapPin className="text-amber-500 mr-3 mt-1" size={20} />
-                  <div>
-                    <p className="text-black font-medium">{event.location}</p>
-                  </div>
-                </div>
-              </div>
+              )}
             </div>
-          </div>
 
-          {/* Event Program Section */}
-          {event.programImage && (
-            <div className="mb-12">
-              <h2 className="text-amber-500 font-bebasNeue text-3xl mb-6">
-                Event Program
-              </h2>
-              <div className="bg-white p-6 rounded-lg">
-                <img
-                  src={event.programImage}
-                  alt={`${event.title} Program`}
-                  className="max-w-full h-auto mx-auto"
-                />
-              </div>
-            </div>
-          )}
+            {/* Right Column - Top: Details, Bottom: Musicians */}
+            <div className="space-y-8">
+              {/* Details Section */}
+              <div className="bg-white p-6 rounded-lg h-fit">
+                <h1 className="text-2xl font-bold text-black mb-4">
+                  {event.title}
+                </h1>
+                <p className="text-gray-700 mb-6">{event.description}</p>
 
-          {/* Musicians Section */}
-          {eventMusicians.length > 0 && (
-            <div>
-              <h2 className="text-amber-500 font-bebasNeue text-3xl mb-6">
-                Meet the Musicians
-              </h2>
-              <div className="bg-white p-6 rounded-lg max-h-96 overflow-y-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {eventMusicians.map((musician) => (
-                    <div
-                      key={musician.id}
-                      className="border border-gray-200 rounded-lg p-4"
-                    >
-                      <div className="flex items-center mb-3">
-                        <img
-                          src={musician.photo}
-                          alt={musician.name}
-                          className="w-12 h-12 rounded-full object-cover mr-3"
-                        />
-                        <div>
-                          <h3 className="font-bold text-black">
-                            {musician.name}
-                          </h3>
-                          <p className="text-sm text-gray-600">
-                            {musician.role || musician.instrument}
-                          </p>
-                        </div>
-                      </div>
-                      <p className="text-sm text-gray-700 line-clamp-3">
-                        {musician.bio}
+                <div className="border-t border-gray-200 pt-4"></div>
+
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <Calendar className="text-amber-500 mr-3" size={20} />
+                    <div>
+                      <p className="text-black font-medium">
+                        {formatDate(event.date)}
                       </p>
                     </div>
-                  ))}
+                  </div>
+
+                  <div className="flex items-center">
+                    <MapPin className="text-amber-500 mr-3 mt-1" size={40} />
+                    <div>
+                      <p className="text-black font-medium">{event.location}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
+
+              {/* Musicians Section */}
+              {eventMusicians.length > 0 && (
+                <div>
+                  <h2 className="text-amber-500 font-bebasNeue text-3xl mb-6">
+                    Meet the Musicians
+                  </h2>
+                  <div className="w-full">
+                    <MusiciansList musicians={eventMusicians} layout="event" />
+                  </div>
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </div>
     </div>
