@@ -2,6 +2,7 @@ import "../styles/background.css";
 import trumpet from "../lib/assets/trumpet.webp";
 import LJBSarah from "../lib/assets/LJB_SarahJaneCion.webp";
 import trumpetGuys from "../lib/assets/trumpetguys.webp";
+import artsW from "../lib/assets/artsWestchesterLogo.png";
 import { Link } from "react-router-dom";
 
 const Donate = () => {
@@ -34,24 +35,22 @@ const Donate = () => {
           is not! Your support will help us add more shows, invite guest
           artists, and record our music.
         </p>
+        <img src={artsW} className="size-1/3"/>
         <Link
           to="https://artswestchester.org/grants/artswchallenge/"
-          className=" mb-10"
-        >
+          className=" mb-10 text-amber-500"
+        >ArtsWestchester Challenge
         </Link>
         <div className="flex flex-col items-center text-lg ">
             <h2 className=" font-roboto">To donate:</h2>
-              <ol className="list-disc list-inside lg:indent-20 md:indent-14">
-                <li>
-                  Check (payable to Nancy Maron; send with form to 69 Oakland
-                  Avenue Yonkers, NY 10710)
-                </li>
-                <li>Zelle (maronnancy@gmail.com)</li>
+              <ol className="list-disc list-inside lg:indent-14 md:indent-8">
+                <li>Come to one of our shows! </li>
+                <li>Mail check to LIBRARY JAZZ BAND, along with signed form</li>
+                <li>ZELLE to LIBRARY JAZZ BAND, with signed form.</li>
               </ol>
           <span className="mt-6 mb-6">
-            [Note: LJB is in the process of becoming a not-for-profit, but does
-            not have that status yet. Your donation this year is deeply
-            appreciated, but not tax deductible. ]
+            [Note: As of August 2025, LIBRARY JAZZ BAND INC is recognized as a not for profit organization. 
+Your donations are tax deducitble to the extent allowed by law]
           </span>
         </div>
       </div>
