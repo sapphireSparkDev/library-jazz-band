@@ -145,7 +145,7 @@ const Events = () => {
           <div className="flex space-x-4">
             <button
               onClick={scrollToUpcoming}
-              className={`px-6 py-3 font-medium transition-colors ${
+              className={`px-6 py-3 font-medium transition-colors rounded-none ${
                 activeSection === "upcoming"
                   ? "bg-amber-500 text-black hover:bg-amber-400"
                   : "bg-amber-700 text-white hover:bg-amber-600"
@@ -155,7 +155,7 @@ const Events = () => {
             </button>
             <button
               onClick={scrollToPast}
-              className={`px-6 py-3 font-medium transition-colors ${
+              className={`px-6 py-3 font-medium transition-colors rounded-none ${
                 activeSection === "past"
                   ? "bg-amber-500 text-black hover:bg-amber-400"
                   : "bg-amber-700 text-white hover:bg-amber-600"

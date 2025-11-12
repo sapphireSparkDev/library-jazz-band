@@ -15,7 +15,7 @@ const NavBar = ({
 }) => {
   return (
     <div className="w-full mb-4 mt-4">
-      <Card className="bg-white">
+      <Card className="bg-white rounded-none">
         <CardHeader>
           <CardTitle>
             {hasPhoto ? (
@@ -23,7 +23,7 @@ const NavBar = ({
                 src={imagePath}
                 width={350}
                 height={350}
-                className="w-full h-auto max-w-full object-cover rounded-lg"
+                className="w-full h-auto max-w-full object-cover rounded-none"
                 alt={`Photo of ${name}`}
               />
             ) : null}

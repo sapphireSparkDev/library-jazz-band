@@ -50,7 +50,7 @@ export const EventCard = ({ event }: EventCardProps) => {
   };
 
   return (
-    <Card className="bg-white border-0 shadow-lg overflow-hidden min-h-[320px] flex flex-col">
+    <Card className="bg-white border-0 shadow-lg overflow-hidden min-h-[320px] flex flex-col rounded-none">
       {/* Media Section */}
       <div className="relative aspect-video bg-gray-200">
         {currentMedia ? (

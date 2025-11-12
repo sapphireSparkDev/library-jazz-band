@@ -81,7 +81,7 @@ const EventDetail = () => {
   if (!event) {
     return (
       <div className="min-h-screen bg-neutral-900 flex items-center justify-center">
-        <div className="text-amber-500 text-xl bg-white p-8 rounded-lg shadow-lg text-center">
+        <div className="text-amber-500 text-xl bg-white p-8 rounded-none shadow-lg text-center">
           <div>Event not found</div>
           <div className="text-sm text-gray-600 mt-2">
             Slug: {slug}
@@ -131,7 +131,7 @@ const EventDetail = () => {
             {/* Left Column - Top: Media, Bottom: Program */}
             <div className="lg:col-span-2 space-y-8">
               {/* Media Section */}
-              <div className="relative bg-gray-200 rounded-lg overflow-hidden">
+              <div className="relative bg-gray-200 rounded-none overflow-hidden">
                 {currentMedia && currentMedia.url ? (
                   currentMedia.type === "image" ? (
                     <img
@@ -201,7 +201,7 @@ const EventDetail = () => {
                   <h2 className="text-amber-500 font-bebasNeue text-3xl mb-6">
                     Event Program
                   </h2>
-                  <div className="bg-white p-6 rounded-lg">
+                  <div className="bg-white p-6 rounded-none">
                     <img
                       src={event.programImage}
                       alt={`${event.title} Program`}
@@ -215,7 +215,7 @@ const EventDetail = () => {
             {/* Right Column - Top: Details, Bottom: Musicians */}
             <div className="space-y-8">
               {/* Details Section */}
-              <div className="bg-white p-6 rounded-lg h-fit">
+              <div className="bg-white p-6 rounded-none h-fit">
                 <h1 className="text-2xl font-bold text-black mb-4">
                   {event.title}
                 </h1>
