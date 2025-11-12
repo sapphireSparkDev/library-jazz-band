@@ -38,7 +38,7 @@ export const EventCard = ({ event }: EventCardProps) => {
 
   const formatDate = (dateString: string) => {
     // Parse the date string and ensure it's treated as local time
-    const [datePart, timePart] = dateString.split("T");
+    const [datePart] = dateString.split("T");
     const [year, month, day] = datePart.split("-").map(Number);
     const date = new Date(year, month - 1, day);
 
