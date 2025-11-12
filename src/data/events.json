@@ -55,5 +55,43 @@
     "isUpcoming": false,
     "isHidden": false,
     "slug": "showtime-broadway-yonkers"
+  },
+  {
+    "id": "event-1762924488150",
+    "title": "Fall Into Jazz… with the Library Jazz Band",
+    "description": "The 16-piece Library Jazz Band will fill Yonkers Arts’ Gallery space with the sounds of jazz old and new. Program features classic tunes like Moten Swing and Groove Merchant, inventive arrangements of favorites such as Wichita Lineman (Matt Garrison) and Stoned Soul Picnic (Rob Susman), and original works by Sarah Jane Cion and Dave Levitt. It’s an afternoon of big band energy, creativity, and timeless groove.  ",
+    "date": "2025-11-16T13:00",
+    "location": "Yonkers Arts. 216 Lake Avenue. Yonkers, NY",
+    "media": [
+      {
+        "type": "image",
+        "url": "",
+        "alt": ""
+      }
+    ],
+    "programImage": "",
+    "musicians": [],
+    "isUpcoming": true,
+    "isHidden": false,
+    "slug": "fall-into-jazz"
+  },
+  {
+    "id": "event-1762924672780",
+    "title": "Fall Into Jazz… with the Library Jazz Band.  ",
+    "description": "The 16-piece Library Jazz Band returns to its homebase of the Will Library for the annual Fall Concert, bringing its signature blend of vintage swing and fresh new sounds. Program includes classic tunes like Moten Swing and Groove Merchant, inventive arrangements of favorites such as Wichita Lineman (Matt Garrison) and Stoned Soul Picnic (Rob Susman), and original works by Sarah Jane Cion and Dave Levitt. It’s an afternoon of big band energy, creativity, and timeless groove. \nThis program will also include a salute to our late bandmember, trumpeter extraordinaire, Kim Burgie.\n",
+    "date": "2025-11-23T14:00",
+    "location": "Grinton I. Will Library. 1500 Central Park Avenue. Yonkers, NY",
+    "media": [
+      {
+        "type": "image",
+        "url": "",
+        "alt": ""
+      }
+    ],
+    "programImage": "",
+    "musicians": [],
+    "isUpcoming": true,
+    "isHidden": false,
+    "slug": "fall-into-jazz2"
   }
 ]
