@@ -299,8 +299,8 @@ const Admin = () => {
   };
 
   const saveMusician = async () => {
-    if (!musicianForm.name || !musicianForm.role || !musicianForm.instrument) {
-      alert("Please fill in all required fields");
+    if (!musicianForm.name || !musicianForm.instrument) {
+      alert("Please fill in name and instrument fields");
       return;
     }
 
@@ -589,7 +589,8 @@ const Admin = () => {
                       {musician.name}
                     </h3>
                     <p className="text-sm text-gray-600">
-                      {musician.role} • {musician.instrument}
+                      {musician.role ? `${musician.role} • ` : ""}
+                      {musician.instrument}
                     </p>
                     <p className="text-sm text-gray-500 mt-1 line-clamp-2">
                       {musician.bio}
@@ -767,7 +768,8 @@ const Admin = () => {
                             >
                               <div className="font-medium">{musician.name}</div>
                               <div className="text-sm text-gray-600">
-                                {musician.role} • {musician.instrument}
+                                {musician.role ? `${musician.role} • ` : ""}
+                                {musician.instrument}
                               </div>
                             </div>
                           ))}
@@ -794,7 +796,7 @@ const Admin = () => {
                                       {musician.name}
                                     </span>
                                     <span className="text-sm text-gray-600 ml-2">
-                                      ({musician.role})
+                                      ({musician.role || musician.instrument})
                                     </span>
                                   </div>
                                   <button
@@ -972,7 +974,7 @@ const Admin = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Role *
+                        Role
                       </label>
                       <input
                         type="text"
@@ -984,7 +986,7 @@ const Admin = () => {
                           })
                         }
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
-                        placeholder="Musician role"
+                        placeholder="Musician role (optional)"
                       />
                     </div>
 

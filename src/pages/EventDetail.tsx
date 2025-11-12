@@ -259,7 +259,7 @@ const EventDetail = () => {
                             {musician.name}
                           </h3>
                           <p className="text-sm text-gray-600">
-                            {musician.role}
+                            {musician.role || musician.instrument}
                           </p>
                         </div>
                       </div>

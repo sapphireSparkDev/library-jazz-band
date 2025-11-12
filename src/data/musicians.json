@@ -2,7 +2,7 @@
   {
     "id": "sarah-cion",
     "name": "Sarah Cion",
-    "role": "Co-Founder, Piano",
+    "role": "Co-Founder",
     "instrument": "Piano",
     "photo": "/src/lib/assets/CION_piano.jpeg",
     "bio": "Sarah Jane Cion is the winner of the 17th Annual Great American Jazz Piano Competition and has appeared on NPR's Piano Jazz with Marian McPartland. She has performed internationally, including at Japan's Blue Note and the Kennedy Center's Women in Jazz Festival, and her recordings feature jazz greats like Michael Brecker and Billy Hart. Her original music has been featured in films like The Mule and Thor: The Dark World. A Steinway artist and author of Modern Jazz Piano (Hal Leonard), Sarah performs regularly with top NYC big bands and leads her own trio.",
@@ -11,7 +11,7 @@
   {
     "id": "dan-asher",
     "name": "Dan Asher",
-    "role": "Bass",
+    "role": "",
     "instrument": "Bass",
     "photo": "/src/lib/assets/LJB_DanAsher.webp",
     "bio": "Dan Asher has been busy performing and teaching in the New York area since 2001 at legendary venues including Birdland, the Blue Note, Smalls and the 55 Bar, covering a wide range of music, mainly Rock, R&B, Jazz and everything in between. As an in-demand sideman, he performs regularly with artists such as Gabe Dixon, Southside Johnny and the Asbury Jukes and the Broadway Boys (including its new offshoot, Cruising Steady). A regular performer at the world-famous Baz Bar in St. Barth, he has performed most recently with Jimmy Buffett as well as legendary keyboardists David Bryan and Jay Oliver.",
@@ -20,8 +20,8 @@
   {
     "id": "bill-reeve",
     "name": "Bill Reeve",
-    "role": "Drums/Percussion",
-    "instrument": "Drums",
+    "role": "",
+    "instrument": "Drums/Percussion",
     "photo": "/src/lib/assets/Reeve_drums.webp",
     "bio": "Bill Reeve has been playing big band music for 50 years. From 1984 to 1989, he directed the 4 o'clock Jazz Ensemble at the University of New Hampshire and in 1988, also conducted the 3 o'clock band. He has performed with many jazz legends including Clark Terry, Toshiko Akiyoshi/Lew Tabakin, Bob Mintzer, Peter Erskine, Alan Dawson, James Moody, Jimmy Heath, Milt Hinton, James Williams, Buddy DeFranco, Lee Konitz, Dick Johnson, Herb Pomeroy, Mike Metheny, and many others. In addition, Bill is a talented graphic artist, and designer of the Library Jazz Band's logo and music stands.",
     "isHidden": false
@@ -29,8 +29,8 @@
   {
     "id": "nancy-maron",
     "name": "Nancy Maron",
-    "role": "Co-Founder/Artistic Director, Alto and Soprano saxophones",
-    "instrument": "Saxophone",
+    "role": "Co-Founder/Artistic Director",
+    "instrument": "Alto and Soprano saxophones",
     "photo": "/src/lib/assets/NMaron_sax.png",
     "bio": "Nancy plays alto, soprano, and tenor saxophones with Lehman College and Community Band, Yonkers Philharmonic, The Westchester Band, and rock cover band the Patroons.",
     "isHidden": false
@@ -38,10 +38,91 @@
   {
     "id": "travis-sullivan",
     "name": "Travis Sullivan",
-    "role": "Alto saxophone",
-    "instrument": "Saxophone",
+    "role": "",
+    "instrument": "Alto saxophone",
     "photo": "/src/lib/assets/travis.webp",
     "bio": "Zoho Music and Posi-Tone recording artist Travis Sullivan is an alto saxophonist, pianist, composer and arranger. Hailed by Jazz Times as 'a gifted alto saxophonist and improviser who has also developed a strong and commanding voice as a composer,' his 18-piece Bjorkestra performs his arrangements of the renowned music of Icelandic pop goddess Bjork.",
+    "isHidden": false
+  },
+  {
+    "id": "musician-1762923131959",
+    "name": "Matt Garrison",
+    "role": "",
+    "instrument": "Tenor Saxophone",
+    "photo": "/src/lib/assets/Garrison_tenor.jpeg",
+    "bio": "With confidence, lyricism, and a tonality that is suffused in warmth, saxophonist Matt Garrison fervently pursues the art-form of jazz as reflected in his own words, \"I like to think that I am a translator of sorts. A jazz musician, in my opinion, is supposed to interpret the world around them and convert those situations and feelings into music.\" Matt has gigged or recorded with various players of note--the late Dennis Irwin, Eliot Zigmund, Pete Malinverni, Adam Nussbaum, Gene Jackson, Sam Yahel, Jeff Hirshfield, Jon Cowherd, Andy Laverne--and was once in a band with trumpeter great, Ray Vega. His newest project is entitled “The Hudson Calls,” a tribute to various rivertowns throughout the Hudson Valley.",
+    "isHidden": false
+  },
+  {
+    "id": "musician-1762923305677",
+    "name": "Chris Ferdinand",
+    "role": "",
+    "instrument": "Tenor saxophone",
+    "photo": "/src/lib/assets/ChrisFerdinand_sax.png",
+    "bio": "Chris Ferdinand, the newest member of the ensemble, joins us all the way from Brooklyn: Aspiring pilot, playing saxophone for fifteen-ish years and subsisting on caffeine.",
+    "isHidden": false
+  },
+  {
+    "id": "musician-1762923421631",
+    "name": "Karl Watson",
+    "role": "",
+    "instrument": "Baritone saxophone",
+    "photo": "/src/lib/assets/KarlW_sax.png",
+    "bio": "Karl is a very active and versatile musician, performing professionally on a number of instruments in a wide variety of styles. At Lehman, he plays bass clarinet in the Community Band, saxophone in the Latin Jazz Band, clarinet in the Symphony Orchestra, and violin in the Chamber Orchestra and performs throughout the tri-state area. Karl has been on staff in the Lehman Music Department since 1998.",
+    "isHidden": false
+  },
+  {
+    "id": "musician-1762923543064",
+    "name": "Andrew Hadro",
+    "role": "",
+    "instrument": "Bass Saxophone",
+    "photo": "/src/lib/assets/Hardo_bass sax.jpg",
+    "bio": "Andrew’s primary instrument is Baritone Saxophone, though he also performs on Bass Clarinet, Bb Clarinet, Flute, and is one of the only working musicians in New York City to play the Bass Saxophone and Contra-bass Clarinet. He performs baritone saxophone, bass clarinet and bass saxophone on the Bianca Reimagined by Dan Pugach, which recently won the Grammy for Best Large Jazz Ensemble.",
+    "isHidden": false
+  },
+  {
+    "id": "musician-1762923675877",
+    "name": "Jordan Hirsch",
+    "role": "",
+    "instrument": "Trumpet",
+    "photo": "/src/lib/assets/Hirsch_tpt.png",
+    "bio": "Jordan is a NYC based professional trumpet player with experience teaching performance and music appreciation on the middle school and high school level. Experience leading ensembles for private and corporate events, playing a wide variety of styles. Currently performing in the orchestra for the critically acclaimed NY Off-Broadway production of Fiddler on the Roof.",
+    "isHidden": false
+  },
+  {
+    "id": "musician-1762923748377",
+    "name": "Ron Horton",
+    "role": "",
+    "instrument": "Trumpet",
+    "photo": "/src/lib/assets/Horton_trumpet.png",
+    "bio": "Ron Horton is a trumpeter and composer with 4 CDs under his own name (Genius Envy-OmniTone, Subtextures-Fresh Sounds, Everything in a Dream-Fresh Sounds, It's a Gadget World-ABEAT), and has performed and/or recorded with Andrew Hill, Lee Konitz, Jane Ira Bloom, Jazz Composers Collective (Ben Allison, Frank Kimbrough, Ted Nash, Michael Blake) and others.",
+    "isHidden": false
+  },
+  {
+    "id": "musician-1762923848163",
+    "name": "Kim Burgie",
+    "role": "",
+    "instrument": "Trumpet/Flugelhorn",
+    "photo": "/src/lib/assets/Burgie_tpt.jpeg",
+    "bio": "Kim is a multi-Instrumentalist who plays trumpet/flugelhorn, jazz recorder and drums/percussion and has played at many of the top hotels, catering halls, night clubs and other venues in the tri-state area and around the world. When Kim is not working on original music or writing music for TV and motion pictures, he is a music teacher at a New York City high school in the South Bronx. Kim has 4 CD’s of his original music out there in the world (“In The Zone”, “Blessed Not Stressed”, “Fun” and “Fun 2.0”).",
+    "isHidden": false
+  },
+  {
+    "id": "musician-1762923926194",
+    "name": "William Schaeffer",
+    "role": "Co-Founder",
+    "instrument": "Trumpet",
+    "photo": "/src/lib/assets/Schaeffer_trumpet.png",
+    "bio": "William is a lawyer working at the Inspector General’s Office of the New York City School Construction Authority. He performs regularly on trumpet with the Lehman College Community Band, the Westchester Band in Scarsdale, the New Westchester Symphony Orchestra in White Plains, the Manhattanville College Community Orchestra in Purchase, the St. Thomas Orchestra in Mamaroneck, the Cross Cultural Connection Pro-Am Ensemble in Peekskill, and the Patroons in Mount Vernon.",
+    "isHidden": false
+  },
+  {
+    "id": "musician-1762924068461",
+    "name": "Rebecca Steinberg",
+    "role": "",
+    "instrument": "Trumpet",
+    "photo": "/src/lib/assets/Steingberg_trumpet.png",
+    "bio": "Based in NYC, trumpet player Rebecca Steinberg has a career marked by her warm, inviting sound and stylistic versatility. You can find Rebecca in the pit of New York City’s many theater productions, performing alongside her brass quintet Calliope Brass, and teaching music both privately and in the classroom. Rebecca has held trumpet chairs Tony winning Broadway musicals SUFFS and New York, New York. Other notable appearances include Ragtime (City Center), SUFFS (The Public Theater), Sound of Music, Sister Act, and Jolly Holiday (Paper Mill Playhouse), City Center Encores! Off-Center production of Stephen Sondheim’s Road Show, Fiddler on the Roof in Yiddish at Stage 42, and two National Yiddish Theatre Folksbiene productions: The Sorceress and The Golden Bride.",
     "isHidden": false
   }
 ]
