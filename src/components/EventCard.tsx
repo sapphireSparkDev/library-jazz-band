@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Play, Pause, Volume2, VolumeX, MapPin } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { Event } from "@/lib/types/events";
+import { resolveImagePath } from "@/lib/utils";
 
 interface EventCardProps {
   event: Event;
@@ -56,7 +57,9 @@ export const EventCard = ({ event }: EventCardProps) => {
         {currentMedia ? (
           currentMedia.type === "image" ? (
             <img
-              src={currentMedia.url || "/placeholder-image.jpg"}
+              src={
+                resolveImagePath(currentMedia.url) || "/placeholder-image.jpg"
+              }
               alt={currentMedia.alt || event.title}
               className="w-full h-full object-cover"
             />
