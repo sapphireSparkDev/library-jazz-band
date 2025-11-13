@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { resolveImagePath } from "@/lib/utils";
 
 const NavBar = ({
   name,
@@ -20,7 +21,7 @@ const NavBar = ({
           <CardTitle>
             {hasPhoto ? (
               <img
-                src={imagePath}
+                src={resolveImagePath(imagePath)}
                 width={350}
                 height={350}
                 className="w-full h-auto max-w-full object-cover rounded-none"

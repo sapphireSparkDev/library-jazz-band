@@ -4,6 +4,7 @@ import { Calendar, MapPin } from "lucide-react";
 import { Event } from "@/lib/types/events";
 import { eventsAPI, musiciansAPI } from "@/lib/api";
 import MusiciansList from "@/components/MusiciansList";
+import { resolveImagePath } from "@/lib/utils";
 
 const EventDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -135,7 +136,7 @@ const EventDetail = () => {
                 {currentMedia && currentMedia.url ? (
                   currentMedia.type === "image" ? (
                     <img
-                      src={currentMedia.url}
+                      src={resolveImagePath(currentMedia.url)}
                       alt={currentMedia.alt || event.title}
                       className="w-full h-96 object-cover"
                       onError={(e) => {
@@ -203,7 +204,7 @@ const EventDetail = () => {
                   </h2>
                   <div className="bg-white p-6 rounded-none">
                     <img
-                      src={event.programImage}
+                      src={resolveImagePath(event.programImage)}
                       alt={`${event.title} Program`}
                       className="max-w-full h-auto mx-auto"
                     />

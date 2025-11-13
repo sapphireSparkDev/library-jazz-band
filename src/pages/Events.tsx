@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { EventCard } from "@/components/EventCard";
 import { Event } from "@/lib/types/events";
 import { eventsAPI } from "@/lib/api";
+import { resolveImagePath } from "@/lib/utils";
 
 const Events = () => {
   const [events, setEvents] = useState<Event[]>([]);
@@ -126,7 +127,7 @@ const Events = () => {
           {/* Space for nav bar */}
           <div className="mx-4 md:mx-8 lg:mx-16">
             <img
-              src="/src/lib/assets/LJBRob.webp"
+              src={resolveImagePath("/src/lib/assets/LJBRob.webp")}
               alt="Library Jazz Band performing"
               className="w-full h-64 md:h-80 lg:h-96 object-cover rounded-lg shadow-lg"
             />
