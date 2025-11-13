@@ -22,7 +22,11 @@
     "react-icons": "^5.3.0",
     "react-router-dom": "^6.28.0",
     "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "multer": "^2.0.2",
+    "serverless-http": "^3.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
