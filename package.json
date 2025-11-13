@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build && npm run copy-data",
-    "copy-data": "cp -r src/data dist/src/data",
+    "copy-data": "mkdir -p dist/src && cp -r src/data dist/src/",
     "lint": "eslint .",
     "preview": "vite preview",
     "prepare": "husky"
