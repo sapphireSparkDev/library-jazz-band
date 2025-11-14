@@ -40,16 +40,6 @@
     "section": "Saxophones"
   },
   {
-    "id": "travis-sullivan",
-    "name": "Travis Sullivan",
-    "role": "",
-    "instrument": "Alto saxophone",
-    "photo": "/src/lib/assets/travis.webp",
-    "bio": "Zoho Music and Posi-Tone recording artist Travis Sullivan is an alto saxophonist, pianist, composer and arranger. Hailed by Jazz Times as 'a gifted alto saxophonist and improviser who has also developed a strong and commanding voice as a composer,' his 18-piece Bjorkestra performs his arrangements of the renowned music of Icelandic pop goddess Bjork.",
-    "isHidden": false,
-    "section": "Saxophones"
-  },
-  {
     "id": "musician-1762923131959",
     "name": "Matt Garrison",
     "role": "",
@@ -76,16 +66,6 @@
     "instrument": "Baritone saxophone",
     "photo": "/src/lib/assets/KarlW_sax.png",
     "bio": "Karl is a very active and versatile musician, performing professionally on a number of instruments in a wide variety of styles. At Lehman, he plays bass clarinet in the Community Band, saxophone in the Latin Jazz Band, clarinet in the Symphony Orchestra, and violin in the Chamber Orchestra and performs throughout the tri-state area. Karl has been on staff in the Lehman Music Department since 1998.",
-    "isHidden": false,
-    "section": "Saxophones"
-  },
-  {
-    "id": "musician-1762923543064",
-    "name": "Andrew Hadro",
-    "role": "",
-    "instrument": "Bass Saxophone",
-    "photo": "src/lib/assets/Hadro_bass sax.jpg",
-    "bio": "Andrew’s primary instrument is Baritone Saxophone, though he also performs on Bass Clarinet, Bb Clarinet, Flute, and is one of the only working musicians in New York City to play the Bass Saxophone and Contra-bass Clarinet. He performs baritone saxophone, bass clarinet and bass saxophone on the Bianca Reimagined by Dan Pugach, which recently won the Grammy for Best Large Jazz Ensemble.",
     "isHidden": false,
     "section": "Saxophones"
   },
@@ -130,16 +110,6 @@
     "section": "Trumpets"
   },
   {
-    "id": "musician-1762924068461",
-    "name": "Rebecca Steinberg",
-    "role": "",
-    "instrument": "Trumpet",
-    "photo": "src/lib/assets/Steinberg_trumpet.png",
-    "bio": "Based in NYC, trumpet player Rebecca Steinberg has a career marked by her warm, inviting sound and stylistic versatility. You can find Rebecca in the pit of New York City’s many theater productions, performing alongside her brass quintet Calliope Brass, and teaching music both privately and in the classroom. Rebecca has held trumpet chairs Tony winning Broadway musicals SUFFS and New York, New York. Other notable appearances include Ragtime (City Center), SUFFS (The Public Theater), Sound of Music, Sister Act, and Jolly Holiday (Paper Mill Playhouse), City Center Encores! Off-Center production of Stephen Sondheim’s Road Show, Fiddler on the Roof in Yiddish at Stage 42, and two National Yiddish Theatre Folksbiene productions: The Sorceress and The Golden Bride.",
-    "isHidden": false,
-    "section": "Trumpets"
-  },
-  {
     "id": "musician-1762924852689",
     "name": "Rob Susman",
     "role": "",
@@ -170,32 +140,12 @@
     "section": "Trombones"
   },
   {
-    "id": "musician-1762925122064",
-    "name": "Mike Fahn",
-    "role": "",
-    "instrument": "Trombone",
-    "photo": "/src/lib/assets/Mike Fahn _trombone.png",
-    "bio": "Mike Fahn first started playing drums, (emulating his drummer dad); picked up the trumpet at age 5; and by age 13 switched to the baritone horn. His father loved Bob Brookmeyer and presented Mike with a valve trombone. Benefitting from the outstanding school music programs in Huntington Long Island, Mike learned to improvise on the deep well of jazz standards.He has played with Bob Cooper, Pete Christlieb, Maynard Ferguson, Conte Condoli, Peter Erskine, John Patitucci, Tom Kubis and many others.",
-    "isHidden": false,
-    "section": "Trombones"
-  },
-  {
     "id": "musician-1762925182811",
     "name": "Jon Roth",
     "role": "",
     "instrument": "Trombone",
     "photo": "/src/lib/assets/Jon Roth_trombone.png",
     "bio": "Coming Jon Roth has had a varied career as a trombonist, arranger and composer. A native of Rockland County, NY, he initially studied trombone with local teacher Henry Heyzer and NY studio legend Fred “Moe” Snyder. He went on to receive his Bachelors of Music from Montclair State University, where he studied trombone and arranging with Alan Ferber. After graduation, he began a stint as a trombonist and arranger for Royal Caribbean Cruise Lines. Since returning to NY in 2012, he has collaborated and performed with various artists such as Larry Coryell, Wycliffe Gordon, Ingrid Jenson, Lew Tabackin and Mike Abene. He has also performed with such ensembles as the One More Once Big Band, The Analog Jazz Orchestra, Dancin’ Machine, The Imperial Brass Quintet and The Michael Cochrane Sextet. He currently works as a staff arranger for The North Jersey Concert Band. As an educator he is currently the Band Coordinator and Brass teacher for The Elisabeth Morrow School in Englewood, NJ and formerly as a Jazz instructor at the Thurnauer School of Music in Teaneck, NJ. He also currently leads his own quartet with Michael Cochrane, Bill Moring and Steve Johns.",
-    "isHidden": false,
-    "section": "Trombones"
-  },
-  {
-    "id": "musician-1762925220695",
-    "name": "Djorkaeff Zentla ",
-    "role": "",
-    "instrument": " Bass trombone",
-    "photo": "/src/lib/assets/Dj Zentla_basstrombone.png",
-    "bio": "Bio coming soon!",
     "isHidden": false,
     "section": "Trombones"
   },
@@ -210,53 +160,33 @@
     "section": "Tuba"
   },
   {
-    "id": "musician-1762925331208",
-    "name": "Aliyah Danielle",
+    "id": "musician-1763152597574",
+    "name": "Rocco Dapice",
     "role": "",
-    "instrument": "French Horn",
-    "photo": "/src/lib/assets/Alliyah_horn.png",
-    "bio": "Aliyah enjoys a multifaceted career as a performer, composer, producer, and educator. Primarily performing as a singer and french horn player, she frequently experiments with genre-fusion and performs music influenced by funk, neo-soul, gospel, jazz, classical, and other contemporary styles. She received her Master of Music in Contemporary Performance (Production Concentration) from Berklee College of Music in Valencia, Spain, and also holds a Bachelor of Music in Music Education from Arizona State University in Tempe, Arizona. She is currently studying for her Master in Management with a specialization in leadership from Marquette University.",
-    "isHidden": false,
-    "section": "French Horns"
-  },
-  {
-    "id": "musician-1762925390373",
-    "name": "Hanan Rahman",
-    "role": "",
-    "instrument": "French Horn",
-    "photo": "/src/lib/assets/Hanan_horn.png",
-    "bio": "Hanan Rahman is a freelance horn player based in New York City. She is a member of the Sinfonietta, the Sugar Hill Salon Artistic Collective, Egalitarian Brass, and the Washington Heights Chamber Orchestra, and has performed with Frisson Ensemble, Blow Globe, the Saint Andrew Music Society, the New Jersey Festival Orchestra, the Modus Operandi Orchestra, and Sound Off! Music for Bail. She frequently subs with the Hartford, New Haven, Vermont, Allentown, Greenwich, Cape, New Bedford, York, and Ridgefield symphony orchestras, the Northeast Pennsylvania Philharmonic, and Symphony in C.",
-    "isHidden": false,
-    "section": "French Horns"
-  },
-  {
-    "id": "musician-1762925438472",
-    "name": "Arnaldo Buzak",
-    "role": "",
-    "instrument": "Percussion",
-    "photo": "/src/lib/assets/ArnaldoBuzac.png",
-    "bio": "Arnaldo Buzack is a NY-based drummer/percussionist from Brazil. An alumnus of Escola Villa Lobos and Rio de Janeiro Federal University's Escola Nacional de Música, he backed many acts in two continents before taking a long sabbatical, from which he is back.",
-    "isHidden": false,
-    "section": "Percussion"
-  },
-  {
-    "id": "musician-1762925463687",
-    "name": "Graham Nalle",
-    "role": "",
-    "instrument": "Percussion",
+    "instrument": "Coming soon",
     "photo": "",
     "bio": "",
     "isHidden": false,
-    "section": "Percussion"
+    "section": "Rhythm"
   },
   {
-    "id": "musician-1762925472503",
-    "name": "Daniel Silva",
+    "id": "musician-1763152643819",
+    "name": "Lee Greene",
     "role": "",
-    "instrument": "Percussion",
+    "instrument": "Coming soon",
     "photo": "",
     "bio": "",
     "isHidden": false,
-    "section": "Percussion"
+    "section": "Saxophones"
+  },
+  {
+    "id": "musician-1763152683734",
+    "name": "Phil Grainger",
+    "role": "",
+    "instrument": "Coming soon",
+    "photo": "",
+    "bio": "",
+    "isHidden": false,
+    "section": "Trumpets"
   }
 ]

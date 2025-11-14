@@ -70,9 +70,7 @@ const Admin = () => {
   const LOCK_DURATION = 15 * 60 * 1000; // 15 minutes in milliseconds
 
   const sections = [
-    "Piano",
-    "Bass",
-    "Drums",
+    "Rhythm",
     "Saxophones",
     "Trumpets",
     "Trombones",
