@@ -93,5 +93,43 @@
     "isUpcoming": true,
     "isHidden": false,
     "slug": "fall-into-jazz2"
+  },
+  {
+    "id": "event-1763154169673",
+    "title": "Coming soon",
+    "description": "",
+    "date": "2026-01-25T14:00",
+    "location": "Greenburgh Public Library",
+    "media": [
+      {
+        "type": "image",
+        "url": "",
+        "alt": ""
+      }
+    ],
+    "programImage": "",
+    "musicians": [],
+    "isUpcoming": true,
+    "isHidden": false,
+    "slug": "coming-soon-a"
+  },
+  {
+    "id": "event-1763154231715",
+    "title": "Coming soon",
+    "description": "",
+    "date": "2026-06-21T00:00",
+    "location": "Make Music Yonkers 2026",
+    "media": [
+      {
+        "type": "image",
+        "url": "",
+        "alt": ""
+      }
+    ],
+    "programImage": "",
+    "musicians": [],
+    "isUpcoming": true,
+    "isHidden": false,
+    "slug": "coming-soon-b"
   }
 ]

@@ -231,8 +231,11 @@ const EventDetail = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center">
-                    <MapPin className="text-amber-500 mr-3 mt-1" size={40} />
+                  <div className="flex items-start">
+                    <MapPin
+                      className="text-amber-500 mr-3 flex-shrink-0"
+                      size={20}
+                    />
                     <div>
                       <p className="text-black font-medium">{event.location}</p>
                     </div>

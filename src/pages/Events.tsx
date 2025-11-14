@@ -6,6 +6,7 @@ import { resolveImagePath } from "@/lib/utils";
 
 const Events = () => {
   const [events, setEvents] = useState<Event[]>([]);
+  const [loading, setLoading] = useState(true);
   const [headerOpacity, setHeaderOpacity] = useState(1);
   const [activeSection, setActiveSection] = useState<"upcoming" | "past">(
     "upcoming",
@@ -18,6 +19,7 @@ const Events = () => {
     // Load events from API and sort them
     const loadEvents = async () => {
       try {
+        setLoading(true);
         const eventsData = await eventsAPI.getAll();
         const sortedEvents = eventsData
           .filter((event: Event) => !event.isHidden)
@@ -48,6 +50,8 @@ const Events = () => {
         console.error("Failed to load events:", error);
         // Fallback to empty array if API fails
         setEvents([]);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -113,6 +117,14 @@ const Events = () => {
     const now = new Date();
     return eventDate < now;
   });
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-neutral-900 flex items-center justify-center">
+        <div className="text-amber-500 text-xl">Loading events...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-neutral-900">
