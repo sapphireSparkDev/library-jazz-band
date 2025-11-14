@@ -14,9 +14,6 @@ const EventDetail = () => {
   const [eventMusicians, setEventMusicians] = useState<any[]>([]);
 
   useEffect(() => {
-    // Scroll to top when component mounts or slug changes
-    window.scrollTo(0, 0);
-
     // Find the event by slug from API
     const loadEvent = async () => {
       setLoading(true);

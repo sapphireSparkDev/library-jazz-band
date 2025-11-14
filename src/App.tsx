@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 import "./App.css";
 import NavBar from "./components/NavBar";
@@ -13,11 +14,23 @@ import EventDetail from "./pages/EventDetail";
 import OurMission from "./pages/OurMission";
 import OurMusicians from "./pages/OurMusicians";
 
+// ScrollToTop component that automatically scrolls to top on route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   return (
     <>
       <div className="w-screen">
         <BrowserRouter>
+          <ScrollToTop />
           <div className="sticky top-0 z-10">
             <NavBar />
           </div>

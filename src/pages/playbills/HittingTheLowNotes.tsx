@@ -32,15 +32,9 @@ import danAsher from "../../lib/assets/LJB_DanAsher.webp";
 import travis from "../../lib/assets/travis.webp";
 
 import BioCard from "@/components/BioCard";
-import { useEffect } from "react";
 
 const HittingTheLowNotes = () => {
   const blankImg = "";
-
-  useEffect(() => {
-    // Scroll to top when component mounts
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
     <div>
