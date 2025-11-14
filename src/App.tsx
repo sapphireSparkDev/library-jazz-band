@@ -10,6 +10,8 @@ import Footer from "./components/Footer";
 import HittingTheLowNotes from "./pages/playbills/HittingTheLowNotes";
 import Admin from "./pages/Admin";
 import EventDetail from "./pages/EventDetail";
+import OurMission from "./pages/OurMission";
+import OurMusicians from "./pages/OurMusicians";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
             <Route path="/events" element={<Events />} />
             <Route path="/events/:slug" element={<EventDetail />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/our-mission" element={<OurMission />} />
+            <Route path="/our-musicians" element={<OurMusicians />} />
             <Route path="/donate" element={<Donate />} />
             <Route path="/events/lowNotes" element={<HittingTheLowNotes />} />
             <Route path="/admin" element={<Admin />} />

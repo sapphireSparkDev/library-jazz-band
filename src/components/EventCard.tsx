@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Play, Pause, Volume2, VolumeX, MapPin } from "lucide-react";
+import { Play, Pause, Volume2, VolumeX, MapPin, Calendar } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { Event } from "@/lib/types/events";
 import { resolveImagePath } from "@/lib/utils";
@@ -134,9 +134,10 @@ export const EventCard = ({ event }: EventCardProps) => {
         {/* Top Content */}
         <div className="flex-1">
           {/* Date */}
-          <p className="text-amber-500 text-xs mb-1">
-            {formatDate(event.date)}
-          </p>
+          <div className="flex items-center text-amber-600 text-sm font-bold mb-1">
+            <Calendar size={14} className="mr-1" />
+            <span>{formatDate(event.date)}</span>
+          </div>
 
           {/* Title */}
           <h3 className="font-bold text-black text-sm mb-1 line-clamp-2">

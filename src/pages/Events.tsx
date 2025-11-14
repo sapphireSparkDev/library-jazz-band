@@ -141,7 +141,7 @@ const Events = () => {
       </div>
 
       {/* Navigation Buttons */}
-      <div className="sticky top-16 z-10 bg-neutral-900 pt-4 pb-4">
+      <div className="sticky top-16 z-10 pt-4 pb-4">
         <div className="mx-4 md:mx-8 lg:mx-16">
           <div className="flex space-x-4">
             <button
