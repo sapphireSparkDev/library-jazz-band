@@ -29,14 +29,14 @@ const NavBar = () => {
               <div className="absolute left-0 top-full w-48 bg-neutral-900 rounded-none shadow-lg z-100">
                 <Link
                   to="/our-mission"
-                  className="block px-4 py-2 text-amber-500 hover:text-amber-400 transition-colors font-sree text-xl"
+                  className="block px-4 py-2 text-amber-400 font-roboto text-sm hover:underline hover:text-amber-400"
                   onClick={() => setIsAboutOpen(false)}
                 >
                   Our Mission
                 </Link>
                 <Link
                   to="/our-musicians"
-                  className="block px-4 py-2 text-amber-500 hover:text-amber-400 transition-colors font-sree text-xl"
+                  className="block px-4 py-2 text-amber-400 font-roboto text-sm hover:underline hover:text-amber-400"
                   onClick={() => setIsAboutOpen(false)}
                 >
                   Our Musicians
