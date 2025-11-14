@@ -24,7 +24,7 @@ const Landing = () => {
             The Library Jazz Band
           </h1>
           <Link
-            to="/about"
+            to="/our-mission"
             className="text-amber-400 hover:text-yellow-500 shadow-sm mb-14 2xl:hidden font-serif flex flex-col items-center"
           >
             <div className="md:mt-56 lg:mt-96">
