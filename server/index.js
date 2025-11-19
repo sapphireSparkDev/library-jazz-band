@@ -11,17 +11,23 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
+// Serve uploaded files
+app.use("/uploads", express.static(path.join(__dirname, "../public/uploads")));
+
 // Configure multer for file uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const uploadPath = path.join(__dirname, "../src/lib/assets");
-    cb(null, uploadPath);
+    const uploadPath = path.join(__dirname, "../public/uploads");
+    // Create directory if it doesn't exist
+    fs.mkdir(uploadPath, { recursive: true })
+      .then(() => cb(null, uploadPath))
+      .catch((err) => cb(err));
   },
   filename: function (req, file, cb) {
-    // Generate unique filename with timestamp and original extension
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    const ext = path.extname(file.originalname);
-    cb(null, file.fieldname + "-" + uniqueSuffix + ext);
+    // Generate unique filename with timestamp
+    const timestamp = Date.now();
+    const safeFilename = `${timestamp}-${file.originalname.replace(/[^a-zA-Z0-9.-]/g, "_")}`;
+    cb(null, safeFilename);
   },
 });
 
@@ -261,15 +267,14 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
       return res.status(400).json({ error: "No file uploaded" });
     }
 
-    // Return the file path relative to the src directory for frontend use
-    const filePath = `/src/lib/assets/${req.file.filename}`;
+    // Return the file path relative to the public directory for frontend use
+    const filePath = `/uploads/${req.file.filename}`;
 
     res.json({
       success: true,
       filePath: filePath,
       filename: req.file.filename,
       originalName: req.file.originalname,
-      size: req.file.size,
     });
   } catch (error) {
     console.error("File upload error:", error);
