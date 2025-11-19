@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      .section {
+        margin: 20px;
+        padding: 10px;
+        border: 2px solid #ccc;
+      }
+      .musician {
+        padding: 10px;
+        margin: 5px;
+        background: #f0f0f0;
+        cursor: grab;
+      }
+      .musician:active {
+        cursor: grabbing;
+      }
+      .drag-over {
+        background: lightblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="section">
+      <h3>Section 1</h3>
+      <div class="musician" draggable="true" data-id="1">Musician 1</div>
+      <div class="musician" draggable="true" data-id="2">Musician 2</div>
+    </div>
+    <div class="section">
+      <h3>Section 2</h3>
+      <div class="musician" draggable="true" data-id="3">Musician 3</div>
+      <div class="musician" draggable="true" data-id="4">Musician 4</div>
+    </div>
+    <script>
+      let dragged = null;
+      document.querySelectorAll(".musician").forEach((el) => {
+        el.addEventListener("dragstart", (e) => {
+          dragged = e.target;
+          console.log("dragstart", e.target.dataset.id);
+        });
+        el.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          e.target.classList.add("drag-over");
+          console.log("dragover", e.target.dataset.id);
+        });
+        el.addEventListener("dragleave", (e) => {
+          e.target.classList.remove("drag-over");
+        });
+        el.addEventListener("drop", (e) => {
+          e.preventDefault();
+          e.target.classList.remove("drag-over");
+          console.log(
+            "drop on",
+            e.target.dataset.id,
+            "from",
+            dragged?.dataset.id,
+          );
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -39,15 +39,27 @@ export const EventCard = ({ event }: EventCardProps) => {
 
   const formatDate = (dateString: string) => {
     // Parse the date string and ensure it's treated as local time
-    const [datePart] = dateString.split("T");
+    const [datePart, timePart] = dateString.split("T");
     const [year, month, day] = datePart.split("-").map(Number);
     const date = new Date(year, month - 1, day);
 
-    return date.toLocaleDateString("en-US", {
+    const formattedDate = date.toLocaleDateString("en-US", {
       month: "long",
       day: "numeric",
       year: "numeric",
     });
+
+    // Extract and format time exactly as stored in JSON (no timezone adjustments)
+    if (timePart) {
+      const [hours, minutes] = timePart.split(":").map(Number);
+      // Format time directly from the stored values without timezone conversion
+      const hour12 = hours % 12 || 12; // Convert to 12-hour format
+      const ampm = hours >= 12 ? "PM" : "AM";
+      const formattedTime = `${hour12}:${minutes.toString().padStart(2, "0")} ${ampm}`;
+      return `${formattedDate} • ${formattedTime}`;
+    }
+
+    return formattedDate;
   };
 
   return (

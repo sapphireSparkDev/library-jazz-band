@@ -9,6 +9,7 @@ interface Musician {
   bio: string;
   isHidden: boolean;
   section: string;
+  sortOrder: number;
 }
 
 interface MusiciansListProps {
@@ -17,8 +18,13 @@ interface MusiciansListProps {
 }
 
 const MusiciansList = ({ musicians, layout = "about" }: MusiciansListProps) => {
-  // Group musicians by section
-  const musiciansBySection = musicians.reduce(
+  // Filter out hidden musicians and sort by sortOrder
+  const visibleMusicians = musicians
+    .filter((musician) => !musician.isHidden)
+    .sort((a, b) => a.sortOrder - b.sortOrder);
+
+  // Group musicians by section and sort within each section
+  const musiciansBySection = visibleMusicians.reduce(
     (acc, musician) => {
       if (!acc[musician.section]) {
         acc[musician.section] = [];
@@ -28,6 +34,11 @@ const MusiciansList = ({ musicians, layout = "about" }: MusiciansListProps) => {
     },
     {} as Record<string, Musician[]>,
   );
+
+  // Sort musicians within each section by sortOrder
+  Object.keys(musiciansBySection).forEach((section) => {
+    musiciansBySection[section].sort((a, b) => a.sortOrder - b.sortOrder);
+  });
 
   // Define section order for consistent display
   const sectionOrder = [

@@ -9,6 +9,7 @@ import {
   EyeOff as HideIcon,
   Plus,
   X,
+  GripVertical,
 } from "lucide-react";
 import { Event, Musician } from "@/lib/types/events";
 import { eventsAPI, musiciansAPI, uploadAPI } from "@/lib/api";
@@ -54,6 +55,13 @@ const Admin = () => {
   const [eventSearch, setEventSearch] = useState("");
   const [musicianSectionSearch, setMusicianSectionSearch] = useState("");
 
+  // Tab state
+  const [activeTab, setActiveTab] = useState<"events" | "musicians">("events");
+
+  // Drag and drop state
+  const [draggedMusician, setDraggedMusician] = useState<Musician | null>(null);
+  const [dragOverMusician, setDragOverMusician] = useState<string | null>(null);
+
   const [musicianForm, setMusicianForm] = useState<Partial<Musician>>({
     id: "",
     name: "",
@@ -63,6 +71,7 @@ const Admin = () => {
     bio: "",
     isHidden: false,
     section: "",
+    sortOrder: 0,
   });
 
   const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
@@ -367,6 +376,7 @@ const Admin = () => {
       bio: musicianForm.bio || "",
       isHidden: musicianForm.isHidden || false,
       section: musicianForm.section!,
+      sortOrder: musicianForm.sortOrder || 0,
     };
 
     try {
@@ -399,6 +409,115 @@ const Admin = () => {
         alert("Failed to delete musician. Please try again.");
       }
     }
+  };
+
+  const toggleMusicianVisibility = async (id: string) => {
+    const musician = musicians.find((m) => m.id === id);
+    if (!musician) return;
+
+    const updatedMusician = { ...musician, isHidden: !musician.isHidden };
+
+    try {
+      await musiciansAPI.update(id, updatedMusician);
+      // Refresh data from API
+      const updatedMusicians = await musiciansAPI.getAll();
+      setMusicians(updatedMusicians);
+    } catch (error) {
+      console.error("Failed to toggle musician visibility:", error);
+      alert("Failed to update musician. Please try again.");
+    }
+  };
+
+  // Drag and drop handlers
+  const handleDragStart = (e: React.DragEvent, musician: Musician) => {
+    setDraggedMusician(musician);
+    e.dataTransfer.effectAllowed = "move";
+  };
+
+  const handleDragEnd = () => {
+    setDraggedMusician(null);
+    setDragOverMusician(null);
+  };
+
+  const handleMusicianDragOver = (e: React.DragEvent, musicianId: string) => {
+    e.preventDefault();
+    if (draggedMusician && draggedMusician.id !== musicianId) {
+      setDragOverMusician(musicianId);
+    }
+  };
+
+  const handleMusicianDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragOverMusician(null);
+  };
+
+  const handleMusicianDrop = async (
+    e: React.DragEvent,
+    targetMusician: Musician,
+  ) => {
+    e.preventDefault();
+    setDragOverMusician(null);
+
+    if (!draggedMusician || draggedMusician.id === targetMusician.id) return;
+
+    const targetSection = targetMusician.section;
+    const targetSortOrder = targetMusician.sortOrder;
+
+    // Determine if we're moving up or down in the same section
+    const isSameSection = draggedMusician.section === targetSection;
+    const movingDown =
+      isSameSection && draggedMusician.sortOrder < targetSortOrder;
+
+    // Get all musicians in the target section, sorted by sortOrder
+    const sectionMusicians = musicians
+      .filter((m) => m.section === targetSection)
+      .sort((a, b) => a.sortOrder - b.sortOrder);
+
+    // Find the indices
+    const targetIndex = sectionMusicians.findIndex(
+      (m) => m.id === targetMusician.id,
+    );
+
+    let newSortOrder: number;
+
+    if (movingDown) {
+      // Moving down: place after the target
+      if (targetIndex === sectionMusicians.length - 1) {
+        // Target is last, place after it
+        newSortOrder = targetSortOrder + 1;
+      } else {
+        // Place between target and next
+        const nextMusician = sectionMusicians[targetIndex + 1];
+        newSortOrder = (targetSortOrder + nextMusician.sortOrder) / 2;
+      }
+    } else {
+      // Moving up or to different section: place at target's position
+      if (targetIndex === 0) {
+        // Target is first, place before it
+        newSortOrder = targetSortOrder - 1;
+      } else {
+        // Place between previous and target
+        const prevMusician = sectionMusicians[targetIndex - 1];
+        newSortOrder = (prevMusician.sortOrder + targetSortOrder) / 2;
+      }
+    }
+
+    const updatedMusician = {
+      ...draggedMusician,
+      section: targetSection,
+      sortOrder: newSortOrder,
+    };
+
+    try {
+      await musiciansAPI.update(draggedMusician.id, updatedMusician);
+      const updatedMusicians = await musiciansAPI.getAll();
+      setMusicians(updatedMusicians);
+    } catch (error) {
+      console.error("Failed to move musician:", error);
+      alert("Failed to move musician. Please try again.");
+    }
+
+    setDraggedMusician(null);
   };
 
   // Media management
@@ -533,253 +652,370 @@ const Admin = () => {
           </button>
         </div>
 
+        {/* Tab Navigation */}
+        <div className="flex space-x-4 mb-6">
+          <button
+            onClick={() => setActiveTab("events")}
+            className={`px-6 py-3 font-medium transition-colors rounded-none ${
+              activeTab === "events"
+                ? "bg-amber-500 text-black hover:bg-amber-400"
+                : "bg-amber-700 text-white hover:bg-amber-600"
+            }`}
+          >
+            Events
+          </button>
+          <button
+            onClick={() => setActiveTab("musicians")}
+            className={`px-6 py-3 font-medium transition-colors rounded-none ${
+              activeTab === "musicians"
+                ? "bg-amber-500 text-black hover:bg-amber-400"
+                : "bg-amber-700 text-white hover:bg-amber-600"
+            }`}
+          >
+            Musicians
+          </button>
+        </div>
+
         {/* Events Management */}
-        <div className="bg-white p-6 rounded-lg shadow-lg mb-6">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold text-gray-800">
-              Events Management
-            </h2>
-            <button
-              onClick={() => openEventModal()}
-              className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors flex items-center gap-2"
-            >
-              <Plus size={16} />
-              Create New Event
-            </button>
-          </div>
+        {activeTab === "events" && (
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-2xl font-bold text-gray-800">
+                Events Management
+              </h2>
+              <button
+                onClick={() => openEventModal()}
+                className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors flex items-center gap-2"
+              >
+                <Plus size={16} />
+                Create New Event
+              </button>
+            </div>
 
-          {/* Events Search */}
-          <div className="mb-4">
-            <input
-              type="text"
-              value={eventSearch}
-              onChange={(e) => setEventSearch(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
-              placeholder="Search events by title..."
-            />
-          </div>
+            {/* Events Search */}
+            <div className="mb-4">
+              <input
+                type="text"
+                value={eventSearch}
+                onChange={(e) => setEventSearch(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
+                placeholder="Search events by title..."
+              />
+            </div>
 
-          <div className="space-y-4">
-            {events
-              .filter((event) =>
-                event.title.toLowerCase().includes(eventSearch.toLowerCase()),
-              )
-              .map((event) => (
-                <div
-                  key={event.id}
-                  className="border border-gray-200 rounded-lg p-4"
-                >
-                  <div className="flex justify-between items-start">
-                    <div className="flex-1">
-                      <h3 className="font-bold text-lg text-gray-800">
-                        {event.title}
-                      </h3>
-                      <p className="text-sm text-gray-600">
-                        {event.date} • {event.location}
-                      </p>
-                      <div className="flex items-center gap-2 mt-2">
-                        <span
-                          className={`px-2 py-1 text-xs rounded-full ${
-                            event.isUpcoming
-                              ? "bg-green-100 text-green-800"
-                              : "bg-gray-100 text-gray-800"
-                          }`}
+            <div className="space-y-4">
+              {events
+                .filter((event) =>
+                  event.title.toLowerCase().includes(eventSearch.toLowerCase()),
+                )
+                .map((event) => (
+                  <div
+                    key={event.id}
+                    className="border border-gray-200 rounded-lg p-4"
+                  >
+                    <div className="flex justify-between items-start">
+                      <div className="flex-1">
+                        <h3 className="font-bold text-lg text-gray-800">
+                          {event.title}
+                        </h3>
+                        <p className="text-sm text-gray-600">
+                          {event.date} • {event.location}
+                        </p>
+                        <div className="flex items-center gap-2 mt-2">
+                          <span
+                            className={`px-2 py-1 text-xs rounded-full ${
+                              event.isUpcoming
+                                ? "bg-green-100 text-green-800"
+                                : "bg-gray-100 text-gray-800"
+                            }`}
+                          >
+                            {event.isUpcoming ? "Upcoming" : "Past"}
+                          </span>
+                          <span
+                            className={`px-2 py-1 text-xs rounded-full ${
+                              event.isHidden
+                                ? "bg-red-100 text-red-800"
+                                : "bg-blue-100 text-blue-800"
+                            }`}
+                          >
+                            {event.isHidden ? "Hidden" : "Visible"}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => openEventModal(event)}
+                          className="bg-amber-500 text-black p-2 rounded-md hover:bg-amber-400 transition-colors"
                         >
-                          {event.isUpcoming ? "Upcoming" : "Past"}
-                        </span>
-                        <span
-                          className={`px-2 py-1 text-xs rounded-full ${
+                          <Edit size={16} />
+                        </button>
+                        <button
+                          onClick={() => toggleEventVisibility(event.id)}
+                          className={`p-2 rounded-md transition-colors ${
                             event.isHidden
-                              ? "bg-red-100 text-red-800"
-                              : "bg-blue-100 text-blue-800"
+                              ? "bg-green-600 text-white hover:bg-green-700"
+                              : "bg-blue-600 text-white hover:bg-blue-700"
                           }`}
                         >
-                          {event.isHidden ? "Hidden" : "Visible"}
-                        </span>
+                          {event.isHidden ? (
+                            <ShowIcon size={16} />
+                          ) : (
+                            <HideIcon size={16} />
+                          )}
+                        </button>
+                        <button
+                          onClick={() => deleteEvent(event.id)}
+                          className="bg-red-600 text-white p-2 rounded-md hover:bg-red-700 transition-colors"
+                        >
+                          <Trash2 size={16} />
+                        </button>
                       </div>
                     </div>
-                    <div className="flex gap-2">
-                      <button
-                        onClick={() => openEventModal(event)}
-                        className="bg-amber-500 text-black p-2 rounded-md hover:bg-amber-400 transition-colors"
-                      >
-                        <Edit size={16} />
-                      </button>
-                      <button
-                        onClick={() => toggleEventVisibility(event.id)}
-                        className={`p-2 rounded-md transition-colors ${
-                          event.isHidden
-                            ? "bg-green-600 text-white hover:bg-green-700"
-                            : "bg-blue-600 text-white hover:bg-blue-700"
-                        }`}
-                      >
-                        {event.isHidden ? (
-                          <ShowIcon size={16} />
-                        ) : (
-                          <HideIcon size={16} />
-                        )}
-                      </button>
-                      <button
-                        onClick={() => deleteEvent(event.id)}
-                        className="bg-red-600 text-white p-2 rounded-md hover:bg-red-700 transition-colors"
-                      >
-                        <Trash2 size={16} />
-                      </button>
-                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Musicians Management */}
-        <div className="bg-white p-6 rounded-lg shadow-lg">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold text-gray-800">
-              Musicians Management
-            </h2>
-            <button
-              onClick={() => openMusicianModal()}
-              className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors flex items-center gap-2"
-            >
-              <Plus size={16} />
-              Add New Musician
-            </button>
-          </div>
+        {activeTab === "musicians" && (
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-2xl font-bold text-gray-800">
+                Musicians Management
+              </h2>
+              <button
+                onClick={() => openMusicianModal()}
+                className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors flex items-center gap-2"
+              >
+                <Plus size={16} />
+                Add New Musician
+              </button>
+            </div>
 
-          {/* Musicians Search */}
-          <div className="mb-4">
-            <input
-              type="text"
-              value={musicianSectionSearch}
-              onChange={(e) => setMusicianSectionSearch(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
-              placeholder="Search musicians by name..."
-            />
-          </div>
+            {/* Musicians Search */}
+            <div className="mb-4">
+              <input
+                type="text"
+                value={musicianSectionSearch}
+                onChange={(e) => setMusicianSectionSearch(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
+                placeholder="Search musicians by name..."
+              />
+            </div>
 
-          <div className="space-y-6">
-            {/* Musicians with assigned sections */}
-            {sections.map((section) => {
-              const sectionMusicians = musicians
-                .filter((musician) => musician.section === section)
-                .filter((musician) =>
-                  musician.name
-                    .toLowerCase()
-                    .includes(musicianSectionSearch.toLowerCase()),
-                )
-                .sort((a, b) => a.name.localeCompare(b.name));
+            <div className="space-y-6">
+              {/* Musicians with assigned sections */}
+              {sections.map((section) => {
+                const sectionMusicians = musicians
+                  .filter((musician) => musician.section === section)
+                  .filter((musician) =>
+                    musician.name
+                      .toLowerCase()
+                      .includes(musicianSectionSearch.toLowerCase()),
+                  )
+                  .sort(
+                    (a, b) =>
+                      a.sortOrder - b.sortOrder || a.name.localeCompare(b.name),
+                  );
 
-              if (sectionMusicians.length === 0) return null;
+                if (sectionMusicians.length === 0) return null;
 
-              return (
-                <div key={section}>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3 border-b pb-2">
-                    {section}
-                  </h3>
-                  <div className="space-y-4">
-                    {sectionMusicians.map((musician) => (
-                      <div
-                        key={musician.id}
-                        className="border border-gray-200 rounded-lg p-4"
-                      >
-                        <div className="flex justify-between items-start">
-                          <div className="flex-1">
-                            <h3 className="font-bold text-lg text-gray-800">
-                              {musician.name}
-                            </h3>
-                            <p className="text-sm text-gray-600">
-                              {musician.role ? `${musician.role} • ` : ""}
-                              {musician.instrument}
-                            </p>
-                            <p className="text-sm text-gray-500 mt-1 line-clamp-2">
-                              {musician.bio}
-                            </p>
-                          </div>
-                          <div className="flex gap-2">
-                            <button
-                              onClick={() => openMusicianModal(musician)}
-                              className="bg-amber-500 text-black p-2 rounded-md hover:bg-amber-400 transition-colors"
+                return (
+                  <div key={section}>
+                    <h3 className="text-xl font-bold text-gray-800 mb-3 border-b pb-2">
+                      {section}
+                    </h3>
+                    <div className="space-y-2">
+                      {sectionMusicians.map((musician) => (
+                        <div
+                          key={musician.id}
+                          className={`border border-gray-200 rounded-lg p-4 transition-all ${
+                            draggedMusician?.id === musician.id
+                              ? "opacity-50"
+                              : ""
+                          } ${
+                            dragOverMusician === musician.id
+                              ? "border-blue-500 border-2 bg-blue-50"
+                              : ""
+                          }`}
+                          draggable
+                          onDragStart={(e) => handleDragStart(e, musician)}
+                          onDragEnd={handleDragEnd}
+                          onDragOver={(e) =>
+                            handleMusicianDragOver(e, musician.id)
+                          }
+                          onDragLeave={handleMusicianDragLeave}
+                          onDrop={(e) => handleMusicianDrop(e, musician)}
+                        >
+                          <div className="flex justify-between items-start">
+                            <div className="flex items-start gap-2 flex-1">
+                              <div className="cursor-grab active:cursor-grabbing text-gray-400 hover:text-gray-600 mt-1">
+                                <GripVertical size={16} />
+                              </div>
+                              <div>
+                                <h3 className="font-bold text-lg text-gray-800">
+                                  {musician.name}
+                                </h3>
+                                <p className="text-sm text-gray-600">
+                                  {musician.role ? `${musician.role} • ` : ""}
+                                  {musician.instrument}
+                                </p>
+                                <p className="text-sm text-gray-500 mt-1 line-clamp-2">
+                                  {musician.bio}
+                                </p>
+                              </div>
+                            </div>
+                            <div
+                              className="flex gap-2"
+                              onDragStart={(e) => e.stopPropagation()}
                             >
-                              <Edit size={16} />
-                            </button>
-                            <button
-                              onClick={() => deleteMusician(musician.id)}
-                              className="bg-red-600 text-white p-2 rounded-md hover:bg-red-700 transition-colors"
-                            >
-                              <Trash2 size={16} />
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-
-            {/* Uncategorized musicians (no section assigned) */}
-            {(() => {
-              const uncategorizedMusicians = musicians
-                .filter(
-                  (musician) => !musician.section || musician.section === "",
-                )
-                .filter((musician) =>
-                  musician.name
-                    .toLowerCase()
-                    .includes(musicianSectionSearch.toLowerCase()),
-                )
-                .sort((a, b) => a.name.localeCompare(b.name));
-
-              if (uncategorizedMusicians.length === 0) return null;
-
-              return (
-                <div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3 border-b pb-2">
-                    Uncategorized
-                  </h3>
-                  <div className="space-y-4">
-                    {uncategorizedMusicians.map((musician) => (
-                      <div
-                        key={musician.id}
-                        className="border border-gray-200 rounded-lg p-4"
-                      >
-                        <div className="flex justify-between items-start">
-                          <div className="flex-1">
-                            <h3 className="font-bold text-lg text-gray-800">
-                              {musician.name}
-                            </h3>
-                            <p className="text-sm text-gray-600">
-                              {musician.role ? `${musician.role} • ` : ""}
-                              {musician.instrument}
-                            </p>
-                            <p className="text-sm text-gray-500 mt-1 line-clamp-2">
-                              {musician.bio}
-                            </p>
-                          </div>
-                          <div className="flex gap-2">
-                            <button
-                              onClick={() => openMusicianModal(musician)}
-                              className="bg-amber-500 text-black p-2 rounded-md hover:bg-amber-400 transition-colors"
-                            >
-                              <Edit size={16} />
-                            </button>
-                            <button
-                              onClick={() => deleteMusician(musician.id)}
-                              className="bg-red-600 text-white p-2 rounded-md hover:bg-red-700 transition-colors"
-                            >
-                              <Trash2 size={16} />
-                            </button>
+                              <button
+                                onClick={() => openMusicianModal(musician)}
+                                className="bg-amber-500 text-black p-2 rounded-md hover:bg-amber-400 transition-colors"
+                                draggable={false}
+                              >
+                                <Edit size={16} />
+                              </button>
+                              <button
+                                onClick={() =>
+                                  toggleMusicianVisibility(musician.id)
+                                }
+                                className={`p-2 rounded-md transition-colors ${
+                                  musician.isHidden
+                                    ? "bg-green-600 text-white hover:bg-green-700"
+                                    : "bg-blue-600 text-white hover:bg-blue-700"
+                                }`}
+                                draggable={false}
+                              >
+                                {musician.isHidden ? (
+                                  <ShowIcon size={16} />
+                                ) : (
+                                  <HideIcon size={16} />
+                                )}
+                              </button>
+                              <button
+                                onClick={() => deleteMusician(musician.id)}
+                                className="bg-red-600 text-white p-2 rounded-md hover:bg-red-700 transition-colors"
+                                draggable={false}
+                              >
+                                <Trash2 size={16} />
+                              </button>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
-              );
-            })()}
+                );
+              })}
+
+              {/* Uncategorized musicians (no section assigned) */}
+              {(() => {
+                const uncategorizedMusicians = musicians
+                  .filter(
+                    (musician) => !musician.section || musician.section === "",
+                  )
+                  .filter((musician) =>
+                    musician.name
+                      .toLowerCase()
+                      .includes(musicianSectionSearch.toLowerCase()),
+                  )
+                  .sort((a, b) => a.name.localeCompare(b.name));
+
+                if (uncategorizedMusicians.length === 0) return null;
+
+                return (
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-3 border-b pb-2">
+                      Uncategorized
+                    </h3>
+                    <div className="space-y-2">
+                      {uncategorizedMusicians.map((musician) => (
+                        <div
+                          key={musician.id}
+                          className={`border border-gray-200 rounded-lg p-4 transition-all ${
+                            draggedMusician?.id === musician.id
+                              ? "opacity-50"
+                              : ""
+                          } ${
+                            dragOverMusician === musician.id
+                              ? "border-blue-500 border-2 bg-blue-50"
+                              : ""
+                          }`}
+                          draggable
+                          onDragStart={(e) => handleDragStart(e, musician)}
+                          onDragEnd={handleDragEnd}
+                          onDragOver={(e) =>
+                            handleMusicianDragOver(e, musician.id)
+                          }
+                          onDragLeave={handleMusicianDragLeave}
+                          onDrop={(e) => handleMusicianDrop(e, musician)}
+                        >
+                          <div className="flex justify-between items-start">
+                            <div className="flex items-start gap-2 flex-1">
+                              <div className="cursor-grab active:cursor-grabbing text-gray-400 hover:text-gray-600 mt-1">
+                                <GripVertical size={16} />
+                              </div>
+                              <div>
+                                <h3 className="font-bold text-lg text-gray-800">
+                                  {musician.name}
+                                </h3>
+                                <p className="text-sm text-gray-600">
+                                  {musician.role ? `${musician.role} • ` : ""}
+                                  {musician.instrument}
+                                </p>
+                                <p className="text-sm text-gray-500 mt-1 line-clamp-2">
+                                  {musician.bio}
+                                </p>
+                              </div>
+                            </div>
+                            <div
+                              className="flex gap-2"
+                              onDragStart={(e) => e.stopPropagation()}
+                            >
+                              <button
+                                onClick={() => openMusicianModal(musician)}
+                                className="bg-amber-500 text-black p-2 rounded-md hover:bg-amber-400 transition-colors"
+                                draggable={false}
+                              >
+                                <Edit size={16} />
+                              </button>
+                              <button
+                                onClick={() =>
+                                  toggleMusicianVisibility(musician.id)
+                                }
+                                className={`p-2 rounded-md transition-colors ${
+                                  musician.isHidden
+                                    ? "bg-green-600 text-white hover:bg-green-700"
+                                    : "bg-blue-600 text-white hover:bg-blue-700"
+                                }`}
+                                draggable={false}
+                              >
+                                {musician.isHidden ? (
+                                  <ShowIcon size={16} />
+                                ) : (
+                                  <HideIcon size={16} />
+                                )}
+                              </button>
+                              <button
+                                onClick={() => deleteMusician(musician.id)}
+                                className="bg-red-600 text-white p-2 rounded-md hover:bg-red-700 transition-colors"
+                                draggable={false}
+                              >
+                                <Trash2 size={16} />
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Event Modal */}
         {showEventModal && (
@@ -1318,6 +1554,47 @@ const Admin = () => {
                       placeholder="Musician biography"
                       rows={4}
                     />
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Sort Order
+                      </label>
+                      <input
+                        type="number"
+                        value={musicianForm.sortOrder || 0}
+                        onChange={(e) =>
+                          setMusicianForm({
+                            ...musicianForm,
+                            sortOrder: parseInt(e.target.value) || 0,
+                          })
+                        }
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
+                        placeholder="Sort order"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex items-center">
+                    <input
+                      type="checkbox"
+                      id="isHiddenMusician"
+                      checked={musicianForm.isHidden || false}
+                      onChange={(e) =>
+                        setMusicianForm({
+                          ...musicianForm,
+                          isHidden: e.target.checked,
+                        })
+                      }
+                      className="mr-2"
+                    />
+                    <label
+                      htmlFor="isHiddenMusician"
+                      className="text-sm text-gray-700"
+                    >
+                      Hide this musician from the public musicians list
+                    </label>
                   </div>
                 </div>
 

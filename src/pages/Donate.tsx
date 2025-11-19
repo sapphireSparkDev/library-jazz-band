@@ -70,7 +70,7 @@ const Donate = () => {
               </p>
             </li>
             <li>
-              ZELLE to Nancy Maron using this QR code or <br />
+              ZELLE to Nancy Maron using this QR code AND <br />
               <p style={{ marginLeft: "25px" }}>
                 email form to maronnancy@gmail.com
               </p>
@@ -82,9 +82,9 @@ const Donate = () => {
             alt="Zelle QR Code"
           />
           <span className="mt-6 mb-6">
-            As of August 2025, LIBRARY JAZZ BAND INC is recognized as a not for
-            profit organization. Your donations are tax deducitble to the extent
-            allowed by law
+            Our big band, the Library Jazz Band, is now part of a 501c3
+            tax-exempt organization, Library Jazz Band, Inc. Your donations are
+            tax deductible to the extent allowed by law.
           </span>
         </div>
       </div>

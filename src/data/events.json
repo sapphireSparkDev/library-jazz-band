@@ -8,13 +8,13 @@
     "media": [
       {
         "type": "image",
-        "url": "",
-        "alt": "Hitting the Low Notes event"
+        "url": "/src/lib/assets/file-1763578597329-905871127.png",
+        "alt": ""
       }
     ],
     "programImage": "",
     "musicians": [],
-    "isUpcoming": true,
+    "isUpcoming": false,
     "isHidden": false,
     "slug": "hitting-the-low-notes"
   },
@@ -27,7 +27,7 @@
     "media": [
       {
         "type": "image",
-        "url": "",
+        "url": "/src/lib/assets/file-1763578675575-448909568.png",
         "alt": "It's Showtime event"
       }
     ],
@@ -46,7 +46,7 @@
     "media": [
       {
         "type": "image",
-        "url": "",
+        "url": "/src/lib/assets/file-1763578730943-928531698.png",
         "alt": "It's Showtime event"
       }
     ],

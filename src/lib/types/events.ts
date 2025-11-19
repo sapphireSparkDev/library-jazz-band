@@ -27,4 +27,5 @@ export interface Musician {
   bio: string;
   isHidden: boolean;
   section: string;
+  sortOrder: number;
 }

@@ -7,7 +7,8 @@
     "photo": "/src/lib/assets/CION_piano.jpeg",
     "bio": "Sarah Jane Cion is the winner of the 17th Annual Great American Jazz Piano Competition and has appeared on NPR's Piano Jazz with Marian McPartland. She has performed internationally, including at Japan's Blue Note and the Kennedy Center's Women in Jazz Festival, and her recordings feature jazz greats like Michael Brecker and Billy Hart. Her original music has been featured in films like The Mule and Thor: The Dark World. A Steinway artist and author of Modern Jazz Piano (Hal Leonard), Sarah performs regularly with top NYC big bands and leads her own trio.",
     "isHidden": false,
-    "section": "Rhythm"
+    "section": "Rhythm",
+    "sortOrder": -6.6875
   },
   {
     "id": "dan-asher",
@@ -17,7 +18,8 @@
     "photo": "/src/lib/assets/LJB_DanAsher.webp",
     "bio": "Dan Asher has been busy performing and teaching in the New York area since 2001 at legendary venues including Birdland, the Blue Note, Smalls and the 55 Bar, covering a wide range of music, mainly Rock, R&B, Jazz and everything in between. As an in-demand sideman, he performs regularly with artists such as Gabe Dixon, Southside Johnny and the Asbury Jukes and the Broadway Boys (including its new offshoot, Cruising Steady). A regular performer at the world-famous Baz Bar in St. Barth, he has performed most recently with Jimmy Buffett as well as legendary keyboardists David Bryan and Jay Oliver.",
     "isHidden": false,
-    "section": "Rhythm"
+    "section": "Rhythm",
+    "sortOrder": -4.953125
   },
   {
     "id": "bill-reeve",
@@ -27,7 +29,8 @@
     "photo": "/src/lib/assets/Reeve_drums.webp",
     "bio": "Bill Reeve has been playing big band music for 50 years. From 1984 to 1989, he directed the 4 o'clock Jazz Ensemble at the University of New Hampshire and in 1988, also conducted the 3 o'clock band. He has performed with many jazz legends including Clark Terry, Toshiko Akiyoshi/Lew Tabakin, Bob Mintzer, Peter Erskine, Alan Dawson, James Moody, Jimmy Heath, Milt Hinton, James Williams, Buddy DeFranco, Lee Konitz, Dick Johnson, Herb Pomeroy, Mike Metheny, and many others. In addition, Bill is a talented graphic artist, and designer of the Library Jazz Band's logo and music stands.",
     "isHidden": false,
-    "section": "Rhythm"
+    "section": "Rhythm",
+    "sortOrder": -3.21875
   },
   {
     "id": "nancy-maron",
@@ -37,7 +40,8 @@
     "photo": "/src/lib/assets/NMaron_sax.png",
     "bio": "Nancy plays alto, soprano, and tenor saxophones with Lehman College and Community Band, Yonkers Philharmonic, The Westchester Band, and rock cover band the Patroons.",
     "isHidden": false,
-    "section": "Saxophones"
+    "section": "Saxophones",
+    "sortOrder": -1.46875
   },
   {
     "id": "musician-1762923131959",
@@ -47,7 +51,8 @@
     "photo": "/src/lib/assets/Garrison_tenor.jpeg",
     "bio": "With confidence, lyricism, and a tonality that is suffused in warmth, saxophonist Matt Garrison fervently pursues the art-form of jazz as reflected in his own words, \"I like to think that I am a translator of sorts. A jazz musician, in my opinion, is supposed to interpret the world around them and convert those situations and feelings into music.\" Matt has gigged or recorded with various players of note--the late Dennis Irwin, Eliot Zigmund, Pete Malinverni, Adam Nussbaum, Gene Jackson, Sam Yahel, Jeff Hirshfield, Jon Cowherd, Andy Laverne--and was once in a band with trumpeter great, Ray Vega. His newest project is entitled “The Hudson Calls,” a tribute to various rivertowns throughout the Hudson Valley.",
     "isHidden": false,
-    "section": "Saxophones"
+    "section": "Saxophones",
+    "sortOrder": -0.46875
   },
   {
     "id": "musician-1762923305677",
@@ -57,7 +62,8 @@
     "photo": "/src/lib/assets/ChrisFerdinand_sax.png",
     "bio": "Chris Ferdinand, the newest member of the ensemble, joins us all the way from Brooklyn: Aspiring pilot, playing saxophone for fifteen-ish years and subsisting on caffeine.",
     "isHidden": false,
-    "section": "Saxophones"
+    "section": "Saxophones",
+    "sortOrder": -0.46484375
   },
   {
     "id": "musician-1762923421631",
@@ -67,7 +73,8 @@
     "photo": "/src/lib/assets/KarlW_sax.png",
     "bio": "Karl is a very active and versatile musician, performing professionally on a number of instruments in a wide variety of styles. At Lehman, he plays bass clarinet in the Community Band, saxophone in the Latin Jazz Band, clarinet in the Symphony Orchestra, and violin in the Chamber Orchestra and performs throughout the tri-state area. Karl has been on staff in the Lehman Music Department since 1998.",
     "isHidden": false,
-    "section": "Saxophones"
+    "section": "Saxophones",
+    "sortOrder": -0.4609375
   },
   {
     "id": "musician-1762923675877",
@@ -77,7 +84,8 @@
     "photo": "/src/lib/assets/Hirsch_tpt.png",
     "bio": "Jordan is a NYC based professional trumpet player with experience teaching performance and music appreciation on the middle school and high school level. Experience leading ensembles for private and corporate events, playing a wide variety of styles. Currently performing in the orchestra for the critically acclaimed NY Off-Broadway production of Fiddler on the Roof.",
     "isHidden": false,
-    "section": "Trumpets"
+    "section": "Trumpets",
+    "sortOrder": -5.25
   },
   {
     "id": "musician-1762923748377",
@@ -87,7 +95,8 @@
     "photo": "/src/lib/assets/Horton_trumpet.png",
     "bio": "Ron Horton is a trumpeter and composer with 4 CDs under his own name (Genius Envy-OmniTone, Subtextures-Fresh Sounds, Everything in a Dream-Fresh Sounds, It's a Gadget World-ABEAT), and has performed and/or recorded with Andrew Hill, Lee Konitz, Jane Ira Bloom, Jazz Composers Collective (Ben Allison, Frank Kimbrough, Ted Nash, Michael Blake) and others.",
     "isHidden": false,
-    "section": "Trumpets"
+    "section": "Trumpets",
+    "sortOrder": -4.75
   },
   {
     "id": "musician-1762923848163",
@@ -97,7 +106,8 @@
     "photo": "/src/lib/assets/Burgie_tpt.jpeg",
     "bio": "Kim is a multi-Instrumentalist who plays trumpet/flugelhorn, jazz recorder and drums/percussion and has played at many of the top hotels, catering halls, night clubs and other venues in the tri-state area and around the world. When Kim is not working on original music or writing music for TV and motion pictures, he is a music teacher at a New York City high school in the South Bronx. Kim has 4 CD’s of his original music out there in the world (“In The Zone”, “Blessed Not Stressed”, “Fun” and “Fun 2.0”).",
     "isHidden": false,
-    "section": "Trumpets"
+    "section": "Trumpets",
+    "sortOrder": -4.5
   },
   {
     "id": "musician-1762923926194",
@@ -107,7 +117,8 @@
     "photo": "/src/lib/assets/Schaeffer_trumpet.png",
     "bio": "William is a lawyer working at the Inspector General’s Office of the New York City School Construction Authority. He performs regularly on trumpet with the Lehman College Community Band, the Westchester Band in Scarsdale, the New Westchester Symphony Orchestra in White Plains, the Manhattanville College Community Orchestra in Purchase, the St. Thomas Orchestra in Mamaroneck, the Cross Cultural Connection Pro-Am Ensemble in Peekskill, and the Patroons in Mount Vernon.",
     "isHidden": false,
-    "section": "Trumpets"
+    "section": "Trumpets",
+    "sortOrder": -4.25
   },
   {
     "id": "musician-1762924852689",
@@ -117,7 +128,8 @@
     "photo": "/src/lib/assets/LJB_RobSusman.webp",
     "bio": "Rob Susman has been a member of The Chico O’Farrill Afro-Cuban Jazz Orchestra, The Duke Ellington Legacy Band, Jay and the Americans, and The Symphonic Brass Alliance (representing Carnegie Hall Citywide) and has appeared with he Allman Brothers Band, Christina Aguilera, Ashford & Simpson, Frankie Avalon, Marshall Crenshaw, Neil Diamond, Chaka Kahn and many more. Rob has composed and arranged for PBS’s ‘Reading Rainbow’ The Imani Winds, The Boston Brass and the Oberlin Conservatory of Music. He currently has five recordings featuring his original works with Top Secret Lab, Funk Shui NYC, NoNoNonet, Tri Boro Trio, and his self-titled debut.",
     "isHidden": false,
-    "section": "Trombones"
+    "section": "Trombones",
+    "sortOrder": -5.328125
   },
   {
     "id": "musician-1762924959352",
@@ -127,7 +139,8 @@
     "photo": "/src/lib/assets/LEvy_trombone.jpg",
     "bio": "Howard Levy has been performing as a trombonist in the NY tri-state area for many years with some of the industry's top ensembles, including The American Jazz Orchestra at Cooper Union, the Larry Elgart Orchestra, the Stan Rubin Orchestra, the Smithsonian Masterworks Orchestra, Tim Ouimette’s Arts On the Lake Jazz Ensemble and the Westchester Swing Band just to name a few. ",
     "isHidden": false,
-    "section": "Trombones"
+    "section": "Trombones",
+    "sortOrder": -4.328125
   },
   {
     "id": "musician-1762925026566",
@@ -137,7 +150,8 @@
     "photo": "/src/lib/assets/Dave Levitt_trombone.png",
     "bio": "Dave Levitt is a fourth generation Klezmer musician. He started learning music at age 5 from his father Marty who was a well-known clarinetist and bandleader. Dave’s mother was also a performer who went by the name Harriet Kane. After graduating from LaGuardia H.S. of the Arts in New York City, Dave earned a scholarship to study at the Manhattan School of Music, where he received a Master’s Degree in Music. Besides working as a musician, Dave owned a rehearsal and recording studio in New York from 1995-2008.",
     "isHidden": false,
-    "section": "Trombones"
+    "section": "Trombones",
+    "sortOrder": -3.44921875
   },
   {
     "id": "musician-1762925182811",
@@ -147,17 +161,19 @@
     "photo": "/src/lib/assets/Jon Roth_trombone.png",
     "bio": "Coming Jon Roth has had a varied career as a trombonist, arranger and composer. A native of Rockland County, NY, he initially studied trombone with local teacher Henry Heyzer and NY studio legend Fred “Moe” Snyder. He went on to receive his Bachelors of Music from Montclair State University, where he studied trombone and arranging with Alan Ferber. After graduation, he began a stint as a trombonist and arranger for Royal Caribbean Cruise Lines. Since returning to NY in 2012, he has collaborated and performed with various artists such as Larry Coryell, Wycliffe Gordon, Ingrid Jenson, Lew Tabackin and Mike Abene. He has also performed with such ensembles as the One More Once Big Band, The Analog Jazz Orchestra, Dancin’ Machine, The Imperial Brass Quintet and The Michael Cochrane Sextet. He currently works as a staff arranger for The North Jersey Concert Band. As an educator he is currently the Band Coordinator and Brass teacher for The Elisabeth Morrow School in Englewood, NJ and formerly as a Jazz instructor at the Thurnauer School of Music in Teaneck, NJ. He also currently leads his own quartet with Michael Cochrane, Bill Moring and Steve Johns.",
     "isHidden": false,
-    "section": "Trombones"
+    "section": "Trombones",
+    "sortOrder": -2.5703125
   },
   {
     "id": "musician-1762925260993",
     "name": "Walter Barret",
     "role": "",
-    "instrument": "Bass, Trombone, Tuba",
+    "instrument": "Bass Trombone",
     "photo": "/src/lib/assets/walter barrett_tuba_tbone.png",
     "bio": "Walter Barrett performs as a free-lance musician throughout the New York area on Alto, Tenor & Bass Trombones, Bass Trumpet, Euphonium, and Tuba. He has performed with the Westchester Symphony, Yonkers Philharmonic, Philharmonic Symphony of Westchester, and the Hudson Valley Philharmonic. Walter has been featured as soloist with many local groups, including the Lehman College Community Band, White Plains Pops Band, Manhattan School of Music Trombone Ensemble, Yonkers Philharmonic, and the Westchester Band.",
     "isHidden": false,
-    "section": "Tuba"
+    "section": "Trombones",
+    "sortOrder": -3.009765625
   },
   {
     "id": "musician-1763152597574",
@@ -166,8 +182,9 @@
     "instrument": "Coming soon",
     "photo": "",
     "bio": "",
-    "isHidden": false,
-    "section": "Rhythm"
+    "isHidden": true,
+    "section": "Rhythm",
+    "sortOrder": -5.8203125
   },
   {
     "id": "musician-1763152643819",
@@ -176,8 +193,9 @@
     "instrument": "Coming soon",
     "photo": "",
     "bio": "",
-    "isHidden": false,
-    "section": "Saxophones"
+    "isHidden": true,
+    "section": "Saxophones",
+    "sortOrder": -0.96875
   },
   {
     "id": "musician-1763152683734",
@@ -186,7 +204,8 @@
     "instrument": "Coming soon",
     "photo": "",
     "bio": "",
-    "isHidden": false,
-    "section": "Trumpets"
+    "isHidden": true,
+    "section": "Trumpets",
+    "sortOrder": -4.375
   }
 ]
