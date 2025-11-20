@@ -304,9 +304,7 @@ const Admin = () => {
       } else {
         await eventsAPI.create(newEvent);
       }
-
-      // Reload to confirm server state
-      await reloadData();
+      // Optimistic update is already applied, no need to reload on success
     } catch (error) {
       console.error("Failed to save event:", error);
       alert("Failed to save event. Please try again.");
@@ -322,8 +320,7 @@ const Admin = () => {
 
       try {
         await eventsAPI.delete(id);
-        // Reload to confirm server state
-        await reloadData();
+        // Optimistic update is already applied, no need to reload on success
       } catch (error) {
         console.error("Failed to delete event:", error);
         alert("Failed to delete event. Please try again.");
@@ -344,8 +341,7 @@ const Admin = () => {
 
     try {
       await eventsAPI.update(id, updatedEvent);
-      // Reload to confirm server state
-      await reloadData();
+      // Optimistic update is already applied, no need to reload on success
     } catch (error) {
       console.error("Failed to toggle event visibility:", error);
       alert("Failed to update event. Please try again.");
@@ -416,9 +412,7 @@ const Admin = () => {
       } else {
         await musiciansAPI.create(newMusician);
       }
-
-      // Reload to confirm server state
-      await reloadData();
+      // Optimistic update is already applied, no need to reload on success
     } catch (error) {
       console.error("Failed to save musician:", error);
       alert("Failed to save musician. Please try again.");
@@ -434,8 +428,7 @@ const Admin = () => {
 
       try {
         await musiciansAPI.delete(id);
-        // Reload to confirm server state
-        await reloadData();
+        // Optimistic update is already applied, no need to reload on success
       } catch (error) {
         console.error("Failed to delete musician:", error);
         alert("Failed to delete musician. Please try again.");
@@ -456,8 +449,7 @@ const Admin = () => {
 
     try {
       await musiciansAPI.update(id, updatedMusician);
-      // Reload to confirm server state
-      await reloadData();
+      // Optimistic update is already applied, no need to reload on success
     } catch (error) {
       console.error("Failed to toggle musician visibility:", error);
       alert("Failed to update musician. Please try again.");
@@ -554,8 +546,7 @@ const Admin = () => {
 
     try {
       await musiciansAPI.update(draggedMusician.id, updatedMusician);
-      // Reload to confirm server state
-      await reloadData();
+      // Optimistic update is already applied, no need to reload on success
     } catch (error) {
       console.error("Failed to move musician:", error);
       alert("Failed to move musician. Please try again.");
