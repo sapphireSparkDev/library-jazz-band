@@ -13,6 +13,7 @@ export const EventCard = ({ event }: EventCardProps) => {
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  // Updated placeholder with logo
 
   const currentMedia = event.media[currentMediaIndex];
   const hasMultipleMedia = event.media.length > 1;
@@ -66,7 +67,7 @@ export const EventCard = ({ event }: EventCardProps) => {
     <Card className="bg-white border-0 shadow-lg overflow-hidden flex flex-col rounded-none h-full">
       {/* Media Section */}
       <div className="relative aspect-video bg-gray-200 overflow-hidden">
-        {currentMedia ? (
+        {currentMedia && currentMedia.url ? (
           currentMedia.type === "image" ? (
             <img
               src={
@@ -100,8 +101,12 @@ export const EventCard = ({ event }: EventCardProps) => {
             </div>
           )
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-500 text-xs">
-            <span>Image Coming Soon</span>
+          <div className="w-full h-full flex items-center justify-center bg-neutral-500">
+            <img
+              src={resolveImagePath("/src/lib/assets/LBJLogo.png")}
+              alt="Library Jazz Band Logo"
+              className="max-w-[60%] max-h-[60%] object-contain opacity-40"
+            />
           </div>
         )}
 
