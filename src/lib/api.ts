@@ -10,6 +10,7 @@ const apiRequest = async (endpoint: string, options: RequestInit = {}) => {
         "Content-Type": "application/json",
         ...options.headers,
       },
+      cache: "no-store",
       ...options,
     });
 
