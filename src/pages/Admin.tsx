@@ -98,9 +98,9 @@ const Admin = () => {
   ) => {
     if (!file) return;
 
-    // Check file size (100MB limit for videos)
-    if (file.size > 100 * 1024 * 1024) {
-      alert("File too large. Maximum size is 100MB.");
+    // Check file size (10MB limit)
+    if (file.size > 10 * 1024 * 1024) {
+      alert("File too large. Maximum size is 10MB.");
       return;
     }
 
