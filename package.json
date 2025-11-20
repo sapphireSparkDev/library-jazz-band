@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && npm run copy-data",
+    "build": "tsc -b && vite build && npm run copy-data && npm run copy-assets",
     "copy-data": "mkdir -p dist/src && cp -r src/data dist/src/",
+    "copy-assets": "mkdir -p dist/lib/assets && cp -r src/lib/assets/* dist/lib/assets/",
     "lint": "eslint .",
     "preview": "vite preview",
     "prepare": "husky"
