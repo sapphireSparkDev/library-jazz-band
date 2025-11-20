@@ -26,7 +26,14 @@ const VideoEmbed = ({
 }: VideoEmbedProps) => {
   const videoEmbed = getVideoEmbedUrl(url);
 
-  if (!videoEmbed) return null;
+  if (!videoEmbed) {
+    console.error("Could not parse video URL:", url);
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-black text-white text-xs">
+        Invalid video URL
+      </div>
+    );
+  }
 
   // For YouTube and Vimeo, use iframe embed
   if (videoEmbed.type === "youtube" || videoEmbed.type === "vimeo") {
@@ -36,6 +43,7 @@ const VideoEmbed = ({
         className="w-full h-full"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
+        title="Video embed"
       />
     );
   }
@@ -128,13 +136,17 @@ export const EventCard = ({ event }: EventCardProps) => {
         {currentMedia && currentMedia.url ? (
           currentMedia.type === "image" ? (
             <img
-              src={
-                resolveImagePath(currentMedia.url) || "/placeholder-image.jpg"
-              }
+              src={resolveImagePath(currentMedia.url)}
               alt={currentMedia.alt || event.title}
               className="w-full h-full object-cover"
+              onError={(e) => {
+                console.error("Image failed to load:", currentMedia.url);
+                e.currentTarget.src = resolveImagePath(
+                  "/src/lib/assets/LBJLogo.png",
+                );
+              }}
             />
-          ) : (
+          ) : currentMedia.type === "video" ? (
             <VideoEmbed
               url={currentMedia.url}
               isPlaying={isPlaying}
@@ -142,6 +154,14 @@ export const EventCard = ({ event }: EventCardProps) => {
               togglePlayPause={togglePlayPause}
               toggleMute={toggleMute}
             />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center bg-neutral-500">
+              <img
+                src={resolveImagePath("/src/lib/assets/LBJLogo.png")}
+                alt="Library Jazz Band Logo"
+                className="max-w-[60%] max-h-[60%] object-contain opacity-40"
+              />
+            </div>
           )
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-neutral-500">
