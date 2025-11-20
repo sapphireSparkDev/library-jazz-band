@@ -294,11 +294,8 @@ const Admin = () => {
         await eventsAPI.create(newEvent);
       }
 
-      // Refresh data from API
-      const updatedEvents = await eventsAPI.getAll();
-      setEvents(updatedEvents);
-      setShowEventModal(false);
-      setEditingEvent(null);
+      // Refresh the page to show updated data
+      window.location.reload();
     } catch (error) {
       console.error("Failed to save event:", error);
       alert("Failed to save event. Please try again.");
@@ -309,9 +306,8 @@ const Admin = () => {
     if (confirm("Are you sure you want to delete this event?")) {
       try {
         await eventsAPI.delete(id);
-        // Refresh data from API
-        const updatedEvents = await eventsAPI.getAll();
-        setEvents(updatedEvents);
+        // Refresh the page to show updated data
+        window.location.reload();
       } catch (error) {
         console.error("Failed to delete event:", error);
         alert("Failed to delete event. Please try again.");
@@ -327,9 +323,8 @@ const Admin = () => {
 
     try {
       await eventsAPI.update(id, updatedEvent);
-      // Refresh data from API
-      const updatedEvents = await eventsAPI.getAll();
-      setEvents(updatedEvents);
+      // Refresh the page to show updated data
+      window.location.reload();
     } catch (error) {
       console.error("Failed to toggle event visibility:", error);
       alert("Failed to update event. Please try again.");
@@ -386,11 +381,8 @@ const Admin = () => {
         await musiciansAPI.create(newMusician);
       }
 
-      // Refresh data from API
-      const updatedMusicians = await musiciansAPI.getAll();
-      setMusicians(updatedMusicians);
-      setShowMusicianModal(false);
-      setEditingMusician(null);
+      // Refresh the page to show updated data
+      window.location.reload();
     } catch (error) {
       console.error("Failed to save musician:", error);
       alert("Failed to save musician. Please try again.");
@@ -401,9 +393,8 @@ const Admin = () => {
     if (confirm("Are you sure you want to delete this musician?")) {
       try {
         await musiciansAPI.delete(id);
-        // Refresh data from API
-        const updatedMusicians = await musiciansAPI.getAll();
-        setMusicians(updatedMusicians);
+        // Refresh the page to show updated data
+        window.location.reload();
       } catch (error) {
         console.error("Failed to delete musician:", error);
         alert("Failed to delete musician. Please try again.");
@@ -419,9 +410,8 @@ const Admin = () => {
 
     try {
       await musiciansAPI.update(id, updatedMusician);
-      // Refresh data from API
-      const updatedMusicians = await musiciansAPI.getAll();
-      setMusicians(updatedMusicians);
+      // Refresh the page to show updated data
+      window.location.reload();
     } catch (error) {
       console.error("Failed to toggle musician visibility:", error);
       alert("Failed to update musician. Please try again.");
@@ -510,14 +500,12 @@ const Admin = () => {
 
     try {
       await musiciansAPI.update(draggedMusician.id, updatedMusician);
-      const updatedMusicians = await musiciansAPI.getAll();
-      setMusicians(updatedMusicians);
+      // Refresh the page to show updated data
+      window.location.reload();
     } catch (error) {
       console.error("Failed to move musician:", error);
       alert("Failed to move musician. Please try again.");
     }
-
-    setDraggedMusician(null);
   };
 
   // Media management
