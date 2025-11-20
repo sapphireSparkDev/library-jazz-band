@@ -6,8 +6,8 @@ import { getStore } from "@netlify/blobs";
 const readJSONFile = async (filename, context) => {
   try {
     // In production (Netlify), use Blobs storage
-    if (context && process.env.NETLIFY) {
-      const store = getStore({ name: "data", siteID: context.site?.id });
+    if (context) {
+      const store = getStore("data");
       const data = await store.get(filename, { type: "json" });
 
       if (data) {
@@ -88,8 +88,8 @@ const readFromStaticFiles = async (filename) => {
 const writeJSONFile = async (filename, data, context) => {
   try {
     // In production (Netlify), use Blobs storage
-    if (context && process.env.NETLIFY) {
-      const store = getStore({ name: "data", siteID: context.site?.id });
+    if (context) {
+      const store = getStore("data");
       await store.setJSON(filename, data);
       console.log(`Successfully wrote ${filename} to Netlify Blobs`);
       return true;
@@ -410,8 +410,8 @@ export default async (req, context) => {
         const safeFilename = `${timestamp}-${filename.replace(/[^a-zA-Z0-9.-]/g, "_")}`;
 
         // In production (Netlify), use Blobs storage for uploads
-        if (context && process.env.NETLIFY) {
-          const store = getStore({ name: "uploads", siteID: context.site?.id });
+        if (context) {
+          const store = getStore("uploads");
 
           // Convert file to buffer
           const buffer = await file.arrayBuffer();
@@ -488,8 +488,8 @@ export default async (req, context) => {
       try {
         const filename = pathname.split("/").pop();
 
-        if (context && process.env.NETLIFY) {
-          const store = getStore({ name: "uploads", siteID: context.site?.id });
+        if (context) {
+          const store = getStore("uploads");
           const fileData = await store.get(filename, { type: "arrayBuffer" });
           const metadata = await store.getMetadata(filename);
 
