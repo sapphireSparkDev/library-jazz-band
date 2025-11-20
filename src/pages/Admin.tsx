@@ -122,23 +122,23 @@ const Admin = () => {
     }
   };
 
-  useEffect(() => {
-    // Load data from API
-    const loadData = async () => {
-      try {
-        const [eventsData, musiciansData] = await Promise.all([
-          eventsAPI.getAll(),
-          musiciansAPI.getAll(),
-        ]);
-        setEvents(eventsData);
-        setMusicians(musiciansData);
-      } catch (error) {
-        console.error("Failed to load data:", error);
-        alert("Failed to load data. Please check if the server is running.");
-      }
-    };
+  // Function to reload data from API
+  const reloadData = async () => {
+    try {
+      const [eventsData, musiciansData] = await Promise.all([
+        eventsAPI.getAll(),
+        musiciansAPI.getAll(),
+      ]);
+      setEvents(eventsData);
+      setMusicians(musiciansData);
+    } catch (error) {
+      console.error("Failed to load data:", error);
+      alert("Failed to load data. Please check if the server is running.");
+    }
+  };
 
-    loadData();
+  useEffect(() => {
+    reloadData();
 
     // Check if user was previously authenticated
     const savedAuth = localStorage.getItem("admin_authenticated");
@@ -294,8 +294,10 @@ const Admin = () => {
         await eventsAPI.create(newEvent);
       }
 
-      // Refresh the page to show updated data
-      window.location.reload();
+      // Close modal and reload data
+      setShowEventModal(false);
+      setEditingEvent(null);
+      await reloadData();
     } catch (error) {
       console.error("Failed to save event:", error);
       alert("Failed to save event. Please try again.");
@@ -306,8 +308,7 @@ const Admin = () => {
     if (confirm("Are you sure you want to delete this event?")) {
       try {
         await eventsAPI.delete(id);
-        // Refresh the page to show updated data
-        window.location.reload();
+        await reloadData();
       } catch (error) {
         console.error("Failed to delete event:", error);
         alert("Failed to delete event. Please try again.");
@@ -323,8 +324,7 @@ const Admin = () => {
 
     try {
       await eventsAPI.update(id, updatedEvent);
-      // Refresh the page to show updated data
-      window.location.reload();
+      await reloadData();
     } catch (error) {
       console.error("Failed to toggle event visibility:", error);
       alert("Failed to update event. Please try again.");
@@ -381,8 +381,10 @@ const Admin = () => {
         await musiciansAPI.create(newMusician);
       }
 
-      // Refresh the page to show updated data
-      window.location.reload();
+      // Close modal and reload data
+      setShowMusicianModal(false);
+      setEditingMusician(null);
+      await reloadData();
     } catch (error) {
       console.error("Failed to save musician:", error);
       alert("Failed to save musician. Please try again.");
@@ -393,8 +395,7 @@ const Admin = () => {
     if (confirm("Are you sure you want to delete this musician?")) {
       try {
         await musiciansAPI.delete(id);
-        // Refresh the page to show updated data
-        window.location.reload();
+        await reloadData();
       } catch (error) {
         console.error("Failed to delete musician:", error);
         alert("Failed to delete musician. Please try again.");
@@ -410,8 +411,7 @@ const Admin = () => {
 
     try {
       await musiciansAPI.update(id, updatedMusician);
-      // Refresh the page to show updated data
-      window.location.reload();
+      await reloadData();
     } catch (error) {
       console.error("Failed to toggle musician visibility:", error);
       alert("Failed to update musician. Please try again.");
@@ -500,11 +500,12 @@ const Admin = () => {
 
     try {
       await musiciansAPI.update(draggedMusician.id, updatedMusician);
-      // Refresh the page to show updated data
-      window.location.reload();
+      setDraggedMusician(null);
+      await reloadData();
     } catch (error) {
       console.error("Failed to move musician:", error);
       alert("Failed to move musician. Please try again.");
+      setDraggedMusician(null);
     }
   };
 
