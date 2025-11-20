@@ -287,6 +287,17 @@ const Admin = () => {
       slug: eventForm.slug!,
     };
 
+    // Optimistic update
+    if (editingEvent) {
+      setEvents(events.map((e) => (e.id === editingEvent.id ? newEvent : e)));
+    } else {
+      setEvents([...events, newEvent]);
+    }
+
+    // Close modal immediately
+    setShowEventModal(false);
+    setEditingEvent(null);
+
     try {
       if (editingEvent) {
         await eventsAPI.update(editingEvent.id, newEvent);
@@ -294,24 +305,30 @@ const Admin = () => {
         await eventsAPI.create(newEvent);
       }
 
-      // Close modal and reload data
-      setShowEventModal(false);
-      setEditingEvent(null);
+      // Reload to confirm server state
       await reloadData();
     } catch (error) {
       console.error("Failed to save event:", error);
       alert("Failed to save event. Please try again.");
+      // Reload on error to restore correct state
+      await reloadData();
     }
   };
 
   const deleteEvent = async (id: string) => {
     if (confirm("Are you sure you want to delete this event?")) {
+      // Optimistic update
+      setEvents(events.filter((e) => e.id !== id));
+
       try {
         await eventsAPI.delete(id);
+        // Reload to confirm server state
         await reloadData();
       } catch (error) {
         console.error("Failed to delete event:", error);
         alert("Failed to delete event. Please try again.");
+        // Reload on error to restore correct state
+        await reloadData();
       }
     }
   };
@@ -322,12 +339,18 @@ const Admin = () => {
 
     const updatedEvent = { ...event, isHidden: !event.isHidden };
 
+    // Optimistic update
+    setEvents(events.map((e) => (e.id === id ? updatedEvent : e)));
+
     try {
       await eventsAPI.update(id, updatedEvent);
+      // Reload to confirm server state
       await reloadData();
     } catch (error) {
       console.error("Failed to toggle event visibility:", error);
       alert("Failed to update event. Please try again.");
+      // Reload on error to restore correct state
+      await reloadData();
     }
   };
 
@@ -374,6 +397,19 @@ const Admin = () => {
       sortOrder: musicianForm.sortOrder || 0,
     };
 
+    // Optimistic update
+    if (editingMusician) {
+      setMusicians(
+        musicians.map((m) => (m.id === editingMusician.id ? newMusician : m)),
+      );
+    } else {
+      setMusicians([...musicians, newMusician]);
+    }
+
+    // Close modal immediately
+    setShowMusicianModal(false);
+    setEditingMusician(null);
+
     try {
       if (editingMusician) {
         await musiciansAPI.update(editingMusician.id, newMusician);
@@ -381,24 +417,30 @@ const Admin = () => {
         await musiciansAPI.create(newMusician);
       }
 
-      // Close modal and reload data
-      setShowMusicianModal(false);
-      setEditingMusician(null);
+      // Reload to confirm server state
       await reloadData();
     } catch (error) {
       console.error("Failed to save musician:", error);
       alert("Failed to save musician. Please try again.");
+      // Reload on error to restore correct state
+      await reloadData();
     }
   };
 
   const deleteMusician = async (id: string) => {
     if (confirm("Are you sure you want to delete this musician?")) {
+      // Optimistic update
+      setMusicians(musicians.filter((m) => m.id !== id));
+
       try {
         await musiciansAPI.delete(id);
+        // Reload to confirm server state
         await reloadData();
       } catch (error) {
         console.error("Failed to delete musician:", error);
         alert("Failed to delete musician. Please try again.");
+        // Reload on error to restore correct state
+        await reloadData();
       }
     }
   };
@@ -409,12 +451,18 @@ const Admin = () => {
 
     const updatedMusician = { ...musician, isHidden: !musician.isHidden };
 
+    // Optimistic update
+    setMusicians(musicians.map((m) => (m.id === id ? updatedMusician : m)));
+
     try {
       await musiciansAPI.update(id, updatedMusician);
+      // Reload to confirm server state
       await reloadData();
     } catch (error) {
       console.error("Failed to toggle musician visibility:", error);
       alert("Failed to update musician. Please try again.");
+      // Reload on error to restore correct state
+      await reloadData();
     }
   };
 
@@ -498,14 +546,21 @@ const Admin = () => {
       sortOrder: newSortOrder,
     };
 
+    // Optimistic update
+    setMusicians(
+      musicians.map((m) => (m.id === draggedMusician.id ? updatedMusician : m)),
+    );
+    setDraggedMusician(null);
+
     try {
       await musiciansAPI.update(draggedMusician.id, updatedMusician);
-      setDraggedMusician(null);
+      // Reload to confirm server state
       await reloadData();
     } catch (error) {
       console.error("Failed to move musician:", error);
       alert("Failed to move musician. Please try again.");
-      setDraggedMusician(null);
+      // Reload on error to restore correct state
+      await reloadData();
     }
   };
 
