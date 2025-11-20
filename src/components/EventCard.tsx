@@ -3,11 +3,69 @@ import { Link } from "react-router-dom";
 import { Play, Pause, Volume2, VolumeX, MapPin, Calendar } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { Event } from "@/lib/types/events";
-import { resolveImagePath } from "@/lib/utils";
+import { resolveImagePath, getVideoEmbedUrl } from "@/lib/utils";
 
 interface EventCardProps {
   event: Event;
 }
+
+interface VideoEmbedProps {
+  url: string;
+  isPlaying: boolean;
+  isMuted: boolean;
+  togglePlayPause: () => void;
+  toggleMute: () => void;
+}
+
+const VideoEmbed = ({
+  url,
+  isPlaying,
+  isMuted,
+  togglePlayPause,
+  toggleMute,
+}: VideoEmbedProps) => {
+  const videoEmbed = getVideoEmbedUrl(url);
+
+  if (!videoEmbed) return null;
+
+  // For YouTube and Vimeo, use iframe embed
+  if (videoEmbed.type === "youtube" || videoEmbed.type === "vimeo") {
+    return (
+      <iframe
+        src={videoEmbed.embedUrl}
+        className="w-full h-full"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    );
+  }
+
+  // For direct video files, use video tag with controls
+  return (
+    <div className="relative w-full h-full bg-black">
+      <video
+        src={videoEmbed.embedUrl}
+        className="w-full h-full object-cover"
+        muted={isMuted}
+        controls={false}
+      />
+      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <button
+          onClick={togglePlayPause}
+          className="bg-amber-500 text-black p-2 rounded-full hover:bg-amber-400 transition-colors"
+        >
+          {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+        </button>
+        <button
+          onClick={toggleMute}
+          className="absolute top-1 right-1 bg-black bg-opacity-50 text-white p-1 rounded-full hover:bg-opacity-70 transition-colors"
+        >
+          {isMuted ? <VolumeX size={12} /> : <Volume2 size={12} />}
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export const EventCard = ({ event }: EventCardProps) => {
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
@@ -77,28 +135,13 @@ export const EventCard = ({ event }: EventCardProps) => {
               className="w-full h-full object-cover"
             />
           ) : (
-            <div className="relative w-full h-full bg-black">
-              <video
-                src={currentMedia.url}
-                className="w-full h-full object-cover"
-                muted={isMuted}
-                controls={false}
-              />
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                <button
-                  onClick={togglePlayPause}
-                  className="bg-amber-500 text-black p-2 rounded-full hover:bg-amber-400 transition-colors"
-                >
-                  {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-                </button>
-                <button
-                  onClick={toggleMute}
-                  className="absolute top-1 right-1 bg-black bg-opacity-50 text-white p-1 rounded-full hover:bg-opacity-70 transition-colors"
-                >
-                  {isMuted ? <VolumeX size={12} /> : <Volume2 size={12} />}
-                </button>
-              </div>
-            </div>
+            <VideoEmbed
+              url={currentMedia.url}
+              isPlaying={isPlaying}
+              isMuted={isMuted}
+              togglePlayPause={togglePlayPause}
+              toggleMute={toggleMute}
+            />
           )
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-neutral-500">
