@@ -1,11 +1,41 @@
+import { useState, useEffect } from "react";
 import rob from "../lib/assets/LJB_saxSection.webp";
 import karl from "../lib/assets/LJBKarl.webp";
 import kim from "../lib/assets/LJBKim.webp";
 import "../styles/background.css";
 import MusiciansList from "@/components/MusiciansList";
-import musiciansData from "@/data/musicians.json";
+import { musiciansAPI } from "@/lib/api";
+import { Musician } from "@/lib/types/events";
 
 const AboutPage = () => {
+  const [musicians, setMusicians] = useState<Musician[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadMusicians = async () => {
+      try {
+        setLoading(true);
+        const musiciansData = await musiciansAPI.getAll();
+        setMusicians(musiciansData);
+      } catch (error) {
+        console.error("Failed to load musicians:", error);
+        setMusicians([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadMusicians();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-neutral-900 flex items-center justify-center">
+        <div className="text-amber-500 text-xl">Loading...</div>
+      </div>
+    );
+  }
+
   return (
     <>
       {/* White section with gradient background */}
@@ -87,7 +117,7 @@ const AboutPage = () => {
 
       {/* Musicians List Section - Dark gray background */}
       <div className="w-full bg-[#171717] py-8">
-        <MusiciansList musicians={musiciansData} />
+        <MusiciansList musicians={musicians} />
       </div>
     </>
   );

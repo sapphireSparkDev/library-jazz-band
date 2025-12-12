@@ -1,7 +1,37 @@
+import { useState, useEffect } from "react";
 import MusiciansList from "@/components/MusiciansList";
-import musiciansData from "@/data/musicians.json";
+import { musiciansAPI } from "@/lib/api";
+import { Musician } from "@/lib/types/events";
 
 const OurMusicians = () => {
+  const [musicians, setMusicians] = useState<Musician[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadMusicians = async () => {
+      try {
+        setLoading(true);
+        const musiciansData = await musiciansAPI.getAll();
+        setMusicians(musiciansData);
+      } catch (error) {
+        console.error("Failed to load musicians:", error);
+        setMusicians([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadMusicians();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#171717] flex items-center justify-center">
+        <div className="text-amber-500 text-xl">Loading musicians...</div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#171717]">
       <div className="pt-16">
@@ -14,7 +44,7 @@ const OurMusicians = () => {
             Our diverse ensemble includes seasoned professionals and passionate
             amateurs united by their love for big band music.
           </p>
-          <MusiciansList musicians={musiciansData} />
+          <MusiciansList musicians={musicians} />
         </div>
       </div>
     </div>
