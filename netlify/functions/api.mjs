@@ -5,7 +5,30 @@ import { getStore } from "@netlify/blobs";
 // Helper function to get data from Netlify Blobs or fallback to JSON files
 const readJSONFile = async (filename, context) => {
   try {
-    // Always read from static files for now
+    // In production (Netlify), try to read from Blobs first
+    if (context) {
+      const store = getStore("data");
+      const data = await store.get(filename, { type: "json" });
+
+      if (data) {
+        console.log(`Successfully read ${filename} from Netlify Blobs`);
+        return data;
+      }
+
+      // If not in Blobs yet, read from static files and initialize Blobs
+      console.log(`${filename} not found in Blobs, initializing from static files`);
+      const staticData = await readFromStaticFiles(filename);
+
+      if (staticData && staticData.length > 0) {
+        // Initialize Blobs with static data
+        await store.setJSON(filename, staticData);
+        console.log(`Initialized ${filename} in Netlify Blobs`);
+      }
+
+      return staticData;
+    }
+
+    // In development, read from static files
     return await readFromStaticFiles(filename);
   } catch (error) {
     console.error(`Error reading ${filename}:`, error);
@@ -57,11 +80,18 @@ const readFromStaticFiles = async (filename) => {
 // Helper function to write JSON files
 const writeJSONFile = async (filename, data, context) => {
   try {
-    // For now, just return success - changes won't persist on Netlify
-    // This prevents the site from breaking, but admin changes won't save in production
-    console.warn(
-      `Write operation for ${filename} - changes will not persist in production`,
-    );
+    // In production (Netlify), write to Blobs
+    if (context) {
+      const store = getStore("data");
+      await store.setJSON(filename, data);
+      console.log(`Successfully wrote ${filename} to Netlify Blobs`);
+      return true;
+    }
+
+    // In development, write to filesystem
+    const filePath = path.join(process.cwd(), "src", "data", filename);
+    await fs.writeFile(filePath, JSON.stringify(data, null, 2));
+    console.log(`Successfully wrote ${filename} to filesystem`);
     return true;
   } catch (error) {
     console.error(`Error writing ${filename}:`, error);

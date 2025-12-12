@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Calendar, MapPin } from "lucide-react";
-import { Event } from "@/lib/types/events";
+import { Event, Musician } from "@/lib/types/events";
 import { eventsAPI, musiciansAPI } from "@/lib/api";
 import MusiciansList from "@/components/MusiciansList";
 import { resolveImagePath } from "@/lib/utils";
@@ -11,7 +11,7 @@ const EventDetail = () => {
   const [event, setEvent] = useState<Event | null>(null);
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [eventMusicians, setEventMusicians] = useState<any[]>([]);
+  const [eventMusicians, setEventMusicians] = useState<Musician[]>([]);
 
   useEffect(() => {
     // Find the event by slug from API
@@ -52,7 +52,7 @@ const EventDetail = () => {
         const allMusicians = await musiciansAPI.getAll();
         const musicians = event.musicians
           .map((musicianId) =>
-            allMusicians.find((m: any) => m.id === musicianId),
+            allMusicians.find((m: Musician) => m.id === musicianId),
           )
           .filter(
             (musician): musician is NonNullable<typeof musician> =>
@@ -91,16 +91,16 @@ const EventDetail = () => {
     );
   }
 
-  const currentMedia = event.media[currentMediaIndex];
-  const hasMultipleMedia = event.media.length > 1;
+  const currentMedia = event.media?.[currentMediaIndex];
+  const hasMultipleMedia = (event.media?.length ?? 0) > 1;
 
   const nextMedia = () => {
-    setCurrentMediaIndex((prev) => (prev + 1) % event.media.length);
+    setCurrentMediaIndex((prev) => (prev + 1) % (event.media?.length ?? 1));
   };
 
   const prevMedia = () => {
     setCurrentMediaIndex(
-      (prev) => (prev - 1 + event.media.length) % event.media.length,
+      (prev) => (prev - 1 + (event.media?.length ?? 1)) % (event.media?.length ?? 1),
     );
   };
 
@@ -178,7 +178,7 @@ const EventDetail = () => {
                 {/* Dots Indicator */}
                 {hasMultipleMedia && (
                   <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                    {event.media.map((_, index) => (
+                    {event.media?.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentMediaIndex(index)}
