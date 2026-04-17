@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { EventCard } from "@/components/EventCard";
 import { Event } from "@/lib/types/events";
 import { eventsAPI } from "@/lib/api";
-import { resolveImagePath } from "@/lib/utils";
+import { resolveImagePath, preloadImages } from "@/lib/utils";
 
 const Events = () => {
   const [events, setEvents] = useState<Event[]>([]);
@@ -45,10 +45,19 @@ const Events = () => {
             }
           });
 
+        const imageUrls = sortedEvents.flatMap((event: Event) =>
+          (event.media || [])
+            .filter(
+              (m: { type: string; url: string }) => m.type === "image" && m.url,
+            )
+            .slice(0, 1)
+            .map((m: { url: string }) => m.url),
+        );
+        await preloadImages(imageUrls);
+
         setEvents(sortedEvents);
       } catch (error) {
         console.error("Failed to load events:", error);
-        // Fallback to empty array if API fails
         setEvents([]);
       } finally {
         setLoading(false);

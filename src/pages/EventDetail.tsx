@@ -4,7 +4,7 @@ import { Calendar, MapPin } from "lucide-react";
 import { Event, Musician } from "@/lib/types/events";
 import { eventsAPI, musiciansAPI } from "@/lib/api";
 import MusiciansList from "@/components/MusiciansList";
-import { resolveImagePath } from "@/lib/utils";
+import { resolveImagePath, preloadImages } from "@/lib/utils";
 
 const EventDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -14,59 +14,52 @@ const EventDetail = () => {
   const [eventMusicians, setEventMusicians] = useState<Musician[]>([]);
 
   useEffect(() => {
-    // Find the event by slug from API
-    const loadEvent = async () => {
+    const loadEventData = async () => {
       setLoading(true);
       try {
-        console.log("Loading event for slug:", slug);
-        const foundEvent = await eventsAPI.getBySlug(slug!);
-        console.log("Found event:", foundEvent);
+        const [foundEvent, allMusicians] = await Promise.all([
+          eventsAPI.getBySlug(slug!).catch(async () => {
+            const events = await eventsAPI.getAll();
+            return events.find((e: Event) => e.slug === slug) ?? null;
+          }),
+          musiciansAPI.getAll().catch(() => []),
+        ]);
+
         setEvent(foundEvent);
+
+        if (foundEvent) {
+          const musicians = (foundEvent.musicians || [])
+            .map((id: string) =>
+              allMusicians.find((m: Musician) => m.id === id),
+            )
+            .filter(
+              (m: Musician | undefined): m is Musician => m !== undefined,
+            );
+          setEventMusicians(musicians);
+
+          const imageUrls = [
+            ...(foundEvent.media || [])
+              .filter(
+                (m: { type: string; url: string }) =>
+                  m.type === "image" && m.url,
+              )
+              .map((m: { url: string }) => m.url),
+            ...musicians
+              .filter((m: Musician) => m.photo)
+              .map((m: Musician) => m.photo),
+          ];
+          await preloadImages(imageUrls);
+        }
       } catch (error) {
         console.error("Failed to load event:", error);
-        // Fallback to getAll if getBySlug fails
-        try {
-          const events = await eventsAPI.getAll();
-          const fallbackEvent = events.find((e: Event) => e.slug === slug);
-          setEvent(fallbackEvent || null);
-        } catch (fallbackError) {
-          console.error("Fallback also failed:", fallbackError);
-          setEvent(null);
-        }
+        setEvent(null);
       } finally {
         setLoading(false);
       }
     };
 
-    loadEvent();
+    loadEventData();
   }, [slug]);
-
-  useEffect(() => {
-    const loadMusicians = async () => {
-      if (!event) {
-        setEventMusicians([]);
-        return;
-      }
-
-      try {
-        const allMusicians = await musiciansAPI.getAll();
-        const musicians = event.musicians
-          .map((musicianId) =>
-            allMusicians.find((m: Musician) => m.id === musicianId),
-          )
-          .filter(
-            (musician): musician is NonNullable<typeof musician> =>
-              musician !== undefined,
-          );
-        setEventMusicians(musicians);
-      } catch (error) {
-        console.error("Failed to load musicians:", error);
-        setEventMusicians([]);
-      }
-    };
-
-    loadMusicians();
-  }, [event]);
 
   if (loading) {
     return (
@@ -100,7 +93,8 @@ const EventDetail = () => {
 
   const prevMedia = () => {
     setCurrentMediaIndex(
-      (prev) => (prev - 1 + (event.media?.length ?? 1)) % (event.media?.length ?? 1),
+      (prev) =>
+        (prev - 1 + (event.media?.length ?? 1)) % (event.media?.length ?? 1),
     );
   };
 
@@ -144,10 +138,12 @@ const EventDetail = () => {
                   ) : (
                     <div className="relative w-full h-96 bg-black">
                       <video
-                        src={currentMedia.url}
+                        src={resolveImagePath(currentMedia.url)}
                         className="w-full h-full object-cover"
                         controls
                         autoPlay
+                        muted
+                        playsInline
                       />
                     </div>
                   )

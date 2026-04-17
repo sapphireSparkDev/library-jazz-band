@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import MusiciansList from "@/components/MusiciansList";
 import { musiciansAPI } from "@/lib/api";
 import { Musician } from "@/lib/types/events";
+import { preloadImages } from "@/lib/utils";
 
 const OurMusicians = () => {
   const [musicians, setMusicians] = useState<Musician[]>([]);
@@ -12,6 +13,11 @@ const OurMusicians = () => {
       try {
         setLoading(true);
         const musiciansData = await musiciansAPI.getAll();
+        const photoUrls = musiciansData
+          .filter((m: Musician) => m.photo)
+          .map((m: Musician) => m.photo);
+        await preloadImages(photoUrls);
+
         setMusicians(musiciansData);
       } catch (error) {
         console.error("Failed to load musicians:", error);

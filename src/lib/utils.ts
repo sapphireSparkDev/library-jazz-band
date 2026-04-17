@@ -20,3 +20,16 @@ export const resolveImagePath = (url: string) => {
 
   return url;
 };
+
+export const preloadImages = (urls: string[]): Promise<void> =>
+  Promise.all(
+    urls.filter(Boolean).map(
+      (url) =>
+        new Promise<void>((resolve) => {
+          const img = new window.Image();
+          img.onload = () => resolve();
+          img.onerror = () => resolve();
+          img.src = resolveImagePath(url);
+        }),
+    ),
+  ).then(() => undefined);
