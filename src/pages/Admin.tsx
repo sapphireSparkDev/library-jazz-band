@@ -98,9 +98,14 @@ const Admin = () => {
   ) => {
     if (!file) return;
 
-    // Check file size (10MB limit)
-    if (file.size > 10 * 1024 * 1024) {
-      alert("File too large. Maximum size is 10MB.");
+    const isVideo = file.type.startsWith("video/");
+    const maxSize = isVideo ? 500 * 1024 * 1024 : 10 * 1024 * 1024;
+    if (file.size > maxSize) {
+      alert(
+        isVideo
+          ? "Video too large. Maximum size is 500MB."
+          : "Image too large. Maximum size is 10MB.",
+      );
       return;
     }
 
@@ -1349,6 +1354,12 @@ const Admin = () => {
                               onChange={(e) => {
                                 const file = e.target.files?.[0];
                                 if (file) {
+                                  const detectedType = file.type.startsWith(
+                                    "video/",
+                                  )
+                                    ? "video"
+                                    : "image";
+                                  updateMediaItem(index, "type", detectedType);
                                   handleFileUpload(file, (url) => {
                                     updateMediaItem(index, "url", url);
                                   });
