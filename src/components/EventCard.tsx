@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Play, Pause, Volume2, VolumeX, MapPin, Calendar } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
@@ -13,7 +13,7 @@ export const EventCard = ({ event }: EventCardProps) => {
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  // Updated placeholder with logo
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const currentMedia = event.media[currentMediaIndex];
   const hasMultipleMedia = event.media.length > 1;
@@ -21,6 +21,7 @@ export const EventCard = ({ event }: EventCardProps) => {
   const nextMedia = () => {
     setCurrentMediaIndex((prev) => (prev + 1) % event.media.length);
     setIsPlaying(false);
+    videoRef.current?.pause();
   };
 
   const prevMedia = () => {
@@ -28,13 +29,23 @@ export const EventCard = ({ event }: EventCardProps) => {
       (prev) => (prev - 1 + event.media.length) % event.media.length,
     );
     setIsPlaying(false);
+    videoRef.current?.pause();
   };
 
   const togglePlayPause = () => {
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+    } else {
+      videoRef.current.play();
+    }
     setIsPlaying(!isPlaying);
   };
 
   const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+    }
     setIsMuted(!isMuted);
   };
 
@@ -79,9 +90,11 @@ export const EventCard = ({ event }: EventCardProps) => {
           ) : (
             <div className="relative w-full h-full bg-black">
               <video
-                src={currentMedia.url}
+                ref={videoRef}
+                src={resolveImagePath(currentMedia.url)}
                 className="w-full h-full object-cover"
                 muted={isMuted}
+                playsInline
                 controls={false}
               />
               <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
