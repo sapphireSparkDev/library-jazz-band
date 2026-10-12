@@ -1,225 +1,79 @@
-import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { EventCard } from "@/components/EventCard";
-import { Event } from "@/lib/types/events";
-import { eventsAPI } from "@/lib/api";
-import { resolveImagePath, preloadImages } from "@/lib/utils";
+import PageHeader from "@/components/PageHeader";
+import { useEvents } from "@/lib/useEvents";
+import { dateParts, eventPath, scrollToShowAlerts } from "@/lib/events";
 
 const Events = () => {
-  const [events, setEvents] = useState<Event[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [headerOpacity, setHeaderOpacity] = useState(1);
-  const [activeSection, setActiveSection] = useState<"upcoming" | "past">(
-    "upcoming",
-  );
-  const headerRef = useRef<HTMLDivElement>(null);
-  const upcomingRef = useRef<HTMLDivElement>(null);
-  const pastRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Load events from API and sort them
-    const loadEvents = async () => {
-      try {
-        setLoading(true);
-        const eventsData = await eventsAPI.getAll();
-        const sortedEvents = eventsData
-          .filter((event: Event) => !event.isHidden)
-          .sort((a: Event, b: Event) => {
-            const now = new Date();
-            const aDate = new Date(a.date);
-            const bDate = new Date(b.date);
-
-            const aIsUpcoming = aDate >= now;
-            const bIsUpcoming = bDate >= now;
-
-            // First, separate upcoming and past events
-            if (aIsUpcoming && !bIsUpcoming) return -1;
-            if (!aIsUpcoming && bIsUpcoming) return 1;
-
-            // Then sort within each group
-            if (aIsUpcoming) {
-              // Upcoming: closest to today first
-              return aDate.getTime() - bDate.getTime();
-            } else {
-              // Past: most recent first
-              return bDate.getTime() - aDate.getTime();
-            }
-          });
-
-        const imageUrls = sortedEvents.flatMap((event: Event) =>
-          (event.media || [])
-            .filter(
-              (m: { type: string; url: string }) => m.type === "image" && m.url,
-            )
-            .slice(0, 1)
-            .map((m: { url: string }) => m.url),
-        );
-        await preloadImages(imageUrls);
-
-        setEvents(sortedEvents);
-      } catch (error) {
-        console.error("Failed to load events:", error);
-        setEvents([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadEvents();
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (headerRef.current) {
-        const headerHeight = headerRef.current.offsetHeight;
-        const scrollPosition = window.scrollY;
-        const opacity = Math.max(0, 1 - scrollPosition / headerHeight);
-        setHeaderOpacity(opacity);
-      }
-
-      // Determine which section is currently in view
-      if (upcomingRef.current && pastRef.current) {
-        const upcomingTop = upcomingRef.current.getBoundingClientRect().top;
-        const pastTop = pastRef.current.getBoundingClientRect().top;
-        const viewportHeight = window.innerHeight;
-
-        // If upcoming section is in view or past section hasn't reached the top yet
-        if (
-          upcomingTop < viewportHeight * 0.5 ||
-          pastTop > viewportHeight * 0.5
-        ) {
-          setActiveSection("upcoming");
-        } else {
-          setActiveSection("past");
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    // Initial check
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToUpcoming = () => {
-    if (upcomingRef.current) {
-      upcomingRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
-
-  const scrollToPast = () => {
-    if (pastRef.current) {
-      pastRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
-  const upcomingEvents = events.filter((event) => {
-    const eventDate = new Date(event.date);
-    const now = new Date();
-    return eventDate >= now;
-  });
-
-  const pastEvents = events.filter((event) => {
-    const eventDate = new Date(event.date);
-    const now = new Date();
-    return eventDate < now;
-  });
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-neutral-900 flex items-center justify-center">
-        <div className="text-amber-500 text-xl">Loading events...</div>
-      </div>
-    );
-  }
+  const { upcoming, past, loading } = useEvents();
 
   return (
-    <div className="min-h-screen bg-neutral-900">
-      {/* Header Section with Photo */}
-      <div
-        ref={headerRef}
-        className="relative"
-        style={{ opacity: headerOpacity }}
-      >
-        <div className="pt-16">
-          {" "}
-          {/* Space for nav bar */}
-          <div className="mx-4 md:mx-8 lg:mx-16">
-            <img
-              src={resolveImagePath("/src/lib/assets/LJBRob.webp")}
-              alt="Library Jazz Band performing"
-              className="w-full h-64 md:h-80 lg:h-96 object-cover rounded-lg shadow-lg"
-            />
-            <div className="absolute inset-0 flex items-center justify-center pt-16">
-              <h1 className="text-amber-500 font-bebasNeue text-4xl md:text-5xl lg:text-6xl font-bold text-center">
-                Live Performances
-              </h1>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="mx-auto min-h-screen max-w-6xl px-4 pb-16 pt-10 md:px-6">
+      <PageHeader eyebrow="The season" title="Live Performances" />
 
-      {/* Navigation Buttons */}
-      <div className="sticky top-16 z-10 pt-4 pb-4">
-        <div className="mx-4 md:mx-8 lg:mx-16">
-          <div className="flex space-x-4">
+      <section className="mt-10">
+        <h2 className="ljb-cap mb-5">Upcoming</h2>
+        {loading ? (
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="ljb-card h-80 animate-pulse" />
+            <div className="ljb-card hidden h-80 animate-pulse md:block" />
+          </div>
+        ) : upcoming.length > 0 ? (
+          <div className="grid gap-6 md:grid-cols-2">
+            {upcoming.map((event) => (
+              <EventCard key={event.id} event={event} />
+            ))}
+          </div>
+        ) : (
+          <div className="ljb-card flex flex-col items-start gap-3 p-6 sm:flex-row sm:items-center">
+            <p className="flex-1 font-light text-ljb-cream/80">
+              No shows on the calendar right now. Get an email when the next one
+              is announced.
+            </p>
             <button
-              onClick={scrollToUpcoming}
-              className={`px-6 py-3 font-medium transition-colors rounded-none ${
-                activeSection === "upcoming"
-                  ? "bg-amber-500 text-black hover:bg-amber-400"
-                  : "bg-amber-700 text-white hover:bg-amber-600"
-              }`}
+              type="button"
+              onClick={scrollToShowAlerts}
+              className="ljb-pill-gold"
             >
-              Upcoming
-            </button>
-            <button
-              onClick={scrollToPast}
-              className={`px-6 py-3 font-medium transition-colors rounded-none ${
-                activeSection === "past"
-                  ? "bg-amber-500 text-black hover:bg-amber-400"
-                  : "bg-amber-700 text-white hover:bg-amber-600"
-              }`}
-            >
-              Past
+              Get show alerts
             </button>
           </div>
-        </div>
-      </div>
-
-      {/* All Events Grid */}
-      <div className="mx-4 md:mx-8 lg:mx-16 mt-8 pb-16">
-        {/* Upcoming Events Section */}
-        {upcomingEvents.length > 0 && (
-          <div ref={upcomingRef} className="mb-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              {upcomingEvents.map((event) => (
-                <EventCard key={event.id} event={event} />
-              ))}
-            </div>
-          </div>
         )}
+      </section>
 
-        {/* Past Events Section */}
-        {pastEvents.length > 0 && (
-          <div ref={pastRef}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              {pastEvents.map((event) => (
-                <EventCard key={event.id} event={event} />
-              ))}
-            </div>
+      {past.length > 0 && (
+        <section className="mt-16">
+          {/* Partition so the archive reads as separate from what's coming up */}
+          <div className="mb-4 flex items-center gap-4">
+            <div className="ljb-hairline flex-1" />
+            <h2 className="ljb-cap text-ljb-cream/55">Past shows</h2>
+            <div className="ljb-hairline flex-1" />
           </div>
-        )}
-
-        {/* No Events Message */}
-        {events.length === 0 && (
-          <div className="text-center text-amber-500 py-16">
-            <p className="text-xl">No events to display.</p>
-          </div>
-        )}
-      </div>
+          <ul className="opacity-80">
+            {past.map((event) => {
+              const { monthYear } = dateParts(event.date);
+              return (
+                <li key={event.id} className="border-b border-ljb-gold/15">
+                  <Link
+                    to={eventPath(event)}
+                    className="group flex items-baseline gap-4 py-3 text-ljb-cream/85 hover:text-ljb-gold-light"
+                  >
+                    <span className="w-20 shrink-0 text-sm font-light text-ljb-gold">
+                      {monthYear}
+                    </span>
+                    <span className="min-w-0 flex-1 truncate">
+                      {event.title}
+                    </span>
+                    <span className="text-ljb-gold transition-transform group-hover:translate-x-1">
+                      →
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
     </div>
   );
 };

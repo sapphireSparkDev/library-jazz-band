@@ -45,6 +45,9 @@ const Admin = () => {
     isUpcoming: true,
     isHidden: false,
     slug: "",
+    admission: "free",
+    admissionUrl: "",
+    admissionNote: "",
   });
 
   // Musician search state (for event modal)
@@ -260,6 +263,9 @@ const Admin = () => {
         isUpcoming: true,
         isHidden: false,
         slug: "",
+        admission: "free",
+        admissionUrl: "",
+        admissionNote: "",
       });
       setMusicianSearch("");
       setSearchResults([]);
@@ -290,6 +296,9 @@ const Admin = () => {
       isUpcoming: new Date(eventForm.date!) >= new Date(),
       isHidden: eventForm.isHidden || false,
       slug: eventForm.slug!,
+      admission: eventForm.admission || "free",
+      admissionUrl: eventForm.admissionUrl || "",
+      admissionNote: eventForm.admissionNote || "",
     };
 
     // Optimistic update
@@ -1183,6 +1192,65 @@ const Admin = () => {
                       }
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
                       placeholder="Event location"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Admission
+                    </label>
+                    <select
+                      value={eventForm.admission || "free"}
+                      onChange={(e) =>
+                        setEventForm({
+                          ...eventForm,
+                          admission: e.target.value as Event["admission"],
+                        })
+                      }
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white text-gray-900"
+                    >
+                      <option value="free">Free, no RSVP needed</option>
+                      <option value="rsvp">Free, RSVP required</option>
+                      <option value="tickets">Ticketed</option>
+                    </select>
+                  </div>
+
+                  {eventForm.admission && eventForm.admission !== "free" && (
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        {eventForm.admission === "rsvp" ? "RSVP" : "Ticket"}{" "}
+                        link
+                      </label>
+                      <input
+                        type="url"
+                        value={eventForm.admissionUrl || ""}
+                        onChange={(e) =>
+                          setEventForm({
+                            ...eventForm,
+                            admissionUrl: e.target.value,
+                          })
+                        }
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
+                        placeholder="https://..."
+                      />
+                    </div>
+                  )}
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Admission label (optional)
+                    </label>
+                    <input
+                      type="text"
+                      value={eventForm.admissionNote || ""}
+                      onChange={(e) =>
+                        setEventForm({
+                          ...eventForm,
+                          admissionNote: e.target.value,
+                        })
+                      }
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
+                      placeholder='e.g. "Tickets $15" or "Seating is limited"'
                     />
                   </div>
 

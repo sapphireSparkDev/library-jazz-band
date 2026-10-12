@@ -1,206 +1,71 @@
-import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Play, Pause, Volume2, VolumeX, MapPin, Calendar } from "lucide-react";
-import { Card, CardContent } from "./ui/card";
+import { MapPin } from "lucide-react";
 import { Event } from "@/lib/types/events";
 import { resolveImagePath } from "@/lib/utils";
+import {
+  admissionInfo,
+  eventPath,
+  firstImage,
+  formatShortDate,
+} from "@/lib/events";
+import { AdmissionLink, AdmissionTag, CalendarButton } from "./EventActions";
 
 interface EventCardProps {
   event: Event;
 }
 
 export const EventCard = ({ event }: EventCardProps) => {
-  const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const currentMedia = event.media[currentMediaIndex];
-  const hasMultipleMedia = event.media.length > 1;
-
-  const nextMedia = () => {
-    setCurrentMediaIndex((prev) => (prev + 1) % event.media.length);
-    setIsPlaying(false);
-    videoRef.current?.pause();
-  };
-
-  const prevMedia = () => {
-    setCurrentMediaIndex(
-      (prev) => (prev - 1 + event.media.length) % event.media.length,
-    );
-    setIsPlaying(false);
-    videoRef.current?.pause();
-  };
-
-  const togglePlayPause = () => {
-    if (!videoRef.current) return;
-    if (isPlaying) {
-      videoRef.current.pause();
-    } else {
-      videoRef.current.play();
-    }
-    setIsPlaying(!isPlaying);
-  };
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-    }
-    setIsMuted(!isMuted);
-  };
-
-  const formatDate = (dateString: string) => {
-    // Parse the date string and ensure it's treated as local time
-    const [datePart, timePart] = dateString.split("T");
-    const [year, month, day] = datePart.split("-").map(Number);
-    const date = new Date(year, month - 1, day);
-
-    const formattedDate = date.toLocaleDateString("en-US", {
-      month: "long",
-      day: "numeric",
-      year: "numeric",
-    });
-
-    // Extract and format time exactly as stored in JSON (no timezone adjustments)
-    if (timePart) {
-      const [hours, minutes] = timePart.split(":").map(Number);
-      // Format time directly from the stored values without timezone conversion
-      const hour12 = hours % 12 || 12; // Convert to 12-hour format
-      const ampm = hours >= 12 ? "PM" : "AM";
-      const formattedTime = `${hour12}:${minutes.toString().padStart(2, "0")} ${ampm}`;
-      return `${formattedDate} • ${formattedTime}`;
-    }
-
-    return formattedDate;
-  };
+  const image = firstImage(event);
+  const isFree = admissionInfo(event).kind === "free";
 
   return (
-    <Card className="bg-white border-0 shadow-lg overflow-hidden flex flex-col rounded-none h-full">
-      {/* Media Section */}
-      <div className="relative aspect-video bg-gray-200 overflow-hidden">
-        {currentMedia && currentMedia.url ? (
-          currentMedia.type === "image" ? (
-            <img
-              src={
-                resolveImagePath(currentMedia.url) || "/placeholder-image.jpg"
-              }
-              alt={currentMedia.alt || event.title}
-              className="w-full h-full object-cover"
-            />
-          ) : (
-            <div className="relative w-full h-full bg-black">
-              <video
-                ref={videoRef}
-                src={resolveImagePath(currentMedia.url)}
-                className="w-full h-full object-cover"
-                muted={isMuted}
-                playsInline
-                controls={false}
-              />
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                <button
-                  onClick={togglePlayPause}
-                  className="bg-amber-500 text-black p-2 rounded-full hover:bg-amber-400 transition-colors"
-                >
-                  {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-                </button>
-                <button
-                  onClick={toggleMute}
-                  className="absolute top-1 right-1 bg-black bg-opacity-50 text-white p-1 rounded-full hover:bg-opacity-70 transition-colors"
-                >
-                  {isMuted ? <VolumeX size={12} /> : <Volume2 size={12} />}
-                </button>
-              </div>
-            </div>
-          )
+    <article className="ljb-card flex h-full flex-col gap-3 p-3">
+      <Link
+        to={eventPath(event)}
+        className="relative block aspect-video overflow-hidden rounded-xl bg-ljb-deep"
+      >
+        {image ? (
+          <img
+            src={resolveImagePath(image.url)}
+            alt={image.alt || event.title}
+            className="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
+          />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-neutral-500">
-            <img
-              src={resolveImagePath("/src/lib/assets/LBJLogo.png")}
-              alt="Library Jazz Band Logo"
-              className="max-w-[60%] max-h-[60%] object-contain opacity-40"
-            />
+          <div className="ljb-hero-glow flex h-full w-full items-center justify-center font-aboreto text-3xl tracking-[0.2em] text-ljb-gold/70">
+            LJB
           </div>
         )}
+      </Link>
 
-        {/* Navigation Arrows */}
-        {hasMultipleMedia && (
-          <>
-            <button
-              onClick={prevMedia}
-              className="absolute left-1 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-1 rounded-full hover:bg-opacity-70 transition-colors text-xs"
-            >
-              ←
-            </button>
-            <button
-              onClick={nextMedia}
-              className="absolute right-1 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-1 rounded-full hover:bg-opacity-70 transition-colors text-xs"
-            >
-              →
-            </button>
-          </>
-        )}
+      <div className="flex flex-1 flex-col gap-2 px-2 pb-2">
+        <span className="ljb-cap tracking-[0.2em]">
+          {formatShortDate(event.date)}
+        </span>
+        <Link
+          to={eventPath(event)}
+          className="font-bebasNeue text-2xl leading-tight tracking-wide text-ljb-cream hover:text-ljb-gold-light md:text-3xl"
+        >
+          {event.title}
+        </Link>
+        <span className="flex items-start gap-1.5 text-sm font-light text-ljb-cream/75">
+          <MapPin size={15} className="mt-0.5 shrink-0 text-ljb-gold" />
+          {event.location}
+        </span>
 
-        {/* Dots Indicator */}
-        {hasMultipleMedia && (
-          <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 flex space-x-1">
-            {event.media.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentMediaIndex(index)}
-                className={`w-1.5 h-1.5 rounded-full ${
-                  index === currentMediaIndex
-                    ? "bg-amber-500"
-                    : "bg-white bg-opacity-50"
-                }`}
-              />
-            ))}
-          </div>
-        )}
+        <div className="mt-auto flex flex-wrap items-center gap-2 pt-3">
+          <AdmissionTag event={event} className="mr-auto" />
+          {isFree ? (
+            <>
+              <CalendarButton event={event} label="+ Cal" />
+              <Link to={eventPath(event)} className="ljb-pill-gold">
+                Details
+              </Link>
+            </>
+          ) : (
+            <AdmissionLink event={event} />
+          )}
+        </div>
       </div>
-
-      {/* Content Section */}
-      <CardContent className="p-3 flex flex-col flex-1">
-        {/* Top Content */}
-        <div className="flex-1">
-          {/* Date */}
-          <div className="flex items-center text-amber-600 text-sm font-bold mb-1">
-            <Calendar size={14} className="mr-1" />
-            <span>{formatDate(event.date)}</span>
-          </div>
-
-          {/* Title */}
-          <h3 className="font-bold text-black text-sm mb-1 line-clamp-2">
-            {event.title}
-          </h3>
-
-          {/* Description */}
-          <p className="text-black text-xs mb-2 line-clamp-2">
-            {event.description}
-          </p>
-        </div>
-
-        {/* Bottom Content - Aligned to bottom */}
-        <div>
-          {/* Location */}
-          <div className="flex items-center text-black text-xs mb-3">
-            <MapPin size={12} className="mr-1" />
-            <span className="line-clamp-1">{event.location}</span>
-          </div>
-
-          {/* More Details Button */}
-          <Link
-            to={
-              event.slug === "hitting-the-low-notes"
-                ? "/events/lowNotes"
-                : `/events/${event.slug}`
-            }
-            className="block w-full bg-amber-500 text-black text-center py-1 px-3 text-xs font-medium hover:bg-amber-400 transition-colors"
-          >
-            More Details
-          </Link>
-        </div>
-      </CardContent>
-    </Card>
+    </article>
   );
 };
