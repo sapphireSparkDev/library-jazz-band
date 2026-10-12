@@ -8,9 +8,14 @@ import { eventPath } from "@/lib/events";
 
 // The band's Square donation link. Donors pick the amount and pay on
 // Square's own page, so the site needs no payment server.
-const SQUARE_DONATION_URL = import.meta.env.VITE_SQUARE_DONATION_URL as
-  | string
-  | undefined;
+// VITE_SQUARE_DONATION_URL overrides the default link if set.
+const SQUARE_DONATION_URL =
+  (import.meta.env.VITE_SQUARE_DONATION_URL as string | undefined) ||
+  "https://square.link/u/cMmuO3Or";
+
+// ArtsWestchester 2026 matching-gift form (Google Form).
+const ARTS_WESTCHESTER_FORM_URL =
+  "https://docs.google.com/forms/d/1tR_kx_wxNZYGRYhz2N-uLu_lEION8DgvQix5eG3kJSs/viewform";
 
 // Always open on desktop; collapsible on mobile.
 const WayToGive = ({
@@ -71,28 +76,34 @@ const Donate = () => {
             Give any amount through Square's secure checkout. Pay by card, Apple
             Pay or Google Pay.
           </p>
-          {SQUARE_DONATION_URL ? (
+          <a
+            href={SQUARE_DONATION_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="ljb-pill-gold py-3 text-base"
+          >
+            Donate with Square ↗
+          </a>
+          <p className="text-center text-xs font-light text-ljb-cream/50">
+            Opens Square in a new tab. A tax-deductible receipt is emailed to
+            you.
+          </p>
+          <div className="ljb-hairline" />
+          <div className="flex flex-col gap-3">
+            <span className="ljb-cap">ArtsWestchester 2026 match</span>
+            <p className="text-sm font-light text-ljb-cream/75">
+              ArtsWestchester may match your gift. After you donate, fill out
+              the 2026 donation form so your gift can be counted.
+            </p>
             <a
-              href={SQUARE_DONATION_URL}
+              href={ARTS_WESTCHESTER_FORM_URL}
               target="_blank"
               rel="noreferrer"
-              className="ljb-pill-gold py-3 text-base"
+              className="ljb-pill-ghost whitespace-normal py-2.5 text-center"
             >
-              Donate with Square ↗
+              Fill out the 2026 donation form ↗
             </a>
-          ) : (
-            <span
-              aria-disabled="true"
-              className="ljb-pill-gold cursor-not-allowed py-3 text-base opacity-50"
-            >
-              Online giving coming soon
-            </span>
-          )}
-          <p className="text-center text-xs font-light text-ljb-cream/50">
-            {SQUARE_DONATION_URL
-              ? "Opens Square in a new tab. A tax-deductible receipt is emailed to you."
-              : "Until then, please give by Zelle or check."}
-          </p>
+          </div>
         </div>
 
         {/* Other ways to give */}
