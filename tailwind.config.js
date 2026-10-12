@@ -3,19 +3,19 @@ export default {
   darkMode: ["class"],
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-	screens: {
-		'xsm': '300px',
+    screens: {
+      xsm: "300px",
 
-		'sm': '640px',
+      sm: "640px",
 
-      	'md': '768px',
+      md: "768px",
 
-      	'lg': '1024px',
+      lg: "1024px",
 
-      	'xl': '1280px',
+      xl: "1280px",
 
-      	'2xl': '1536px',
-	},
+      "2xl": "1536px",
+    },
     fontFamily: {
       roboto: ["Roboto", "sans-serif"],
       robotoThin: ["Roboto-Thin", "sans-serif"],
@@ -31,6 +31,16 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        // Velvet lounge palette (design 3a)
+        ljb: {
+          night: "#1a0f12",
+          deep: "#1f1215",
+          ember: "#4a2622",
+          raised: "#2a181c",
+          cream: "#f1e6d2",
+          gold: "#c9a24a",
+          "gold-light": "#e6c77a",
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

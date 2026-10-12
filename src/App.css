@@ -5,7 +5,23 @@
 @layer base {
   @font-face {
     font-family: "Roboto";
+    src: url("/fonts/Roboto/Roboto-Light.ttf");
+    font-weight: 300;
+  }
+  @font-face {
+    font-family: "Roboto";
+    src: url("/fonts/Roboto/Roboto-Regular.ttf");
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: "Roboto";
     src: url("/fonts/Roboto/Roboto-Medium.ttf");
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: "Roboto";
+    src: url("/fonts/Roboto/Roboto-Bold.ttf");
+    font-weight: 700;
   }
   @font-face {
     font-family: "Roboto-Thin";
@@ -21,6 +37,60 @@
   }
   @font-face {
     font-family: "Sree_Krushnadevaraya";
-    src: url("/fonts/Sree_Krushnadevaraya/Sree_Krushnadevaraya-Regular.ttf");
+    src: url("/fonts/Sree_Krushnadevaraya/SreeKrushnadevaraya-Regular.ttf");
+  }
+}
+
+@layer components {
+  /* Velvet lounge building blocks: soft cards, pill buttons, gold hairlines. */
+
+  .ljb-cap {
+    @apply font-roboto text-[0.7rem] font-normal uppercase tracking-[0.3em] text-ljb-gold;
+  }
+
+  .ljb-pill,
+  .ljb-pill-gold,
+  .ljb-pill-ghost {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 py-2 font-roboto text-sm font-normal tracking-wide transition-colors;
+  }
+
+  .ljb-pill-gold {
+    @apply bg-ljb-gold text-ljb-night hover:bg-ljb-gold-light hover:text-ljb-night;
+  }
+
+  .ljb-pill-ghost {
+    @apply bg-transparent text-ljb-gold-light hover:bg-ljb-gold/10 hover:text-ljb-gold-light;
+    box-shadow: inset 0 0 0 1px rgba(201, 162, 74, 0.5);
+  }
+
+  .ljb-card {
+    @apply rounded-2xl bg-ljb-raised;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  }
+
+  .ljb-hairline {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(201, 162, 74, 0.5),
+      transparent
+    );
+  }
+
+  .ljb-input {
+    @apply h-10 w-full min-w-0 rounded-full bg-white/[0.06] px-4 font-roboto text-sm font-normal text-ljb-cream placeholder:text-ljb-cream/40 focus:outline-none focus:ring-1 focus:ring-ljb-gold;
+  }
+
+  .ljb-chip {
+    @apply rounded-full bg-white/[0.06] px-4 py-1.5 font-roboto text-sm font-normal text-ljb-cream/70 transition-colors hover:text-ljb-gold-light;
+  }
+
+  .ljb-chip[aria-pressed="true"] {
+    @apply bg-ljb-gold text-ljb-night;
+  }
+
+  .ljb-hero-glow {
+    background: radial-gradient(ellipse at 50% 35%, #4a2622 0%, #1f1215 80%);
   }
 }
