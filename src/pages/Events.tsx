@@ -4,6 +4,10 @@ import PageHeader from "@/components/PageHeader";
 import { useEvents } from "@/lib/useEvents";
 import { dateParts, eventPath, scrollToShowAlerts } from "@/lib/events";
 
+// Same density as the Musicians grid: more shows across on wider screens.
+const EVENT_GRID =
+  "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4";
+
 const Events = () => {
   const { upcoming, past, loading } = useEvents();
 
@@ -14,12 +18,13 @@ const Events = () => {
       <section className="mt-10">
         <h2 className="ljb-cap mb-5">Upcoming</h2>
         {loading ? (
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="ljb-card h-80 animate-pulse" />
-            <div className="ljb-card hidden h-80 animate-pulse md:block" />
+          <div className={EVENT_GRID}>
+            {Array.from({ length: 4 }, (_, i) => (
+              <div key={i} className="ljb-card h-72 animate-pulse" />
+            ))}
           </div>
         ) : upcoming.length > 0 ? (
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className={EVENT_GRID}>
             {upcoming.map((event) => (
               <EventCard key={event.id} event={event} />
             ))}

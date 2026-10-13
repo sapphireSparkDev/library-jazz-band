@@ -17,6 +17,10 @@ const SQUARE_DONATION_URL =
 const ARTS_WESTCHESTER_FORM_URL =
   "https://docs.google.com/forms/d/1tR_kx_wxNZYGRYhz2N-uLu_lEION8DgvQix5eG3kJSs/viewform";
 
+// The challenge notices hide themselves once the deadline has passed.
+const ARTS_WESTCHESTER_DEADLINE = new Date(2026, 11, 15, 23, 59, 59);
+const ARTS_WESTCHESTER_DEADLINE_LABEL = "December 15, 2026";
+
 // Always open on desktop; collapsible on mobile.
 const WayToGive = ({
   title,
@@ -52,6 +56,7 @@ const WayToGive = ({
 const Donate = () => {
   const { upcoming } = useEvents();
   const nextShow = upcoming[0];
+  const challengeOpen = new Date() <= ARTS_WESTCHESTER_DEADLINE;
 
   return (
     <div className="mx-auto max-w-6xl px-4 pb-16 pt-10 md:px-6">
@@ -60,6 +65,22 @@ const Donate = () => {
         Our library shows are free, but running the band is not! Your support
         will help us add more shows, invite guest artists, and record our music.
       </p>
+
+      {challengeOpen && (
+        <a
+          href="#artsw-challenge"
+          className="ljb-card mx-auto mt-8 flex max-w-xl flex-col items-center gap-1 px-5 py-4 text-center outline outline-1 outline-ljb-gold/60 hover:outline-ljb-gold"
+        >
+          <span className="ljb-cap">ArtsWestchester Challenge 2026</span>
+          <span className="font-bebasNeue text-2xl tracking-wide text-ljb-cream">
+            Deadline: {ARTS_WESTCHESTER_DEADLINE_LABEL}
+          </span>
+          <span className="text-sm font-light text-ljb-cream/75">
+            Give and fill out the form by the deadline so ArtsWestchester can
+            match your gift.
+          </span>
+        </a>
+      )}
 
       <div className="mt-10 grid items-start gap-6 lg:grid-cols-[1.6fr_1fr]">
         {/* Give online */}
@@ -88,22 +109,37 @@ const Donate = () => {
             Opens Square in a new tab. A tax-deductible receipt is emailed to
             you.
           </p>
-          <div className="ljb-hairline" />
-          <div className="flex flex-col gap-3">
-            <span className="ljb-cap">ArtsWestchester 2026 match</span>
-            <p className="text-sm font-light text-ljb-cream/75">
-              ArtsWestchester may match your gift. After you donate, fill out
-              the 2026 donation form so your gift can be counted.
-            </p>
-            <a
-              href={ARTS_WESTCHESTER_FORM_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="ljb-pill-ghost whitespace-normal py-2.5 text-center"
-            >
-              Fill out the 2026 donation form ↗
-            </a>
-          </div>
+          {challengeOpen && (
+            <>
+              <div className="ljb-hairline" />
+              <div
+                id="artsw-challenge"
+                className="flex scroll-mt-24 flex-col gap-3"
+              >
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="ljb-cap flex-1">
+                    ArtsWestchester 2026 match
+                  </span>
+                  <span className="text-xs font-normal uppercase tracking-[0.15em] text-ljb-gold-light">
+                    Deadline {ARTS_WESTCHESTER_DEADLINE_LABEL}
+                  </span>
+                </div>
+                <p className="text-sm font-light text-ljb-cream/75">
+                  ArtsWestchester may match your gift. After you donate, fill
+                  out the 2026 donation form by{" "}
+                  {ARTS_WESTCHESTER_DEADLINE_LABEL} so your gift can be counted.
+                </p>
+                <a
+                  href={ARTS_WESTCHESTER_FORM_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="ljb-pill-ghost whitespace-normal py-2.5 text-center"
+                >
+                  Fill out the 2026 donation form ↗
+                </a>
+              </div>
+            </>
+          )}
         </div>
 
         {/* Other ways to give */}
