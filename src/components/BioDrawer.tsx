@@ -28,6 +28,38 @@ export const MusicianPhoto = ({
     </div>
   );
 
+// Bios are plain text from the Admin panel. A blank line starts a new
+// paragraph; a paragraph wrapped in *asterisks* is set apart in italics
+// (used for notes like a tribute).
+const BioText = ({ bio }: { bio: string }) => {
+  const paragraphs = (bio || "")
+    .split(/\n\s*\n/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+  if (paragraphs.length === 0) {
+    return (
+      <p className="text-sm font-light text-ljb-cream/80">Bio coming soon.</p>
+    );
+  }
+  return (
+    <div className="flex flex-col gap-3 text-sm font-light leading-relaxed text-ljb-cream/80">
+      {paragraphs.map((p, i) => {
+        const note = p.match(/^\*([\s\S]+)\*$/);
+        return note ? (
+          <p
+            key={i}
+            className="border-l-2 border-ljb-gold/60 pl-3 italic text-ljb-cream/90"
+          >
+            {note[1]}
+          </p>
+        ) : (
+          <p key={i}>{p}</p>
+        );
+      })}
+    </div>
+  );
+};
+
 const BioContent = ({
   musician,
   upcoming,
@@ -48,9 +80,7 @@ const BioContent = ({
         <p className="text-sm text-ljb-gold-light">{musician.role}</p>
       )}
       <div className="ljb-hairline my-1" />
-      <p className="text-sm font-light leading-relaxed text-ljb-cream/80">
-        {musician.bio || "Bio coming soon."}
-      </p>
+      <BioText bio={musician.bio} />
       {playsAt.length > 0 && (
         <p className="text-sm text-ljb-cream/70">
           Plays{" "}
