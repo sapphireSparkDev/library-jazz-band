@@ -145,9 +145,14 @@ const Donate = () => {
         {/* Other ways to give */}
         <div className="flex flex-col gap-4">
           <span className="ljb-cap">Other ways to give</span>
-          <WayToGive title="Zelle">
+          <WayToGive title="Zelle · no fees">
             <div className="flex items-start gap-4">
-              <p className="flex-1">To Nancy Maron, using this QR code.</p>
+              <p className="flex-1">
+                Scan the QR code to send to Nancy Maron, our Artistic Director,
+                who deposits Zelle gifts for Library Jazz Band, Inc. No fees for
+                you or the band. Please add &ldquo;LJB donation&rdquo; in the
+                memo.
+              </p>
               <img
                 src={zelleQR}
                 alt="Zelle QR code for Nancy Maron"
