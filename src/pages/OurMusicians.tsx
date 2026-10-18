@@ -90,6 +90,11 @@ const OurMusicians = () => {
                       <span className="text-xs font-light text-ljb-cream/65">
                         {musician.instrument}
                       </span>
+                      {musician.role && (
+                        <span className="text-xs text-ljb-gold-light">
+                          {musician.role}
+                        </span>
+                      )}
                     </span>
                   </button>
                 );

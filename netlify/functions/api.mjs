@@ -1,6 +1,7 @@
 import fs from "fs/promises";
 import path from "path";
 import { getStore } from "@netlify/blobs";
+import { runMusicianUpdates } from "../musician-updates.mjs";
 
 // Helper function to get data from Netlify Blobs or fallback to JSON files
 const readJSONFile = async (filename, context) => {
@@ -12,11 +13,20 @@ const readJSONFile = async (filename, context) => {
 
       if (data) {
         console.log(`Successfully read ${filename} from Netlify Blobs`);
+        if (filename === "musicians.json") {
+          // A failed roster update must never hide the current roster.
+          return await runMusicianUpdates(store, data).catch((error) => {
+            console.error("Musician updates failed:", error);
+            return data;
+          });
+        }
         return data;
       }
 
       // If not in Blobs yet, read from static files and initialize Blobs
-      console.log(`${filename} not found in Blobs, initializing from static files`);
+      console.log(
+        `${filename} not found in Blobs, initializing from static files`,
+      );
       const staticData = await readFromStaticFiles(filename);
 
       if (staticData && staticData.length > 0) {

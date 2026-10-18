@@ -35,10 +35,10 @@
   {
     "id": "nancy-maron",
     "name": "Nancy Maron",
-    "role": "Co-Founder/Artistic Director",
-    "instrument": "Alto and Soprano saxophones",
+    "role": "Artistic Director",
+    "instrument": "Alto saxophone",
     "photo": "/src/lib/assets/NMaron_sax.png",
-    "bio": "Nancy plays alto, soprano, and tenor saxophones with Lehman College and Community Band, Yonkers Philharmonic, The Westchester Band, and rock cover band the Patroons.",
+    "bio": "When not playing with Library Jazz Band, Nancy performs with the Lehman and Westchester concert bands, and when the music calls for it, with local orchestras including Yonkers Philharmonic and Excelsior Symphony Orchestra. In addition to managing LJB, she loves finding new ways to share music, bringing Make Music Day to Yonkers in 2021, and producing the Phenomenal Music series for the YPL in 2026. She currently serves as President of the Board of Trustees for the Yonkers Public Library and President of the Foundation for the Yonkers Public Library.",
     "isHidden": false,
     "section": "Saxophones",
     "sortOrder": -1.46875
@@ -63,7 +63,7 @@
     "bio": "Chris Ferdinand, the newest member of the ensemble, joins us all the way from Brooklyn: Aspiring pilot, playing saxophone for fifteen-ish years and subsisting on caffeine.",
     "isHidden": false,
     "section": "Saxophones",
-    "sortOrder": -0.46484375
+    "sortOrder": 0.5390625
   },
   {
     "id": "musician-1762923421631",
@@ -104,7 +104,7 @@
     "role": "",
     "instrument": "Trumpet/Flugelhorn",
     "photo": "/src/lib/assets/Burgie_tpt.jpeg",
-    "bio": "Kim is a multi-Instrumentalist who plays trumpet/flugelhorn, jazz recorder and drums/percussion and has played at many of the top hotels, catering halls, night clubs and other venues in the tri-state area and around the world. When Kim is not working on original music or writing music for TV and motion pictures, he is a music teacher at a New York City high school in the South Bronx. Kim has 4 CD’s of his original music out there in the world (“In The Zone”, “Blessed Not Stressed”, “Fun” and “Fun 2.0”).",
+    "bio": "*In 2025, our dear friend and bandmate, Kim Burgie, passed away. He was a founding member and vital part of this group. His humor and artistry are missed by all who had the pleasure of playing with him; his music will live on through the tunes and arrangements that continue to bring joy to our audiences.*\n\nKim is a multi-Instrumentalist who plays trumpet/flugelhorn, jazz recorder and drums/percussion and has played at many of the top hotels, catering halls, night clubs and other venues in the tri-state area and around the world. When Kim is not working on original music or writing music for TV and motion pictures, he is a music teacher at a New York City high school in the South Bronx. Kim has 4 CD’s of his original music out there in the world (“In The Zone”, “Blessed Not Stressed”, “Fun” and “Fun 2.0”).",
     "isHidden": false,
     "section": "Trumpets",
     "sortOrder": -4.5
@@ -179,10 +179,10 @@
     "id": "musician-1763152597574",
     "name": "Rocco Dapice",
     "role": "",
-    "instrument": "Coming soon",
-    "photo": "",
-    "bio": "",
-    "isHidden": true,
+    "instrument": "Piano",
+    "photo": "/src/lib/assets/Dapice_piano.webp",
+    "bio": "Rocco is a pianist, teacher, writer, YAMAHA Performing Artist, and graduate of the Manhattan School of Music (M.M., Jazz Arts). In recent years he has served on the faculty at the Manhattan School's summer program (MSM Summer); at New Visions School for Advanced Math & Science; and has taught piano privately. Rocco has performed in nearly 400 cities and has communicated in word and song in 45 of the 50 states.",
+    "isHidden": false,
     "section": "Rhythm",
     "sortOrder": -5.8203125
   },
@@ -199,13 +199,57 @@
   },
   {
     "id": "musician-1763152683734",
-    "name": "Phil Grainger",
+    "name": "Phil Granger",
     "role": "",
-    "instrument": "Coming soon",
-    "photo": "",
-    "bio": "",
-    "isHidden": true,
+    "instrument": "Trumpet",
+    "photo": "/src/lib/assets/Granger_trumpet.webp",
+    "bio": "Phil has been playing the trumpet for over 60 years. He was raised in Great Neck, Long Island. He enjoyed playing for the pit orchestras on Broadway for 45 years. He was the Music Director, Lead Trumpet, and Road Manager for Jay Black & The Americans (60's rock 'n' roll sensation) for 30 years. He still enjoys working with tribute bands on Long Island: FM (Steely Dan), PseudoSsudio (Phil Collins), Sir Duke (Stevie Wonder) and Desert Highway (The Eagles). Phil is 1st Trumpet of the Long Island Pops. He has played with the Symphonic Brass Alliance (founded by Rob Susman, lead trombone with the Library Jazz Band), performing all of the convocations for the various colleges of NYU for over 34 years. He is also Lead Trumpet with the Berkshire Jazz Orchestra based in Bethel, CT. Phil is overjoyed to be a member of the Library Jazz Band based in Yonkers, NY.\n\nPhil lives with his wife, Leslie, in Bridgewater, CT with a bunch of dogs and cats since their four children are grown.",
+    "isHidden": false,
     "section": "Trumpets",
     "sortOrder": -4.375
+  },
+  {
+    "id": "tony-romano",
+    "name": "Tony Romano",
+    "role": "",
+    "instrument": "Guitar",
+    "photo": "/src/lib/assets/Romano_guitar.webp",
+    "bio": "Guitarist and composer Tony Romano has been a visible part of the New York City music scene for over twenty-five years. Just Jazz Guitar magazine wrote “His tone is beautiful and soulful, and his remarkable technique is a servant to his rich musical imagination and broad harmonic palette.” With a wide range of playing styles, Tony has toured worldwide and performed and recorded with an eclectic array of artists, including Randy Brecker, Joe Locke, Michael Feinstein, Bill Warfield, Harvie S, Joe Bataan, Dave Valentin, Hermán Olivera, Candido Camero, Yomo Toro, Sound Bridges, Joel Frahm, Thomas Chapin, Brit Woodman, Paul Bollenback, Stanley Jordan, The Aimée Allen Group and Debbie Gibson. Tony's guitar work can be heard on all 52 episodes of the BBC series 3rd & Bird as well as the Discovery Channel miniseries Going, Going, Gone! He has also performed for NPR broadcasts, and has appeared on NBC's The Today Show, Telemundo, and the ABC Morning Show. Tony teaches at Riverdale Country School and has been an adjunct professor at Five Towns College, Long Island University, a Teaching Artist for the Kupferberg Center at Queens College and an instructor for the National Guitar Workshop.",
+    "isHidden": false,
+    "section": "Rhythm",
+    "sortOrder": -5.38671875
+  },
+  {
+    "id": "bruce-williamson",
+    "name": "Bruce Williamson",
+    "role": "",
+    "instrument": "Alto saxophone",
+    "photo": "/src/lib/assets/Williamson_alto.webp",
+    "bio": "Multi-instrumentalist Bruce Williamson was active in the San Francisco Bay Area music scene until moving to New York City in the mid-1980s. He joined organist Jack McDuff's band (with Dave Stryker on guitar), giving him the opportunity to meet and play with Jimmy Smith, Stanley Turrentine and George Benson. Other jazz notables Bruce has performed and/or recorded with include Gary Peacock, Fred Hersch, Dave Douglas, Randy Brecker, Paul McCandless, Tom Harrell, Mark Soskin, Jim Pepper and Toshiko Akiyoshi. Bruce can be heard on more than 60 recordings playing saxophones, clarinets, flutes and keyboards. In New York City's theater world, Bruce has performed in many of Julie Taymor's productions. He is currently playing Reed-1 in the long-running Broadway musical “Chicago”.",
+    "isHidden": false,
+    "section": "Saxophones",
+    "sortOrder": -1.21875
+  },
+  {
+    "id": "mike-bomwell",
+    "name": "Mike Bomwell",
+    "role": "",
+    "instrument": "Alto saxophone",
+    "photo": "/src/lib/assets/Bomwell_alto.webp",
+    "bio": "Born and raised in upstate New York, Michael Bomwell went on to study with Donald Sinta at the University of Michigan and earned degrees in classical saxophone and jazz studies. Since moving back to New York in 2001, he has performed with David Liebman, Clarence Clemons, Sandy Duncan, Charli Persip's Supersound, Edison Woods, Olivia Newton-John, and Ken Peplowski, among others. He toured the U.S. and Europe as a founding member of the groundbreaking bhangra brass band, Red Baraat, and can be heard on several of their recordings. He has subbed on Broadway and Off Broadway productions, and performed at several jazz festivals, including Montreux-Detroit, Monterey, Montreal, Molde, Pori, Cape May, and New Orleans Jazz and Heritage Festival. In addition to being a saxophone, flute, and clarinet player, Bomwell teaches instrumental music at an independent school in Bronx, NY. In 2020 he moved with his family to Ossining, NY after 19 years in Manhattan.",
+    "isHidden": false,
+    "section": "Saxophones",
+    "sortOrder": -1.09375
+  },
+  {
+    "id": "frank-petrocelli",
+    "name": "Frank Petrocelli",
+    "role": "",
+    "instrument": "Tenor saxophone",
+    "photo": "/src/lib/assets/Petrocelli_tenor.webp",
+    "bio": "Frank has performed with the Tommy Dorsey and Jimmy Dorsey Orchestras and enjoys a busy freelance career performing in such famous landmarks as Birdland Jazz Club, Feinstein's/54 Below, Town Hall and Carnegie Hall. As an educator and performer, Frank has worked and collaborated with many outstanding artists including Marcus Belgrave, Todd Williams, Ron Blake, Xavier Davis, Todd Coolman, Gary Smulyan, Justin DiCioccio, Mike Holober, Billy Hart and Joe Alessi, to name a few. Frank has been a music educator for over 25 years. He currently teaches at Monroe-Woodbury High School where he directs the Symphonic Band, Jazz Ensemble and Pep Band. He has a master's degree in saxophone performance and jazz studies from Western Michigan University where he studied with Trent Kynaston. He has been a soloist with the Greater Newburgh Symphony Orchestra, Kalamazoo Symphony, Grand Rapids Symphony and West Shore Symphony. Frank resides in Rockland County with his wife and two children.",
+    "isHidden": false,
+    "section": "Saxophones",
+    "sortOrder": -0.46484375
   }
 ]
