@@ -42,11 +42,21 @@ const MediaCarousel = ({ event }: { event: Event }) => {
   return (
     <div className="relative overflow-hidden rounded-2xl bg-ljb-deep">
       {current.type === "image" ? (
-        <img
-          src={resolveImagePath(current.url)}
-          alt={current.alt || event.title}
-          className="aspect-video w-full object-cover"
-        />
+        // Any shape of photo or flyer fits the 16:9 frame without being
+        // cropped; a blurred copy fills the space around it.
+        <div className="relative aspect-video w-full">
+          <img
+            src={resolveImagePath(current.url)}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full scale-110 object-cover opacity-40 blur-2xl"
+          />
+          <img
+            src={resolveImagePath(current.url)}
+            alt={current.alt || event.title}
+            className="relative h-full w-full object-contain"
+          />
+        </div>
       ) : (
         <video
           src={resolveImagePath(current.url)}
@@ -224,12 +234,16 @@ const EventDetail = () => {
                 className="block overflow-hidden rounded-2xl bg-white p-4"
                 title="Open the program full size"
               >
+                {/* Capped height so a tall program doesn't fill the page */}
                 <img
                   src={resolveImagePath(event.programImage)}
                   alt={`${event.title} program`}
-                  className="mx-auto h-auto max-w-full"
+                  className="mx-auto max-h-[28rem] w-auto max-w-full object-contain"
                 />
               </a>
+              <span className="text-xs font-light text-ljb-cream/55">
+                Tap the program to open it full size.
+              </span>
             </section>
           )}
 
