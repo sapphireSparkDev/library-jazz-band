@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { Event, Musician } from "@/lib/types/events";
 import { eventsAPI, musiciansAPI, uploadAPI } from "@/lib/api";
+import { resizeImage } from "@/lib/resizeImage";
 
 const Admin = () => {
   const [password, setPassword] = useState("");
@@ -101,26 +102,31 @@ const Admin = () => {
   ) => {
     if (!file) return;
 
-    const isVideo = file.type.startsWith("video/");
-    const maxSize = isVideo ? 500 * 1024 * 1024 : 10 * 1024 * 1024;
-    if (file.size > maxSize) {
-      alert(
-        isVideo
-          ? "Video too large. Maximum size is 500MB."
-          : "Image too large. Maximum size is 10MB.",
-      );
-      return;
-    }
-
     // Check file type
     if (!file.type.startsWith("image/") && !file.type.startsWith("video/")) {
       alert("Only image and video files are allowed.");
       return;
     }
 
+    const isVideo = file.type.startsWith("video/");
+
     setUploading(true);
     try {
-      const result = await uploadAPI.uploadFile(file);
+      // Large photos are scaled down to 2000px before upload, so they load
+      // quickly and don't overwhelm the event page.
+      const upload = isVideo ? file : await resizeImage(file);
+
+      const maxSize = isVideo ? 500 * 1024 * 1024 : 10 * 1024 * 1024;
+      if (upload.size > maxSize) {
+        alert(
+          isVideo
+            ? "Video too large. Maximum size is 500MB."
+            : "Image too large. Maximum size is 10MB.",
+        );
+        return;
+      }
+
+      const result = await uploadAPI.uploadFile(upload);
       setUrlField(result.filePath);
     } catch (error) {
       console.error("File upload failed:", error);
@@ -623,7 +629,7 @@ const Admin = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-neutral-900 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-neutral-900 flex items-center justify-center p-4 text-black [&_::placeholder]:text-gray-500">
         <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
           <div className="flex items-center justify-center mb-6">
             <Lock className="text-amber-500 mr-2" size={24} />
@@ -689,7 +695,7 @@ const Admin = () => {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-900 p-4">
+    <div className="min-h-screen bg-neutral-900 p-4 text-black [&_::placeholder]:text-gray-500">
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-amber-500">Admin Panel</h1>
