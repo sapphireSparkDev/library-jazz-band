@@ -411,6 +411,7 @@ const Admin = () => {
       isHidden: musicianForm.isHidden || false,
       section: musicianForm.section!,
       sortOrder: musicianForm.sortOrder || 0,
+      ...(editingMusician?.listLast ? { listLast: true } : {}),
     };
 
     // Optimistic update

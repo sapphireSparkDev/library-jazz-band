@@ -11,11 +11,13 @@ export const sectionOrder = [
   "Percussion",
 ];
 
-// Visible musicians, by section then sortOrder
+// Visible musicians, by section then sortOrder; anyone marked listLast
+// goes at the very end of the page
 export const sortMusicians = (musicians: Musician[]) =>
   musicians
     .filter((musician) => !musician.isHidden)
     .sort((a, b) => {
+      if (!!a.listLast !== !!b.listLast) return a.listLast ? 1 : -1;
       const sectionA = sectionOrder.indexOf(a.section);
       const sectionB = sectionOrder.indexOf(b.section);
       if (sectionA !== sectionB) {

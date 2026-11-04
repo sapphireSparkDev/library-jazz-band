@@ -41,4 +41,5 @@ export interface Musician {
   isHidden: boolean;
   section: string;
   sortOrder: number;
+  listLast?: boolean; // Shown after everyone else (e.g. not currently playing)
 }
