@@ -132,8 +132,8 @@ const icsEscape = (text: string) =>
     .replace(/([,;])/g, "\\$1")
     .replace(/\n/g, "\\n");
 
-// Downloads an .ics file, which every calendar app can import.
-export const downloadCalendarFile = (event: Event) => {
+// Shows with a time run two hours; shows without one fill the whole day.
+const calendarTimes = (event: Event) => {
   const { date, hasTime } = parseEventDate(event.date);
   const end = new Date(date);
   if (hasTime) {
@@ -141,6 +141,50 @@ export const downloadCalendarFile = (event: Event) => {
   } else {
     end.setDate(end.getDate() + 1);
   }
+  return { start: date, end, hasTime };
+};
+
+// Every show is in New York, so calendars should read the time as Eastern.
+const BAND_TIME_ZONE = "America/New_York";
+
+// Opens Google Calendar with the show filled in, ready to save.
+export const googleCalendarUrl = (event: Event) => {
+  const { start, end, hasTime } = calendarTimes(event);
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: event.title.trim(),
+    dates: `${icsStamp(start, hasTime)}/${icsStamp(end, hasTime)}`,
+    location: event.location,
+    details: `${window.location.origin}${eventPath(event)}`,
+    ctz: BAND_TIME_ZONE,
+  });
+  return `https://calendar.google.com/calendar/render?${params}`;
+};
+
+// Opens Outlook on the web with the show filled in, ready to save.
+export const outlookCalendarUrl = (event: Event) => {
+  const { start, end, hasTime } = calendarTimes(event);
+  const pad = (n: number) => n.toString().padStart(2, "0");
+  const stamp = (d: Date) =>
+    `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}` +
+    (hasTime ? `T${pad(d.getHours())}:${pad(d.getMinutes())}:00` : "");
+  const params = new URLSearchParams({
+    path: "/calendar/action/compose",
+    rru: "addevent",
+    subject: event.title.trim(),
+    startdt: stamp(start),
+    enddt: stamp(end),
+    allday: String(!hasTime),
+    location: event.location,
+    body: `${window.location.origin}${eventPath(event)}`,
+  });
+  return `https://outlook.live.com/calendar/0/action/compose?${params}`;
+};
+
+// Downloads an .ics file, which Apple Calendar opens directly and every
+// other calendar app can import.
+export const downloadCalendarFile = (event: Event) => {
+  const { start: date, end, hasTime } = calendarTimes(event);
   const dateLine = (key: string, value: Date) =>
     hasTime
       ? `${key}:${icsStamp(value, true)}`

@@ -281,12 +281,18 @@ const EventDetail = () => {
                   <CalendarButton
                     event={event}
                     label="+ Add to calendar"
-                    className="ljb-pill-gold"
+                    className="ljb-pill-gold w-full"
+                    wrapperClassName="flex"
                   />
                 ) : (
                   <>
                     <AdmissionLink event={event} />
-                    <CalendarButton event={event} label="+ Add to calendar" />
+                    <CalendarButton
+                      event={event}
+                      label="+ Add to calendar"
+                      className="ljb-pill-ghost w-full"
+                      wrapperClassName="flex"
+                    />
                   </>
                 )}
               </div>
@@ -343,7 +349,13 @@ const EventDetail = () => {
         <div className="fixed inset-x-0 bottom-0 z-20 flex items-center gap-3 rounded-t-2xl bg-ljb-raised/95 px-4 py-3 shadow-[0_-10px_24px_rgba(0,0,0,0.45)] backdrop-blur lg:hidden">
           <AdmissionTag event={event} />
           {isFree ? (
-            <CalendarButton event={event} className="ljb-pill-gold flex-1" />
+            <CalendarButton
+              event={event}
+              className="ljb-pill-gold w-full"
+              wrapperClassName="flex-1"
+              align="right"
+              opensUp
+            />
           ) : (
             <AdmissionLink event={event} className="ljb-pill-gold flex-1" />
           )}

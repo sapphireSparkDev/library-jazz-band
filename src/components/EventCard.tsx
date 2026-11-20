@@ -60,7 +60,7 @@ export const EventCard = ({ event }: EventCardProps) => {
                 <Link to={eventPath(event)} className="ljb-pill-gold">
                   Details
                 </Link>
-                <CalendarButton event={event} label="+ Cal" />
+                <CalendarButton event={event} label="+ Cal" align="right" />
               </>
             ) : (
               <AdmissionLink event={event} />
