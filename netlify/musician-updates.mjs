@@ -153,11 +153,27 @@ const maronTitle = [
   },
 ];
 
+// Walter Barrett's surname is spelled with two r's and two t's.
+const fixBarrett = (text) => (text || "").replace(/\bBarret\b/g, "Barrett");
+const barrettSpelling = [
+  {
+    match: {
+      ids: ["musician-1762925260993"],
+      names: ["Walter Barret", "Walter Barrett"],
+    },
+    update: (musician) => ({
+      name: "Walter Barrett",
+      bio: fixBarrett(musician.bio),
+    }),
+  },
+];
+
 export const MUSICIAN_UPDATES = [
   { id: "2026-11-roster", changes: roster2026Nov },
   { id: "2026-10-levitt-trombone", changes: levittTrombone },
   { id: "2026-11-personnel", changes: personnel2026Nov },
   { id: "2026-11-maron-title", changes: maronTitle },
+  { id: "2026-11-barrett-spelling", changes: barrettSpelling },
 ];
 
 const norm = (s) => (s || "").trim().toLowerCase();

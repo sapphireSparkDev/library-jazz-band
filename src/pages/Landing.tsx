@@ -6,11 +6,11 @@ import { useEvents } from "@/lib/useEvents";
 import {
   admissionInfo,
   dateParts,
-  downloadCalendarFile,
   eventPath,
   scrollToShowAlerts,
 } from "@/lib/events";
 import { Event } from "@/lib/types/events";
+import { CalendarButton } from "@/components/EventActions";
 
 const NextShowCard = ({ event }: { event: Event }) => {
   const { month, day, weekday, time } = dateParts(event.date);
@@ -44,13 +44,12 @@ const NextShowCard = ({ event }: { event: Event }) => {
         <Link to={eventPath(event)} className="ljb-pill-gold flex-1">
           Details
         </Link>
-        <button
-          type="button"
-          className="ljb-pill-ghost flex-1"
-          onClick={() => downloadCalendarFile(event)}
-        >
-          + Calendar
-        </button>
+        <CalendarButton
+          event={event}
+          className="ljb-pill-ghost w-full"
+          wrapperClassName="flex-1"
+          align="right"
+        />
       </div>
     </div>
   );
